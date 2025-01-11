@@ -8202,6 +8202,10 @@ License - nucleoapp.com/license/
   color: #34495e;
 }
 
+.section-contact .fa {
+  margin-right: 10px; /* Adjust the value as needed */
+}
+
 .contact-card {
   background: white;
   border: 1px solid #ddd;
