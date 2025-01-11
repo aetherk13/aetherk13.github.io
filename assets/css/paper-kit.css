@@ -8244,7 +8244,17 @@ License - nucleoapp.com/license/
     align-items: center;
   }
 }
+.styled-link {
+  color: #007BFF; /* Bootstrap primary blue color */
+  text-decoration: underline;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
 
+.styled-link:hover {
+  color: #0056b3; /* Darker blue for hover state */
+  text-decoration: none;
+}
 
 
 
