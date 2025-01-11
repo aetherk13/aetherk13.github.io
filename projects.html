@@ -1,0 +1,392 @@
+
+<!--
+=========================================================
+ Paper Kit 2 - v2.2.0
+=========================================================
+
+ Product Page: https://www.creative-tim.com/product/paper-kit-2
+ Copyright 2019 Creative Tim (https://www.creative-tim.com)
+ Licensed under MIT (https://github.com/creativetimofficial/paper-kit-2/blob/master/LICENSE.md)
+
+ Coded by Creative Tim
+
+=========================================================
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" sizes="76x76" href="./assets/media/icon.png">
+  <link rel="icon" type="image/png" href="./assets/media/icon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Paper Kit by Creative Tim
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- CSS Files -->
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="./assets/demo/demo.css" rel="stylesheet" />
+  <style>
+.card-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  height: 500px; /* Fixed height for the card */
+  overflow: hidden; /* Prevent content from spilling outside */
+}
+
+.card-vertical img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  max-height: 200px;
+}
+
+.scrollable-content {
+  max-height: 100px; /* Adjust based on your card design */
+  overflow-y: auto; /* Enable vertical scrolling for overflowing content */
+  margin-bottom: 0px; /* Reduce spacing below the description */
+}
+
+.scrollable-content p {
+  margin: 0px; /* Remove extra margin for better alignment */
+}
+
+.card-vertical div {
+  margin: 0px; /* Reduce spacing below badges */
+}
+
+.badge {
+  margin: 2px; /* Reduce margin */
+  padding: 3px 6px; /* Adjust padding to make badges smaller */
+  font-size: 11px; /* Decrease font size slightly */
+}
+
+.btn {
+  margin-top: 0px; /* Reduce spacing above the button */
+  margin-bottom: 0x;
+}
+
+  </style>
+</head>
+
+<body class="index-page sidebar-collapse">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="300">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="index.html" rel="tooltip" title="Coded by Kedar Krishnan" data-placement="bottom">
+          Kedar Krishnan
+        </a>
+        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navigation">
+        <ul class="navbar-nav">
+          <!-- <li class="nav-item">
+            <a href="https://demos.creative-tim.com/paper-kit-2/docs/1.0/getting-started/introduction.html" target="_blank" class="nav-link"> About </a>
+          </li> -->
+          <li class="nav-item">
+            <a href="experience.html" class="btn btn-danger btn-round">Experiences</a>
+          </li>
+          <li class="nav-item">
+            <a href="projects.html" class="btn btn-danger btn-round">Class Work</a>
+          </li>
+          <li class="nav-item">
+            <a href="photos.html" class="btn btn-danger btn-round">Photography</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="page-header section-dark" style="background-image: url('./assets/img/antoine-barres.jpg')">
+    <div class="filter"></div>
+    <div class="content-center">
+      <div class="container">
+        <div class="title-brand">
+          <h1 class="presentation-title">Kedar Krishnan</h1>
+          <div class="fog-low">
+            <img src="./assets/img/fog-low.png" alt="">
+          </div>
+          <div class="fog-low right">
+            <img src="./assets/img/fog-low.png" alt="">
+          </div>
+        </div>
+        <h2 class="presentation-subtitle text-center">Biomedical Engineering Student at Johns Hopkins University </h2>
+      </div>
+    </div>
+    <div class="moving-clouds" style="background-image: url('./assets/img/clouds.png'); "></div>
+  </div>
+  <div class="main">
+    <div class="section text-center">
+      <div class="container mt-5" id="projects-container">
+        <div class="row g-4 d-flex align-items-stretch" id="project-list">
+          <!-- Cards will be dynamically added here -->
+        </div>            
+      </div>
+    </div>
+  </div>
+    </footer>
+    <!--   Core JS Files   -->
+    <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+    <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+    <script src="./assets/js/plugins/bootstrap-switch.js"></script>
+    <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
+    <script src="./assets/js/plugins/moment.min.js"></script>
+    <script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+    <!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
+    <script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <script>
+      $(document).ready(function() {
+
+        if ($("#datetimepicker").length != 0) {
+          $('#datetimepicker').datetimepicker({
+            icons: {
+              time: "fa fa-clock-o",
+              date: "fa fa-calendar",
+              up: "fa fa-chevron-up",
+              down: "fa fa-chevron-down",
+              previous: 'fa fa-chevron-left',
+              next: 'fa fa-chevron-right',
+              today: 'fa fa-screenshot',
+              clear: 'fa fa-trash',
+              close: 'fa fa-remove'
+            }
+          });
+        }
+
+        function scrollToDownload() {
+
+          if ($('.section-download').length != 0) {
+            $("html, body").animate({
+              scrollTop: $('.section-download').offset().top
+            }, 1000);
+          }
+        }
+      });
+    </script>
+    <script>
+      // Array of project data
+      const projects = [
+      {
+    title: "Profile Website",
+    description: "Designed and developed a personal portfolio website to showcase projects, experiences, and skills. Built using modern web technologies, the site features a dynamic layout, responsive design, and interactive elements for an engaging user experience.",
+    imgSrc: "assets/media/proj_web.png",
+    badges1: ["Javascript", "Immunostaining"],
+    badges2: ["Web Design"],
+    link: "index.html"
+  },
+  {
+    id: "proj_highlight",
+    title: "NSF:GRFP Proposal",
+    description: "This NSF GRFP proposal introduces a two-phase nanofiber hydrogel system for sustained extracellular vesicle (EV) release to improve diabetic foot ulcer (DFU) healing. Short-term EV release addresses inflammation, while long-term release supports tissue regeneration. Covalently crosslinked PCL nanofibers enhance mechanical stability. In vitro and in vivo studies will validate its potential to overcome current DFU treatment limitations, offering a translatable solution to improve outcomes and reduce healthcare costs.",
+    imgSrc: "assets/media/proj_grfp.png",
+    badges1: ["Matlab"],
+    badges2: ["GUI"],
+    link: "assets/media/proj_grfp.pdf",
+  },
+  {
+    title: "Class: Computational Genomics",
+    description: "Developed innovative tools for NGS data analysis, combining Cuckoo Filter and Count-Min Sketch algorithms to address sequence redundancy and k-mer frequency tracking. Created KMerTracker, EnhancedKMerTracker, and DynamicKMerTracker to improve deduplication and accuracy while maintaining memory efficiency. Tested on real-world and synthetic datasets, achieving up to 98.74% accuracy for complex genomic sequences, with applications in genomics research and large-scale sequencing projects.",
+    imgSrc: "assets/media/proj_cg.png",
+    badges1: ["Python"],
+    badges2: ["Genomics", "Data Structures"],
+    link: "https://github.com/nicolesaadea/CompGenProject"
+  },
+  {
+    title: "Class: Deep Learning",
+    description: "Developed an enhanced BBANet model for precise robotic tool segmentation in challenging laparoscopic environments, leveraging multi-scale feature fusion and attention mechanisms using the Endovis2018 dataset.",
+    imgSrc: "assets/media/proj_dl.gif",
+    badges1: ["Python"],
+    badges2: ["Deep Learning", "Computer Vision"],
+    link: "https://github.com/sameerkhan7/Robot_Tool_Segmentation"
+  },
+  {
+    title: "Class: Tissue Engineering",
+    description: "Developed a research proposal for a Tissue Engineering course to design multilayered cartilage constructs mimicking native articular cartilage. Focused on using biomechanical cues like compression and shear to enhance tissue organization and functionality, with potential applications in osteoarthritis treatment.",
+    imgSrc: "assets/media/proj_te.png",
+    badges1: ["Study Design"],
+    badges2: ["Tissue Engineering", "Cartilage Engineering"],
+    link: "assets/media/proj_te.pdf"
+  },
+  {
+  title: "BME Design Team",
+    description: "As a founding member of a JHU Biomedical Engineering design team, collaborated with Mendaera and clinicians to create an innovative device aimed at reducing prostate biopsy duration and improving patient comfort. Contributed to design strategies that streamline targeting and retrieval processes. Entered the prototyping phase in December 2023, with low-fidelity prototype testing initiated in March 2024.",
+    imgSrc: "assets/media/proj_dt.png",
+    badges1: ["CAD", "Prototyping"],
+    badges2: ["Design Process"],
+    link: "https://www.mendaera.com/"
+  },
+  {
+  title: "Class: Computer Vision",
+    description: "Developed an automated system for identifying and grading Pokémon trading cards using computer vision and deep learning techniques. The project incorporated traditional methods like Canny Edge Detection for card extraction and advanced models such as EasyOCR for text recognition, VGG-16 and ResNet50 for feature classification, and YOLOv5 for defect detection. The system successfully extracted features like set symbols, rarity, and HP, achieving high accuracy rates, while the object detection model identified defects like scratches and edge wear with precision.",
+    imgSrc: "assets/media/proj_cv.png",
+    badges1: ["Python"],
+    badges2: ["Computer Vision", "Machine Learning"],
+    link: "assets/media/proj_cv.pdf",
+  },
+  {
+  title: "Class: Microphysiological Systems",
+    description: "Reviewed the application of microphysiological systems (MPS) in space research to study spaceflight-induced changes like radiation effects, muscle atrophy, and cardiovascular deconditioning. Highlighted MPS as a tool for disease modeling, drug testing, and regenerative medicine advancements in microgravity.",
+    imgSrc: "assets/media/proj_mps.png",
+    badges1: ["Review Writing"],
+    badges2: ["MPS", "Tissue Engineering"],
+    link: "assets/media/proj_mps.pdf",
+  },
+  {
+  title: "Class: Japanese",
+    description: "Created and performed a concise script inspired by the Japanese book Miller-san, showcasing its key themes and characters. This project combined creative writing with theatrical presentation, highlighting cultural nuances and storytelling elements from the original work, all in Japanese.",
+    imgSrc: "assets/media/proj_jap.png",
+    badges1: ["Japanese Writing", "Japanese Speaking"],
+    badges2: ["Japanese"],
+    link: "assets/media/proj_jap.pdf",
+  },
+  {
+  title: "Class: Ancient Near Eastern Civilizations",
+    description: "This essay, written for my Near Eastern Civilizations class, explores how Mesopotamian rulers from the Akkadian Empire (circa 2350 B.C.) to the Old Babylonian Empire (circa 1600 B.C.) strategically used religion to assert control over their populations. By analyzing the deification of kings like Naram-Sin, the religious reforms of Shulgi, and the propaganda within texts such as the Enuma Eliš, the paper highlights the evolution of religious control mechanisms. It examines how these tactics fostered loyalty, justified authority, and facilitated societal changes, ultimately shaping Mesopotamian civilization.",
+    imgSrc: "assets/media/proj_anec.png",
+    badges1: ["Historical Research", "Historical Writing"],
+    badges2: ["Ancient History"],
+    link: "assets/media/proj_anec.pdf",
+  },
+  {
+  title: "Class: Matlab",
+    description: "Developed a functional MATLAB implementation of Conway’s Game of Life, including custom functions to compute generations, simulate 100 iterations of dynamic patterns like the Pi-heptomino, and import initial patterns using Run-Length Encoding (RLE). The project also featured a full GUI for visualizing complex simulations, such as Traffic Jam and other unique patterns.",
+    imgSrc: "assets/media/proj_matlab.png",
+    badges1: ["Matlab"],
+    badges2: ["GUI"],
+    link: "https://github.com/aetherk13/aetherk13-cs-projects/tree/main/matlab_bootcamp"
+  },
+  {
+  title: "Extended Essay",
+    description: "In this extended essay, I explored minimizing the surface area of a function rotated about a horizontal line by analyzing the impact of the line’s position. The study utilized mathematical optimization techniques, including the bisection method, golden section search, and Newton-Raphson method, to determine the most efficient approach. Applications included calculating surface areas for various functions and comparing optimization methods for accuracy and convergence speed.",
+    imgSrc: "assets/media/proj_ee.png",
+    badges1: ["Mathematical Writing", "Proofs"],
+    badges2: ["Math", "IB"],
+    link: "assets/media/proj_ee.pdf",
+  },
+  {
+  title: "Theory of Knowledge",
+    description: "This Theory of Knowledge essay explores the relationship between trust and the acceptance of knowledge claims across the areas of History and the Arts. By examining the role of trust in evaluating sources and methods, as well as the influence of personal Ways of Knowing like emotion and intuition, the essay argues that while trust often plays a key role in accepting external knowledge claims, it is not always required when knowledge is formed internally. The analysis concludes that trust is frequently, but not always, involved in the acceptance of knowledge claims.",
+    imgSrc: "assets/media/proj_tok.webp",
+    badges1: ["Logic", "Essay Writing"],
+    badges2: ["TOK", "IB"],
+    link: "assets/media/proj_tok.pdf",
+  },
+  {
+  title: "SYPT: Looping Pendulum",
+    description: "This presentation, created for the 2019 Swiss Young Physicists' Tournament (SYPT), delves into the intriguing dynamics of a looping pendulum. A system with a heavy load and a lighter load, connected by a string over a horizontal rod, is analyzed as the lighter load's release causes it to sweep around the rod, preventing the heavier load from falling. Through experimental analysis and theoretical modeling, I investigated the forces, energy transfer, and motion involved. ",
+    imgSrc: "assets/media/proj_sypt2.png",
+    badges1: ["Scientific Presentation", "Study Design"],
+    badges2: ["Physics"],
+    link: "assets/media/proj_sypt2.pdf",
+  },
+  {
+  title: "SYPT: Weighing Time",
+    description: "This presentation, prepared for the 2018 Swiss Young Physicists' Tournament (SYPT), explores the intriguing phenomenon of an hourglass appearing to change weight while its sand flows. Through detailed experiments and theoretical modeling, I investigated the dynamic forces at play during sand flow, including the interplay of momentum transfer, impact forces, and system equilibrium. ",
+    imgSrc: "assets/media/proj_sypt1.png",
+    badges1: ["Scientific Presentation", "Study Design"],
+    badges2: ["Physics"],
+    link: "assets/media/proj_sypt1.pdf",
+  },
+];
+
+
+// Function to dynamically create cards
+function renderProjects() {
+  const container = document.getElementById("project-list");
+  container.innerHTML = ""; // Clear the container
+
+  projects.forEach((project) => {
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("col-md-4", "mb-4");
+
+    // Dynamically add the id if it exists
+    const cardId = project.id ? `id="${project.id}"` : "";
+
+    const card = `
+      <div class="card-vertical" ${cardId}>
+        <h5 class="card-title"><strong>${project.title}</strong></h5>
+        <img src="${project.imgSrc}" alt="${project.title}">
+        <div class="scrollable-content">
+          <p>${project.description}</p>
+        </div>
+        <div>
+          ${project.badges1
+            .map((badge) => `<span class="badge badge-info">${badge}</span>`)
+            .join("")}
+          ${project.badges2
+            .map((badge) => `<span class="badge badge-warning">${badge}</span>`)
+            .join("")}
+        </div>
+        <a href="${project.link}" target="_blank" class="btn btn-primary btn-sm mt-2">View Work</a>
+      </div>
+    `;
+
+    wrapper.innerHTML = card;
+    container.appendChild(wrapper);
+  });
+  
+}
+
+
+
+
+
+
+// Initial render
+renderProjects();
+  </script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Check if there's a hash in the URL
+        if (window.location.hash) {
+          const id = window.location.hash.substring(1); // Get the hash without the #
+          const element = document.getElementById(id);
+    
+          if (element) {
+            // Use setTimeout to ensure the page has fully loaded before scrolling
+            setTimeout(() => {
+              // Scroll to the element with an offset
+              const yOffset = -70; // Adjust for navigation bar height or any offset
+              const yPosition =
+                element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    
+              window.scrollTo({ top: yPosition, behavior: "smooth" });
+            }, 100);
+          }
+        }
+      });
+    </script>
+    
+</body>
+
+</html>

@@ -8255,7 +8255,9 @@ License - nucleoapp.com/license/
   color: #0056b3; /* Darker blue for hover state */
   text-decoration: none;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 
 
 
