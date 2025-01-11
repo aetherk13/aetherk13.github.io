@@ -1,0 +1,227 @@
+
+<!--
+=========================================================
+ Paper Kit 2 - v2.2.0
+=========================================================
+
+ Product Page: https://www.creative-tim.com/product/paper-kit-2
+ Copyright 2019 Creative Tim (https://www.creative-tim.com)
+ Licensed under MIT (https://github.com/creativetimofficial/paper-kit-2/blob/master/LICENSE.md)
+
+ Coded by Creative Tim
+
+=========================================================
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="apple-touch-icon" sizes="76x76" href="./assets/img//apple-icon.png">
+  <link rel="icon" type="image/png" href="./assets/img//favicon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Paper Kit by Creative Tim
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <!-- CSS Files -->
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
+  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <link href="./assets/demo/demo.css" rel="stylesheet" />
+  <style>
+.photo-card {
+  position: relative;
+  display: inline-block;
+  overflow: hidden; /* Ensures the overlay doesn't extend beyond the image */
+}
+
+.photo-card img {
+  transition: 0.3s ease;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.photo-card img:hover {
+  filter: brightness(70%);
+}
+
+.photo-card .custom-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s ease;
+}
+
+.photo-card:hover .custom-overlay {
+  opacity: 1; /* Show on hover */
+}
+
+.custom-overlay span {
+  display: block;
+  font-size: 16px;
+  text-align: center;
+}
+
+
+
+  </style>
+</head>
+
+<body class="index-page sidebar-collapse">
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="300">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="index.html" rel="tooltip" title="Coded by Creative Tim" data-placement="bottom" target="_blank">
+          Kedar Krishnan
+        </a>
+        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navigation">
+        <ul class="navbar-nav">
+          <!-- <li class="nav-item">
+            <a href="https://demos.creative-tim.com/paper-kit-2/docs/1.0/getting-started/introduction.html" target="_blank" class="nav-link"> About </a>
+          </li> -->
+          <li class="nav-item">
+            <a href="experience.html" target="_blank" class="btn btn-danger btn-round">Experiences</a>
+          </li>
+          <li class="nav-item">
+            <a href="experience.html" target="_blank" class="btn btn-danger btn-round">Class Work</a>
+          </li>
+          <li class="nav-item">
+            <a href="photos.html" target="_blank" class="btn btn-danger btn-round">Photography</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="page-header section-dark" style="background-image: url('./assets/img/antoine-barres.jpg')">
+    <div class="filter"></div>
+    <div class="content-center">
+      <div class="container">
+        <div class="title-brand">
+          <h1 class="presentation-title">Kedar Krishnan</h1>
+          <div class="fog-low">
+            <img src="./assets/img/fog-low.png" alt="">
+          </div>
+          <div class="fog-low right">
+            <img src="./assets/img/fog-low.png" alt="">
+          </div>
+        </div>
+        <h2 class="presentation-subtitle text-center">Biomedical Engineering Student at Johns Hopkins University </h2>
+      </div>
+    </div>
+    <div class="moving-clouds" style="background-image: url('./assets/img/clouds.png'); "></div>
+  </div>
+  <div class="main">
+    <div class="section text-center">
+      <div class="container">
+        <h2 class="title">Photo Gallery</h2>
+        <div id="photo-gallery" class="row">
+          <!-- Photos will be dynamically injected here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer footer-black footer-white">
+    <div class="container">
+      <div class="row">
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="https://www.creative-tim.com" target="_blank">Creative Tim</a></li>
+            <li><a href="http://blog.creative-tim.com/" target="_blank">Blog</a></li>
+            <li><a href="https://www.creative-tim.com/license" target="_blank">Licenses</a></li>
+          </ul>
+        </nav>
+        <div class="credits ml-auto">
+          <span class="copyright">
+            © <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+          </span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS Files -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Photo Gallery Script -->
+  <script>
+    const photos = [
+      { src: "assets/photos/photo1.JPG", alt: "Photo 1", location: "Paris, France", date: "June 2022" },
+      { src: "assets/photos/photo2.JPG", alt: "Photo 2", location: "Tokyo, Japan", date: "July 2021" },
+      { src: "assets/photos/photo3.JPG", alt: "Photo 3", location: "New York, USA", date: "August 2023" },
+      { src: "assets/photos/photo4.JPG", alt: "Photo 4", location: "Paris, France", date: "June 2022" },
+      { src: "assets/photos/photo5.JPG", alt: "Photo 5", location: "Tokyo, Japan", date: "July 2021" },
+      { src: "assets/photos/photo6.JPG", alt: "Photo 6", location: "New York, USA", date: "August 2023" },
+      { src: "assets/photos/photo7.JPG", alt: "Photo 7", location: "Paris, France", date: "June 2022" },
+      { src: "assets/photos/photo8.JPG", alt: "Photo 8", location: "Tokyo, Japan", date: "July 2021" },
+      { src: "assets/photos/photo9.JPG", alt: "Photo 9", location: "New York, USA", date: "August 2023" },
+    ];
+
+    const gallery = document.getElementById("photo-gallery");
+
+    photos.forEach(photo => {
+      // Create column for layout
+      const col = document.createElement("div");
+      col.className = "col-md-4 mb-4";
+
+      // Create photo card
+      const card = document.createElement("div");
+      card.className = "photo-card";
+
+      // Create image element
+      const img = document.createElement("img");
+      img.src = photo.src;
+      img.alt = photo.alt;
+      img.className = "img-fluid rounded";
+
+      // Create overlay for location and date
+      const overlay = document.createElement("div");
+      overlay.className = "custom-overlay";
+      overlay.innerHTML = `<span><strong>${photo.location}</strong></span><span>${photo.date}</span>`;
+
+      // Append image and overlay to the card
+      card.appendChild(img);
+      card.appendChild(overlay);
+
+      // Append card to the column
+      col.appendChild(card);
+
+      // Append column to the gallery
+      gallery.appendChild(col);
+    });
+  </script>
+  
+</body>
+
+</html>
