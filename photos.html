@@ -171,16 +171,36 @@ The above copyright notice and this permission notice shall be included in all c
   <!-- Photo Gallery Script -->
   <script>
     const photos = [
-      { src: "assets/photos/photo1.JPG", alt: "Photo 1", location: "Paris, France", date: "June 2022" },
-      { src: "assets/photos/photo2.JPG", alt: "Photo 2", location: "Tokyo, Japan", date: "July 2021" },
-      { src: "assets/photos/photo3.JPG", alt: "Photo 3", location: "New York, USA", date: "August 2023" },
-      { src: "assets/photos/photo4.JPG", alt: "Photo 4", location: "Paris, France", date: "June 2022" },
-      { src: "assets/photos/photo5.JPG", alt: "Photo 5", location: "Tokyo, Japan", date: "July 2021" },
-      { src: "assets/photos/photo6.JPG", alt: "Photo 6", location: "New York, USA", date: "August 2023" },
-      { src: "assets/photos/photo7.JPG", alt: "Photo 7", location: "Paris, France", date: "June 2022" },
-      { src: "assets/photos/photo8.JPG", alt: "Photo 8", location: "Tokyo, Japan", date: "July 2021" },
-      { src: "assets/photos/photo9.JPG", alt: "Photo 9", location: "New York, USA", date: "August 2023" },
-    ];
+  { "src": "assets/photos/2016 Dec Agra.JPG", "alt": "2016 Dec Agra.JPG", "location": "Agra, India", "date": "December 2016" },
+  { "src": "assets/photos/2017 Feb Uzbekistan.JPG", "alt": "2017 Feb Uzbekistan.JPG", "location": "Samarkand, Uzbekistan", "date": "February 2017" },
+  { "src": "assets/photos/2017 Jul Croatia.jpg", "alt": "2017 Jul Croatia.jpg", "location": "Lozovac, Croatia", "date": "July 2017" },
+  { "src": "assets/photos/2018 April China.JPG", "alt": "2018 April China.JPG", "location": "Beijing, China", "date": "April 2018" },
+  { "src": "assets/photos/2018 Oct Jordan.JPG", "alt": "2018 Oct Jordan.JPG", "location": "Petra, Jordan", "date": "October 2018" },
+  { "src": "assets/photos/2019 Aug Iceland.jpg", "alt": "2019 Aug Iceland.jpg", "location": "Reykjavik, Iceland", "date": "August 2019" },
+  { "src": "assets/photos/2019 Oct Japan 1.jpg", "alt": "2019 Oct Japan 1.jpg", "location": "Tokyo, Japan", "date": "October 2019" },
+  { "src": "assets/photos/2019 Oct Japan.jpg", "alt": "2019 Oct Japan.jpg", "location": "Kyoto, Japan", "date": "October 2019" },
+  { "src": "assets/photos/2021 June Como.jpg", "alt": "2021 June Como.jpg", "location": "Lake Como, Italy", "date": "June 2021" },
+  { "src": "assets/photos/2022 Aug Kenya.JPG", "alt": "2022 Aug Kenya.JPG", "location": "Maasai Mara, Kenya", "date": "August 2022" },
+  { "src": "assets/photos/2022 Dec Morocco.jpg", "alt": "2022 Dec Morocco.jpg", "location": "Marrakech, Morocco", "date": "December 2022" },
+  { "src": "assets/photos/2022 Jan Switzerland.JPG", "alt": "2022 Jan Switzerland.JPG", "location": "Jungfraujoch, Switzerland", "date": "January 2022" },
+  { "src": "assets/photos/2023 Aug Yellowstone.jpg", "alt": "2023 Aug Yellowstone.jpg", "location": "Yellowstone National Park, USA", "date": "August 2023" },
+  { "src": "assets/photos/2023 Dec Galapagos 1.JPG", "alt": "2023 Dec Galapagos 1.JPG", "location": "Galápagos Islands, Ecuador", "date": "December 2023" },
+  { "src": "assets/photos/2023 Dec Galapagos 2.JPG", "alt": "2023 Dec Galapagos 2.JPG", "location": "Galápagos Islands, Ecuador", "date": "December 2023" },
+  { "src": "assets/photos/2023 Dec Galapagos 3.jpg", "alt": "2023 Dec Galapagos 3.jpg", "location": "Galápagos Islands, Ecuador", "date": "December 2023" },
+  { "src": "assets/photos/2023 Dec Galapagos 4.JPG", "alt": "2023 Dec Galapagos 4.JPG", "location": "Galápagos Islands, Ecuador", "date": "December 2023" },
+  { "src": "assets/photos/2023 Dec Galapagos.JPG", "alt": "2023 Dec Galapagos.JPG", "location": "Galápagos Islands, Ecuador", "date": "December 2023" },
+  { "src": "assets/photos/2023 Jul Philadelphia.JPG", "alt": "2023 Jul Philadelphia.JPG", "location": "Philadelphia, USA", "date": "July 2023" },
+  { "src": "assets/photos/2023 Mar Outer Banks.JPG", "alt": "2023 Mar Outer Banks.JPG", "location": "Outer Banks, USA", "date": "March 2023" },
+  { "src": "assets/photos/2023 Nov London.jpg", "alt": "2023 Nov London.jpg", "location": "London, UK", "date": "November 2023" },
+  { "src": "assets/photos/2023 Oct Poconos.jpg", "alt": "2023 Oct Poconos.jpg", "location": "Poconos, USA", "date": "October 2023" },
+  { "src": "assets/photos/2024 Dec Australia 1.JPG", "alt": "2024 Dec Australia 1.JPG", "location": "Sydney, Australia", "date": "December 2024" },
+  { "src": "assets/photos/2024 Dec Australia 2.JPG", "alt": "2024 Dec Australia 2.JPG", "location": "Sydney, Australia", "date": "December 2024" },
+  { "src": "assets/photos/2024 Dec Australia 3.jpg", "alt": "2024 Dec Australia 3.jpg", "location": "Cairns, Australia", "date": "December 2024" },
+  { "src": "assets/photos/2024 Dec Australia.JPG", "alt": "2024 Dec Australia.JPG", "location": "Cairns, Australia", "date": "December 2024" },
+  { "src": "assets/photos/2024 July New York City.jpg", "alt": "2024 July New York City.jpg", "location": "New York City, USA", "date": "July 2024" },
+  { "src": "assets/photos/2024 June Cleveland.JPG", "alt": "2024 June Cleveland.JPG", "location": "Cleveland, USA", "date": "June 2024" },
+  { "src": "assets/photos/2025 Jan New Zealand.jpg", "alt": "2025 Jan New Zealand.jpg", "location": "Queenstown, New Zealand", "date": "January 2025" }
+];
 
     const gallery = document.getElementById("photo-gallery");
 
