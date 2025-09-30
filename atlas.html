@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" sizes="76x76" href="./assets/media/icon.png">
+  <link rel="icon" type="image/png" href="./assets/media/icon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>
+    Kedar Krishnan | Photo Atlas
+  </title>
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no' name='viewport' />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
+  <link href="./assets/demo/demo.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    .photo-lightbox__content:hover .photo-lightbox__caption,
+    .photo-lightbox__content:focus-within .photo-lightbox__caption {
+      opacity: 1;
+    }
+
+body {
+  overflow: hidden;
+  background-color: #101418;
+}
+
+.navbar.navbar-transparent {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+.navbar.navbar-transparent .navbar-brand,
+.navbar.navbar-transparent .navbar-nav > li > a,
+.navbar.navbar-transparent .btn {
+  color: #ffffff !important;
+}
+
+.navbar.navbar-transparent .btn.btn-danger {
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+  color: #ffffff !important;
+}
+
+.navbar.navbar-transparent .navbar-toggler-bar {
+  background: #ffffff;
+}
+
+    .atlas-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      padding-top: 92px;
+      padding-bottom: 84px;
+      box-sizing: border-box;
+    }
+
+    #atlas-map {
+      position: absolute;
+      top: 92px;
+      left: 12px;
+      right: 12px;
+      bottom: 84px;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    /* Lightbox styles reused from gallery */
+    .photo-lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1050;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 1.2s ease, visibility 1.2s ease;
+    }
+
+    .photo-lightbox.is-visible {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+
+    .photo-lightbox__content {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      transform: translate3d(0, 0, 0) scale(1);
+      transition: transform 1.2s ease, opacity 1.2s ease;
+      opacity: 0;
+    }
+
+    .photo-lightbox.is-visible .photo-lightbox__content {
+      opacity: 1;
+    }
+
+    .photo-lightbox__image {
+      width: 100%;
+      height: auto;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .photo-lightbox__image.animate-next,
+    .photo-lightbox__image.animate-prev {
+      animation-duration: 0.45s;
+      animation-timing-function: ease;
+      animation-fill-mode: both;
+    }
+
+    @keyframes lightboxSlideNext {
+      from {
+        transform: translateX(30%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes lightboxSlidePrev {
+      from {
+        transform: translateX(-30%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    .photo-lightbox__caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 12px 18px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #ffffff;
+      border-radius: 0 0 10px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 16px;
+      opacity: 0;
+    }
+
+    .photo-lightbox__location {
+      font-weight: 600;
+    }
+
+    .photo-lightbox__close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 4px 12px;
+      background: rgba(0, 0, 0, 0.5);
+      color: #ffffff;
+      border: none;
+      border-radius: 20px;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      opacity: 1;
+    }
+
+    .photo-lightbox__close:hover,
+    .photo-lightbox__close:focus {
+      background: rgba(0, 0, 0, 0.7);
+      outline: none;
+    }
+
+    .photo-lightbox__nav {
+      position: absolute;
+      top: 50%;
+      width: 48px;
+      height: 48px;
+      margin-top: -24px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.55);
+      color: #ffffff;
+      font-size: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 1;
+      pointer-events: auto;
+      transition: background 0.2s ease;
+    }
+
+    .photo-lightbox__nav--prev {
+      left: 18px;
+    }
+
+    .photo-lightbox__nav--next {
+      right: 18px;
+    }
+
+    .photo-lightbox__nav:hover,
+    .photo-lightbox__nav:focus {
+      background: rgba(0, 0, 0, 0.75);
+      outline: none;
+    }
+
+    .photo-lightbox__nav[disabled] {
+      opacity: 0.25 !important;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-social a + a {
+      margin-left: 12px;
+    }
+
+    .footer.footer-white .footer-social a {
+      color: #f96332;
+    }
+
+    .footer.footer-white .footer-social a:hover {
+      color: #c44218;
+    }
+
+    .footer-social svg {
+      width: 28px;
+      height: 28px;
+    }
+
+
+
+    body.lightbox-open {
+      overflow: hidden;
+    }
+
+footer.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 600;
+  background-color: rgba(0, 0, 0, 0.82);
+  margin: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .atlas-wrapper {
+    padding-top: 86px;
+        padding-bottom: 96px;
+      }
+
+      #atlas-map {
+        top: 86px;
+        bottom: 96px;
+        left: 16px;
+        right: 16px;
+      }
+
+      .photo-lightbox__caption {
+        font-size: 14px;
+        padding: 10px 14px;
+      }
+
+      .photo-lightbox__close {
+        font-size: 24px;
+      }
+
+      .photo-lightbox__nav {
+        width: 40px;
+        height: 40px;
+        margin-top: -20px;
+        font-size: 22px;
+      }
+
+      .photo-lightbox__nav--prev {
+        left: 12px;
+      }
+
+      .photo-lightbox__nav--next {
+        right: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body class="index-page sidebar-collapse">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand text-white" href="index.html" rel="tooltip" title="Coded by Kedar Krishnan" data-placement="bottom">
+          Kedar Krishnan
+        </a>
+        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navigation">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="experience.html" class="btn btn-danger btn-round">Experiences</a>
+          </li>
+          <li class="nav-item">
+            <a href="projects.html" class="btn btn-danger btn-round">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="atlas.html" class="btn btn-danger btn-round">Photo Atlas</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="atlas-wrapper">
+    <div id="atlas-map" role="region" aria-label="Interactive map of travel photography locations"></div>
+  </div>
+
+  <div id="photo-lightbox" class="photo-lightbox" aria-hidden="true">
+    <div class="photo-lightbox__content" role="dialog" aria-modal="true" aria-labelledby="photo-lightbox-location">
+      <button type="button" class="photo-lightbox__close" aria-label="Close expanded photo">&times;</button>
+      <button type="button" class="photo-lightbox__nav photo-lightbox__nav--prev" aria-label="Previous photo" aria-hidden="false" disabled>&#10094;</button>
+      <button type="button" class="photo-lightbox__nav photo-lightbox__nav--next" aria-label="Next photo" aria-hidden="false" disabled>&#10095;</button>
+      <img src="" alt="" class="photo-lightbox__image">
+      <div class="photo-lightbox__caption">
+        <span id="photo-lightbox-location" class="photo-lightbox__location"></span>
+        <span class="photo-lightbox__date"></span>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer footer-black footer-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/in/kedar-krishnan/" target="_blank" aria-label="LinkedIn">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+              </svg>
+            </a>
+            <a href="https://github.com/aetherk13" target="_blank" aria-label="GitHub">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/kedark13/" target="_blank" aria-label="Instagram">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12,9.52A2.48,2.48,0,1,0,14.48,12,2.48,2.48,0,0,0,12,9.52Zm9.93-2.45a6.53,6.53,0,0,0-.42-2.26,4,4,0,0,0-2.32-2.32,6.53,6.53,0,0,0-2.26-.42C15.64,2,15.26,2,12,2s-3.64,0-4.93.07a6.53,6.53,0,0,0-2.26.42A4,4,0,0,0,2.49,4.81a6.53,6.53,0,0,0-.42,2.26C2,8.36,2,8.74,2,12s0,3.64.07,4.93a6.86,6.86,0,0,0,.42,2.27,3.94,3.94,0,0,0,.91,1.4,3.89,3.89,0,0,0,1.41.91,6.53,6.53,0,0,0,2.26.42C8.36,22,8.74,22,12,22s3.64,0,4.93-.07a6.53,6.53,0,0,0,2.26-.42,3.89,3.89,0,0,0,1.41-.91,3.94,3.94,0,0,0,.91-1.4,6.6,6.6,0,0,0,.42-2.27C22,15.64,22,15.26,22,12S22,8.36,21.93,7.07Zm-2.54,8A5.73,5.73,0,0,1,19,16.87,3.86,3.86,0,0,1,16.87,19a5.73,5.73,0,0,1-1.81.35c-.79,0-1,0-3.06,0s-2.27,0-3.06,0A5.73,5.73,0,0,1,7.13,19a3.51,3.51,0,0,1-1.31-.86A3.51,3.51,0,0,1,5,16.87a5.49,5.49,0,0,1-.34-1.81c0-.79,0-1,0-3.06s0-2.27,0-3.06A5.49,5.49,0,0,1,5,7.13a3.51,3.51,0,0,1,.86-1.31A3.59,3.59,0,0,1,7.13,5a5.73,5.73,0,0,1,1.81-.35h0c.79,0,1,0,3.06,0s2.27,0,3.06,0A5.73,5.73,0,0,1,16.87,5a3.51,3.51,0,0,1,1.31.86A3.51,3.51,0,0,1,19,7.13a5.73,5.73,0,0,1,.35,1.81c0,.79,0,1,0,3.06S19.42,14.27,19.39,15.06Zm-1.6-7.44a.9.9,0,0,1,0-1.79h0a.9.9,0,0,1,0,1.79Z"></path>
+              </svg>
+            </a>
+            <a href="https://scholar.google.com/citations?hl=en&amp;authuser=1&amp;user=g2t3ed4AAAAJ" target="_blank" aria-label="Google Scholar">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3 1.5 8.25 12 13.5 22.5 8.25 12 3zm0 12.27-6.75-3.78v3.3c0 2.82 2.86 5.21 6.75 5.21s6.75-2.39 6.75-5.21v-3.3L12 15.27zm8.25-4.32v5.5h1.5v-6.3l-1.5.8z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 text-md-right">
+          <div class="credits ml-auto">
+            <span class="copyright">
+              © <script>document.write(new Date().getFullYear())</script> Kedar Krishnan · Design adapted from <a href="https://www.creative-tim.com/product/paper-kit-2" target="_blank">Paper Kit 2</a> by Creative Tim
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+  <script src="./assets/data/photo-data.js"></script>
+
+  <script>
+    const photos = Array.isArray(window.photoEntries) ? window.photoEntries : [];
+    const cityLookup = window.photoCityLookup || {};
+
+    const lightbox = document.getElementById("photo-lightbox");
+    const lightboxContent = lightbox.querySelector(".photo-lightbox__content");
+    const lightboxImage = lightbox.querySelector(".photo-lightbox__image");
+    const lightboxLocation = lightbox.querySelector(".photo-lightbox__location");
+    const lightboxDate = lightbox.querySelector(".photo-lightbox__date");
+    const closeButton = lightbox.querySelector(".photo-lightbox__close");
+    const prevButton = lightbox.querySelector(".photo-lightbox__nav--prev");
+    const nextButton = lightbox.querySelector(".photo-lightbox__nav--next");
+
+    let lastFocusedControl = null;
+    let closeFallbackTimer = null;
+    let currentAnimation = null;
+    let currentSequence = [];
+    let currentIndex = 0;
+    let isAnimating = false;
+
+    const renderCurrentPhoto = direction => {
+      if (!currentSequence.length) {
+        lightboxImage.src = "";
+        lightboxImage.alt = "";
+        lightboxLocation.textContent = "";
+        lightboxDate.textContent = "";
+        return;
+      }
+
+      const photo = currentSequence[currentIndex];
+      const locationInfo = cityLookup[photo.location] || {};
+      const locationLabel = locationInfo.name || photo.location;
+
+      const applyPhoto = () => {
+        const imageSrc = photo.src;
+        if (lightboxImage.src !== imageSrc) {
+          lightboxImage.src = imageSrc;
+        }
+        lightboxImage.alt = photo.alt || locationLabel || "";
+        lightboxLocation.textContent = locationLabel;
+        lightboxDate.textContent = photo.date || "";
+      };
+
+      if (!direction || !lightboxImage) {
+        applyPhoto();
+        return;
+      }
+
+      if (isAnimating) {
+        return;
+      }
+
+      const animationClass = direction === 'next' ? 'animate-next' : 'animate-prev';
+      const animationName = direction === 'next' ? 'lightboxSlideNext' : 'lightboxSlidePrev';
+
+      isAnimating = true;
+
+      const startAnimation = () => {
+        lightboxImage.removeEventListener('load', startAnimation);
+        lightboxImage.classList.remove('animate-next', 'animate-prev');
+        requestAnimationFrame(() => {
+          lightboxImage.style.animationName = animationName;
+          lightboxImage.classList.add(animationClass);
+        });
+      };
+
+      const handleEnd = () => {
+        lightboxImage.removeEventListener('animationend', handleEnd);
+        lightboxImage.classList.remove(animationClass);
+        lightboxImage.style.animationName = '';
+        isAnimating = false;
+      };
+
+      applyPhoto();
+      lightboxImage.addEventListener('animationend', handleEnd, { once: true });
+
+      if (!lightboxImage.complete || lightboxImage.naturalWidth === 0) {
+        lightboxImage.addEventListener('load', startAnimation, { once: true });
+      } else {
+        startAnimation();
+      }
+    };
+
+    const updateNavControls = () => {
+      const hasMultiple = currentSequence.length > 1;
+      if (prevButton) {
+        prevButton.setAttribute('aria-hidden', hasMultiple ? 'false' : 'true');
+        prevButton.disabled = !hasMultiple || currentIndex === 0;
+      }
+      if (nextButton) {
+        nextButton.setAttribute('aria-hidden', hasMultiple ? 'false' : 'true');
+        nextButton.disabled = !hasMultiple || currentIndex === currentSequence.length - 1;
+      }
+    };
+
+    const goToPhoto = (index, direction = null) => {
+      if (!currentSequence.length || isAnimating) {
+        return;
+      }
+      if (index < 0 || index >= currentSequence.length) {
+        return;
+      }
+      const inferredDirection = direction || (index > currentIndex ? 'next' : 'prev');
+      if (index === currentIndex) {
+        return;
+      }
+      currentIndex = index;
+      renderCurrentPhoto(inferredDirection);
+      updateNavControls();
+    };
+
+    updateNavControls();
+
+    const finalizeClose = () => {
+      lightbox.classList.remove("is-closing");
+      document.body.classList.remove("lightbox-open");
+      lightboxImage.src = "";
+      lightboxImage.alt = "";
+      if (lightboxContent) {
+        lightboxContent.style.transition = '';
+        lightboxContent.style.transform = 'translate3d(0, 0, 0) scale(1)';
+        lightboxContent.style.transformOrigin = '50% 50%';
+      }
+      if (lightboxImage) {
+        lightboxImage.classList.remove('animate-next', 'animate-prev');
+        lightboxImage.style.animationName = '';
+      }
+      currentAnimation = null;
+      currentSequence = [];
+      currentIndex = 0;
+      updateNavControls();
+      isAnimating = false;
+      if (lastFocusedControl && typeof lastFocusedControl.focus === "function") {
+        lastFocusedControl.focus();
+        lastFocusedControl = null;
+      }
+    };
+
+    const resolveFocusTarget = trigger => {
+      if (!trigger) {
+        return map.getContainer();
+      }
+      if (typeof trigger.getElement === "function") {
+        const element = trigger.getElement();
+        if (element) {
+          return element;
+        }
+      }
+      if (trigger instanceof HTMLElement) {
+        return trigger;
+      }
+      return map.getContainer();
+    };
+
+    const openLightbox = (initialPhoto, trigger, sequence = null, startIndex = 0) => {
+      currentSequence = Array.isArray(sequence) && sequence.length ? sequence : [initialPhoto];
+      currentIndex = Math.min(Math.max(startIndex, 0), currentSequence.length - 1);
+      const photo = currentSequence[currentIndex];
+      const locationInfo = cityLookup[photo.location] || {};
+      if (closeFallbackTimer) {
+        clearTimeout(closeFallbackTimer);
+        closeFallbackTimer = null;
+      }
+      if (lightbox.classList.contains("is-closing")) {
+        finalizeClose();
+      }
+      lightbox.classList.remove("is-closing");
+
+      if (lightboxContent) {
+        let originX = 50;
+        let originY = 50;
+        let offsetX = 0;
+        let offsetY = 20;
+        let scaleStart = 0.24;
+
+        const markerLatLng = (() => {
+          if (locationInfo && typeof locationInfo.lat === 'number' && typeof locationInfo.lng === 'number') {
+            return L.latLng(locationInfo.lat, locationInfo.lng);
+          }
+          if (trigger && typeof trigger.getLatLng === 'function') {
+            return trigger.getLatLng();
+          }
+          if (trigger && trigger.latLng) {
+            return trigger.latLng;
+          }
+          if (trigger && trigger.target && typeof trigger.target.getLatLng === 'function') {
+            return trigger.target.getLatLng();
+          }
+          return null;
+        })();
+
+        if (markerLatLng) {
+          const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+          const containerPoint = map.latLngToContainerPoint(markerLatLng);
+          const mapRect = map.getContainer().getBoundingClientRect();
+          const viewportWidth = window.innerWidth || document.documentElement.clientWidth || 1;
+          const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+
+          const pageX = mapRect.left + containerPoint.x;
+          const pageY = mapRect.top + containerPoint.y;
+
+          const originClampPadding = 5;
+          originX = clamp((pageX / viewportWidth) * 100, originClampPadding, 100 - originClampPadding);
+          originY = clamp((pageY / viewportHeight) * 100, originClampPadding, 100 - originClampPadding);
+
+          const viewportCenterX = viewportWidth / 2;
+          const viewportCenterY = viewportHeight / 2;
+
+          const rawOffsetX = pageX - viewportCenterX;
+          const rawOffsetY = pageY - viewportCenterY;
+
+          offsetX = clamp(rawOffsetX, -viewportWidth * 0.45, viewportWidth * 0.45);
+          offsetY = clamp(rawOffsetY, -viewportHeight * 0.45, viewportHeight * 0.45);
+        }
+
+        currentAnimation = { originX, originY, offsetX, offsetY, scaleStart };
+
+        const startTransform = `translate3d(${offsetX}px, ${offsetY}px, 0) scale(${scaleStart})`;
+        const startOrigin = `${originX}% ${originY}%`;
+
+        lightboxContent.style.transition = 'none';
+        lightboxContent.style.transformOrigin = startOrigin;
+        lightboxContent.style.transform = startTransform;
+        void lightboxContent.offsetWidth;
+        lightboxContent.style.transition = '';
+      }
+
+      renderCurrentPhoto();
+      updateNavControls();
+      lightbox.classList.add("is-visible");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lightbox-open");
+      lastFocusedControl = resolveFocusTarget(trigger);
+
+      if (currentAnimation && lightboxContent) {
+        requestAnimationFrame(() => {
+          lightboxContent.style.transform = 'translate3d(0, 0, 0) scale(1)';
+        });
+      }
+
+      closeButton.focus();
+    };
+
+    const closeLightbox = () => {
+      if (lightbox.classList.contains("is-closing") || !lightbox.classList.contains("is-visible")) {
+        return;
+      }
+      if (currentAnimation && lightboxContent) {
+        const { originX, originY, offsetX, offsetY, scaleStart } = currentAnimation;
+        lightboxContent.style.transformOrigin = `${originX}% ${originY}%`;
+        lightboxContent.style.transform = `translate3d(${offsetX}px, ${offsetY}px, 0) scale(${scaleStart})`;
+      }
+      lightbox.setAttribute("aria-hidden", "true");
+      lightbox.classList.add("is-closing");
+      lightbox.classList.remove("is-visible");
+      closeFallbackTimer = setTimeout(() => {
+        if (lightbox.classList.contains("is-closing")) {
+          finalizeClose();
+        }
+      }, 1300);
+    };
+
+    if (prevButton) {
+      prevButton.addEventListener("click", event => {
+        event.preventDefault();
+        goToPhoto(currentIndex - 1, 'prev');
+      });
+    }
+
+    if (nextButton) {
+      nextButton.addEventListener("click", event => {
+        event.preventDefault();
+        goToPhoto(currentIndex + 1, 'next');
+      });
+    }
+
+    closeButton.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", event => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    lightbox.addEventListener("transitionend", event => {
+      if (event.target === lightbox && lightbox.classList.contains("is-closing")) {
+        if (closeFallbackTimer) {
+          clearTimeout(closeFallbackTimer);
+          closeFallbackTimer = null;
+        }
+        finalizeClose();
+      }
+    });
+
+    document.addEventListener("keydown", event => {
+      if (!lightbox.classList.contains("is-visible")) {
+        return;
+      }
+
+      if (event.key === "Escape") {
+        closeLightbox();
+        return;
+      }
+
+      if (event.key === "ArrowLeft" && currentSequence.length > 1) {
+        event.preventDefault();
+        goToPhoto(currentIndex - 1, 'prev');
+      }
+
+      if (event.key === "ArrowRight" && currentSequence.length > 1) {
+        event.preventDefault();
+        goToPhoto(currentIndex + 1, 'next');
+      }
+    });
+
+    const mapElement = document.getElementById('atlas-map');
+    const map = L.map(mapElement, {
+      scrollWheelZoom: true,
+      worldCopyJump: true,
+      zoomControl: true
+    });
+
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+    }).addTo(map);
+
+    const regionColors = {
+      Asia: '#FF6B6B',
+      Europe: '#6C8CFF',
+      Africa: '#FFB347',
+      'North America': '#50C878',
+      'South America': '#FF77AA',
+      Oceania: '#64C7FF',
+      default: '#E0E0E0'
+    };
+
+    const markers = [];
+
+    const photosByLocation = photos.reduce((acc, photo) => {
+      const key = photo.location;
+      if (!acc[key]) {
+        acc[key] = [];
+      }
+      acc[key].push(photo);
+      return acc;
+    }, {});
+
+    Object.keys(photosByLocation).forEach(locationKey => {
+      const locationInfo = cityLookup[locationKey];
+      if (!locationInfo || typeof locationInfo.lat !== "number" || typeof locationInfo.lng !== "number") {
+        return;
+      }
+
+      const photoGroup = photosByLocation[locationKey];
+
+      const marker = L.circleMarker([locationInfo.lat, locationInfo.lng], {
+        radius: 9,
+        fillColor: regionColors[locationInfo.region] || regionColors.default,
+        color: '#ffffff',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.9
+      });
+      marker.addTo(map);
+      marker.bindTooltip(locationInfo.name, { direction: 'top' });
+
+      marker.on('add', () => {
+        const markerElement = marker.getElement();
+        if (markerElement) {
+          markerElement.setAttribute('tabindex', '0');
+          markerElement.setAttribute('role', 'button');
+          markerElement.setAttribute('aria-label', `Open photo from ${locationInfo.name}`);
+          markerElement.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              openLightbox(photoGroup[0], marker, photoGroup, 0);
+            }
+          });
+        }
+      });
+
+      marker.on('click', () => {
+        openLightbox(photoGroup[0], marker, photoGroup, 0);
+      });
+
+      markers.push(marker);
+    });
+
+    if (markers.length) {
+      const bounds = L.latLngBounds(markers.map(marker => marker.getLatLng()));
+      map.fitBounds(bounds.pad(0.08));
+    } else {
+      map.setView([20, 0], 2);
+    }
+
+    const refreshMapSize = () => {
+      map.invalidateSize();
+    };
+
+    if (document.readyState === 'complete') {
+      requestAnimationFrame(refreshMapSize);
+    } else {
+      window.addEventListener('load', refreshMapSize, { once: true });
+    }
+
+    window.addEventListener('resize', () => {
+      refreshMapSize();
+    });
+  </script>
+</body>
+
+</html>

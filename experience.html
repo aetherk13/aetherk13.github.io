@@ -36,6 +36,35 @@ The above copyright notice and this permission notice shall be included in all c
   <link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/demo/demo.css" rel="stylesheet" />
+  <style>
+    .footer-social {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-social a + a {
+      margin-left: 12px;
+    }
+
+    .footer.footer-white .footer-social a {
+      color: #f96332;
+    }
+
+    .footer.footer-white .footer-social a:hover {
+      color: #c44218;
+    }
+
+    .footer-social svg {
+      width: 28px;
+      height: 28px;
+    }
+  </style>
 </head>
 
 <body class="index-page sidebar-collapse">
@@ -64,7 +93,7 @@ The above copyright notice and this permission notice shall be included in all c
             <a href="projects.html" class="btn btn-danger btn-round">Projects</a>
           </li>
           <li class="nav-item">
-            <a href="photos.html" class="btn btn-danger btn-round">Photography</a>
+            <a href="atlas.html" class="btn btn-danger btn-round">Photo Atlas</a>
           </li>
         </ul>
       </div>
@@ -319,29 +348,39 @@ The above copyright notice and this permission notice shall be included in all c
     
     
       
-    <footer class="footer footer-black  footer-white ">
+    <footer class="footer footer-black footer-white">
       <div class="container">
-        <div class="row">
-          <nav class="footer-nav">
-            <ul>
-              <li>
-                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
-              </li>
-              <li>
-                <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
-              </li>
-              <li>
-                <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
-              </li>
-            </ul>
-          </nav>
-          <div class="credits ml-auto">
-            <span class="copyright">
-              ©
-              <script>
-                document.write(new Date().getFullYear())
-              </script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
-            </span>
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="footer-social">
+              <a href="https://www.linkedin.com/in/kedar-krishnan/" target="_blank" aria-label="LinkedIn">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                </svg>
+              </a>
+              <a href="https://github.com/aetherk13" target="_blank" aria-label="GitHub">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/kedark13/" target="_blank" aria-label="Instagram">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12,9.52A2.48,2.48,0,1,0,14.48,12,2.48,2.48,0,0,0,12,9.52Zm9.93-2.45a6.53,6.53,0,0,0-.42-2.26,4,4,0,0,0-2.32-2.32,6.53,6.53,0,0,0-2.26-.42C15.64,2,15.26,2,12,2s-3.64,0-4.93.07a6.53,6.53,0,0,0-2.26.42A4,4,0,0,0,2.49,4.81a6.53,6.53,0,0,0-.42,2.26C2,8.36,2,8.74,2,12s0,3.64.07,4.93a6.86,6.86,0,0,0,.42,2.27,3.94,3.94,0,0,0,.91,1.4,3.89,3.89,0,0,0,1.41.91,6.53,6.53,0,0,0,2.26.42C8.36,22,8.74,22,12,22s3.64,0,4.93-.07a6.53,6.53,0,0,0,2.26-.42,3.89,3.89,0,0,0,1.41-.91,3.94,3.94,0,0,0,.91-1.4,6.6,6.6,0,0,0,.42-2.27C22,15.64,22,15.26,22,12S22,8.36,21.93,7.07Zm-2.54,8A5.73,5.73,0,0,1,19,16.87,3.86,3.86,0,0,1,16.87,19a5.73,5.73,0,0,1-1.81.35c-.79,0-1,0-3.06,0s-2.27,0-3.06,0A5.73,5.73,0,0,1,7.13,19a3.51,3.51,0,0,1-1.31-.86A3.51,3.51,0,0,1,5,16.87a5.49,5.49,0,0,1-.34-1.81c0-.79,0-1,0-3.06s0-2.27,0-3.06A5.49,5.49,0,0,1,5,7.13a3.51,3.51,0,0,1,.86-1.31A3.59,3.59,0,0,1,7.13,5a5.73,5.73,0,0,1,1.81-.35h0c.79,0,1,0,3.06,0s2.27,0,3.06,0A5.73,5.73,0,0,1,16.87,5a3.51,3.51,0,0,1,1.31.86A3.51,3.51,0,0,1,19,7.13a5.73,5.73,0,0,1,.35,1.81c0,.79,0,1,0,3.06S19.42,14.27,19.39,15.06Zm-1.6-7.44a.9.9,0,0,1,0-1.79h0a.9.9,0,0,1,0,1.79Z"></path>
+                </svg>
+              </a>
+              <a href="https://scholar.google.com/citations?hl=en&amp;authuser=1&amp;user=g2t3ed4AAAAJ" target="_blank" aria-label="Google Scholar">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 3 1.5 8.25 12 13.5 22.5 8.25 12 3zm0 12.27-6.75-3.78v3.3c0 2.82 2.86 5.21 6.75 5.21s6.75-2.39 6.75-5.21v-3.3L12 15.27zm8.25-4.32v5.5h1.5v-6.3l-1.5.8z"></path>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6 text-md-right">
+            <div class="credits ml-auto">
+              <span class="copyright">
+                © <script>document.write(new Date().getFullYear())</script> Kedar Krishnan · Design adapted from <a href="https://www.creative-tim.com/product/paper-kit-2" target="_blank">Paper Kit 2</a> by Creative Tim
+              </span>
+            </div>
           </div>
         </div>
       </div>
