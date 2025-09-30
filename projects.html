@@ -188,6 +188,24 @@ The above copyright notice and this permission notice shall be included in all c
       });
     </script>
     <script>
+      window.addEventListener('load', function () {
+        if (window.location.hash) {
+          return;
+        }
+
+        var main = document.querySelector('.main');
+        if (!main) {
+          return;
+        }
+
+        var nav = document.querySelector('.navbar');
+        var navHeight = nav ? nav.getBoundingClientRect().height : 0;
+        var target = Math.max(main.getBoundingClientRect().top + window.pageYOffset - navHeight, 0);
+
+        window.scrollTo(0, target);
+      });
+    </script>
+    <script>
       // Array of project data
       const projects = [
       {
