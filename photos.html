@@ -82,6 +82,108 @@ The above copyright notice and this permission notice shall be included in all c
   text-align: center;
 }
 
+.photo-lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 1050;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8 ease;
+}
+
+.photo-lightbox.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.photo-lightbox__content {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.8s ease, opacity 0.8s ease;
+  opacity: 0;
+}
+
+.photo-lightbox.is-visible .photo-lightbox__content {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.photo-lightbox__image {
+  width: 100%;
+  height: auto;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.photo-lightbox__caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px 18px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffffff;
+  border-radius: 0 0 10px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 16px;
+}
+
+.photo-lightbox__location {
+  font-weight: 600;
+}
+
+.photo-lightbox__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  padding: 4px 12px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.photo-lightbox__close:hover,
+.photo-lightbox__close:focus {
+  background: rgba(0, 0, 0, 0.7);
+  outline: none;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+@media (max-width: 576px) {
+  .photo-lightbox__caption {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  .photo-lightbox__close {
+    font-size: 24px;
+  }
+}
+
 
 
   </style>
@@ -139,6 +241,17 @@ The above copyright notice and this permission notice shall be included in all c
         <div id="photo-gallery" class="row">
           <!-- Photos will be dynamically injected here -->
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="photo-lightbox" class="photo-lightbox" aria-hidden="true">
+    <div class="photo-lightbox__content" role="dialog" aria-modal="true" aria-labelledby="photo-lightbox-location">
+      <button type="button" class="photo-lightbox__close" aria-label="Close expanded photo">&times;</button>
+      <img src="" alt="" class="photo-lightbox__image">
+      <div class="photo-lightbox__caption">
+        <span id="photo-lightbox-location" class="photo-lightbox__location"></span>
+        <span class="photo-lightbox__date"></span>
       </div>
     </div>
   </div>
@@ -203,6 +316,56 @@ The above copyright notice and this permission notice shall be included in all c
 ];
 
     const gallery = document.getElementById("photo-gallery");
+    const lightbox = document.getElementById("photo-lightbox");
+    const lightboxImage = lightbox.querySelector(".photo-lightbox__image");
+    const lightboxLocation = lightbox.querySelector(".photo-lightbox__location");
+    const lightboxDate = lightbox.querySelector(".photo-lightbox__date");
+    const closeButton = lightbox.querySelector(".photo-lightbox__close");
+
+    let lastActiveCard = null;
+    let closeFallbackTimer = null;
+
+    const finalizeClose = () => {
+      lightbox.classList.remove("is-closing");
+      document.body.classList.remove("lightbox-open");
+      lightboxImage.src = "";
+      lightboxImage.alt = "";
+      if (lastActiveCard) {
+        lastActiveCard.focus();
+        lastActiveCard = null;
+      }
+    };
+
+    const openLightbox = (photo, trigger) => {
+      if (closeFallbackTimer) {
+        clearTimeout(closeFallbackTimer);
+        closeFallbackTimer = null;
+      }
+      lightbox.classList.remove("is-closing");
+      lightboxImage.src = photo.src;
+      lightboxImage.alt = photo.alt;
+      lightboxLocation.textContent = photo.location;
+      lightboxDate.textContent = photo.date;
+      lightbox.classList.add("is-visible");
+      lightbox.setAttribute("aria-hidden", "false");
+      document.body.classList.add("lightbox-open");
+      lastActiveCard = trigger;
+      closeButton.focus();
+    };
+
+    const closeLightbox = () => {
+      if (lightbox.classList.contains("is-closing") || !lightbox.classList.contains("is-visible")) {
+        return;
+      }
+      lightbox.setAttribute("aria-hidden", "true");
+      lightbox.classList.add("is-closing");
+      lightbox.classList.remove("is-visible");
+      closeFallbackTimer = setTimeout(() => {
+        if (lightbox.classList.contains("is-closing")) {
+          finalizeClose();
+        }
+      }, 1300);
+    };
 
     photos.forEach(photo => {
       // Create column for layout
@@ -212,6 +375,9 @@ The above copyright notice and this permission notice shall be included in all c
       // Create photo card
       const card = document.createElement("div");
       card.className = "photo-card";
+      card.tabIndex = 0;
+      card.setAttribute("role", "button");
+      card.setAttribute("aria-label", `View larger photo from ${photo.location}, taken ${photo.date}`);
 
       // Create image element
       const img = document.createElement("img");
@@ -233,6 +399,40 @@ The above copyright notice and this permission notice shall be included in all c
 
       // Append column to the gallery
       gallery.appendChild(col);
+
+      const handleCardActivate = () => openLightbox(photo, card);
+
+      card.addEventListener("click", handleCardActivate);
+      card.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          handleCardActivate();
+        }
+      });
+    });
+
+    closeButton.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", event => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    lightbox.addEventListener("transitionend", event => {
+      if (event.target === lightbox && lightbox.classList.contains("is-closing")) {
+        if (closeFallbackTimer) {
+          clearTimeout(closeFallbackTimer);
+          closeFallbackTimer = null;
+        }
+        finalizeClose();
+      }
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && lightbox.classList.contains("is-visible")) {
+        closeLightbox();
+      }
     });
   </script>
   <script>
