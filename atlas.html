@@ -495,11 +495,11 @@ footer.footer {
       const hasMultiple = currentSequence.length > 1;
       if (prevButton) {
         prevButton.setAttribute('aria-hidden', hasMultiple ? 'false' : 'true');
-        prevButton.disabled = !hasMultiple || currentIndex === 0;
+        prevButton.disabled = !hasMultiple;
       }
       if (nextButton) {
         nextButton.setAttribute('aria-hidden', hasMultiple ? 'false' : 'true');
-        nextButton.disabled = !hasMultiple || currentIndex === currentSequence.length - 1;
+        nextButton.disabled = !hasMultiple;
       }
     };
 
@@ -507,14 +507,16 @@ footer.footer {
       if (!currentSequence.length || isAnimating) {
         return;
       }
-      if (index < 0 || index >= currentSequence.length) {
+      const length = currentSequence.length;
+      if (!length) {
         return;
       }
       const inferredDirection = direction || (index > currentIndex ? 'next' : 'prev');
-      if (index === currentIndex) {
+      const wrappedIndex = ((index % length) + length) % length;
+      if (wrappedIndex === currentIndex) {
         return;
       }
-      currentIndex = index;
+      currentIndex = wrappedIndex;
       renderCurrentPhoto(inferredDirection);
       updateNavControls();
     };
