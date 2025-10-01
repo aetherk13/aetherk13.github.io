@@ -29,48 +29,49 @@
 
 body {
   overflow: hidden;
-  background-color: #101418;
+  background-color: rgba(212, 218, 220, 1);
 }
 
-.navbar.navbar-transparent {
-  background-color: rgba(0, 0, 0, 0.75) !important;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
-}
+    .navbar.navbar-transparent {
+      background-color: rgba(255, 255, 255, 0.96) !important;
+      box-shadow: 0 4px 18px rgba(17, 17, 17, 0.12);
+    }
 
-.navbar.navbar-transparent .navbar-brand,
-.navbar.navbar-transparent .navbar-nav > li > a,
-.navbar.navbar-transparent .btn {
-  color: #ffffff !important;
-}
+    .navbar.navbar-transparent .navbar-brand,
+    .navbar.navbar-transparent .navbar-nav > li > a,
+    .navbar.navbar-transparent .btn {
+      color: #101418 !important;
+    }
 
-.navbar.navbar-transparent .btn.btn-danger {
-  background-color: #e74c3c;
-  border-color: #e74c3c;
-  color: #ffffff !important;
-}
+    .navbar.navbar-transparent .btn.btn-danger {
+      background-color: #e74c3c;
+      border-color: #e74c3c;
+      color: #ffffff !important;
+    }
 
-.navbar.navbar-transparent .navbar-toggler-bar {
-  background: #ffffff;
-}
+    .navbar.navbar-transparent .navbar-toggler-bar {
+      background: #101418;
+    }
 
     .atlas-wrapper {
       position: relative;
       width: 100%;
       height: 100vh;
       padding-top: 92px;
-      padding-bottom: 84px;
+      padding-bottom: 96px;
       box-sizing: border-box;
+      background-color: rgba(212, 218, 220, 1);
     }
 
     #atlas-map {
       position: absolute;
       top: 92px;
-      left: 12px;
-      right: 12px;
-      bottom: 84px;
-      border-radius: 18px;
+      left: 0;
+      right: 0;
+      bottom: 96px;
+      border-radius: 0;
       overflow: hidden;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+      box-shadow: none;
       z-index: 1;
     }
 
@@ -266,16 +267,16 @@ body {
       overflow: hidden;
     }
 
-footer.footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 600;
-  background-color: rgba(0, 0, 0, 0.82);
-  margin: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
+    footer.footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 600;
+      background-color: rgba(255, 255, 255, 0.96);
+      margin: 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
 
 @media (max-width: 768px) {
   .atlas-wrapper {
@@ -286,8 +287,8 @@ footer.footer {
       #atlas-map {
         top: 86px;
         bottom: 96px;
-        left: 16px;
-        right: 16px;
+        left: 0;
+        right: 0;
       }
 
       .photo-lightbox__caption {
@@ -731,7 +732,7 @@ footer.footer {
       zoomControl: true
     });
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
       maxZoom: 19,
       attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
     }).addTo(map);
