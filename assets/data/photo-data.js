@@ -70,7 +70,12 @@ window.photoRegions = [
       { id: "Rovaniemi, Finland", lat: 66.5039, lng: 25.7294 },
       { id: "Stranda, Norway", lat: 62.3065, lng: 6.9355 },
       { id: "Vestland, Norway", lat: 60.3913, lng: 5.3221 },
-      { id: "Wolschwiller, France", lat: 47.4543, lng: 7.3430 }
+      { id: "Wolschwiller, France", lat: 47.4543, lng: 7.3430 },
+      { id: "Amsterdam, Netherlands", lat: 52.3676, lng: 4.9041 },
+      { id: "Berlin, Germany", lat: 52.5200, lng: 13.4050 },
+      { id: "Prague, Czechia", lat: 50.0755, lng: 14.4378 },
+      { id: "Dublin, Ireland", lat: 53.3498, lng: -6.2603 },
+      { id: "Howth, Ireland", lat: 53.3873, lng: -6.0707 }
     ],
     photos: [
       { src: "assets/photos/2017 Lozovac Croatia.jpg", alt: "2017 Lozovac Croatia.jpg", city: "Lozovac, Croatia", date: "2017" },
@@ -93,7 +98,15 @@ window.photoRegions = [
       { src: "assets/photos/2016 Rovaniemi Finland.jpg", alt: "2016 Rovaniemi Finland.jpg", city: "Rovaniemi, Finland", date: "2016" },
       { src: "assets/photos/2018 Stranda Norway.jpg", alt: "2018 Stranda Norway.jpg", city: "Stranda, Norway", date: "2018" },
       { src: "assets/photos/2018 Vestland Norway.jpg", alt: "2018 Vestland Norway.jpg", city: "Vestland, Norway", date: "2018" },
-      { src: "assets/photos/2020 Wolschwiller France.jpg", alt: "2020 Wolschwiller France.jpg", city: "Wolschwiller, France", date: "2020" }
+      { src: "assets/photos/2020 Wolschwiller France.jpg", alt: "2020 Wolschwiller France.jpg", city: "Wolschwiller, France", date: "2020" },
+      { src: "assets/photos/2024 Amsterdam Netherlands.jpg", alt: "2024 Amsterdam Netherlands.jpg", city: "Amsterdam, Netherlands", date: "2024" },
+      { src: "assets/photos/2024 Berlin Germany.jpg", alt: "2024 Berlin Germany.jpg", city: "Berlin, Germany", date: "2024" },
+      { src: "assets/photos/2024 Prague Czechia.jpg", alt: "2024 Prague Czechia.jpg", city: "Prague, Czechia", date: "2024" },
+      { src: "assets/photos/2025 Dublin Ireland.jpg", alt: "2025 Dublin Ireland.jpg", city: "Dublin, Ireland", date: "2025" },
+      { src: "assets/photos/2025 Howth Ireland.jpg", alt: "2025 Howth Ireland.jpg", city: "Howth, Ireland", date: "2025" },
+      { src: "assets/photos/2025 Howth Ireland 02.jpg", alt: "2025 Howth Ireland 02.jpg", city: "Howth, Ireland", date: "2025" },
+      { src: "assets/photos/2025 Howth Ireland 03.jpg", alt: "2025 Howth Ireland 03.jpg", city: "Howth, Ireland", date: "2025" },
+      { src: "assets/photos/2025 Howth Ireland 04.jpg", alt: "2025 Howth Ireland 04.jpg", city: "Howth, Ireland", date: "2025" }
     ]
   },
   {
@@ -121,7 +134,12 @@ window.photoRegions = [
       { id: "Outer Banks, USA", lat: 36.0896, lng: -75.6674 },
       { id: "Philadelphia, USA", lat: 39.9526, lng: -75.1652 },
       { id: "Poconos, USA", lat: 41.1710, lng: -75.2900 },
-      { id: "Yellowstone National Park, USA", lat: 44.4280, lng: -110.5885 }
+      { id: "Yellowstone National Park, USA", lat: 44.4280, lng: -110.5885 },
+      { id: "Baltimore, USA", lat: 39.2904, lng: -76.6122 },
+      { id: "Washington, USA", lat: 38.9072, lng: -77.0369 },
+      { id: "Nags Head, USA", lat: 35.9590, lng: -75.6248 },
+      { id: "Jockeys Ridge, USA", lat: 35.9640, lng: -75.6330 },
+      { id: "Harpers Ferry, USA", lat: 39.3254, lng: -77.7397 }
     ],
     photos: [
       { src: "assets/photos/2023 Yellowstone National Park USA.jpg", alt: "2023 Yellowstone National Park USA.jpg", city: "Yellowstone National Park, USA", date: "2023" },
@@ -134,7 +152,15 @@ window.photoRegions = [
       { src: "assets/photos/2023 Grand Teton National Park USA.jpg", alt: "2023 Grand Teton National Park USA.jpg", city: "Grand Teton National Park, USA", date: "2023" },
       { src: "assets/photos/2023 Poconos USA 02.jpg", alt: "2023 Poconos USA 02.jpg", city: "Poconos, USA", date: "2023" },
       { src: "assets/photos/2023 Poconos USA 03.jpg", alt: "2023 Poconos USA 03.jpg", city: "Poconos, USA", date: "2023" },
-      { src: "assets/photos/2023 Grand Teton National Park USA 02.jpg", alt: "2023 Grand Teton National Park USA 02.jpg", city: "Grand Teton National Park, USA", date: "2023" }
+      { src: "assets/photos/2023 Grand Teton National Park USA 02.jpg", alt: "2023 Grand Teton National Park USA 02.jpg", city: "Grand Teton National Park, USA", date: "2023" },
+      { src: "assets/photos/2023 Yellowstone National Park USA 02.jpg", alt: "2023 Yellowstone National Park USA 02.jpg", city: "Yellowstone National Park, USA", date: "2023" },
+      { src: "assets/photos/2024 Baltimore USA.jpg", alt: "2024 Baltimore USA.jpg", city: "Baltimore, USA", date: "2024" },
+      { src: "assets/photos/2024 Baltimore USA 02.jpg", alt: "2024 Baltimore USA 02.jpg", city: "Baltimore, USA", date: "2024" },
+      { src: "assets/photos/2024 Washington DC USA.jpg", alt: "2024 Washington DC USA.jpg", city: "Washington, USA", date: "2024" },
+      { src: "assets/photos/2024 New York City USA 02.jpg", alt: "2024 New York City USA 02.jpg", city: "New York City, USA", date: "2024" },
+      { src: "assets/photos/2024 Nags Head USA.jpg", alt: "2024 Nags Head USA.jpg", city: "Nags Head, USA", date: "2024" },
+      { src: "assets/photos/2024 Jockeys Ridge USA.jpg", alt: "2024 Jockeys Ridge USA.jpg", city: "Jockeys Ridge, USA", date: "2024" },
+      { src: "assets/photos/2025 Harpers Ferry USA.jpg", alt: "2025 Harpers Ferry USA.jpg", city: "Harpers Ferry, USA", date: "2025" }
     ]
   },
   {
@@ -165,20 +191,20 @@ window.photoRegions = [
       { src: "assets/photos/2024 Sydney Australia.jpg", alt: "2024 Sydney Australia.jpg", city: "Sydney, Australia", date: "2024" },
       { src: "assets/photos/2024 Sydney Australia 02.jpg", alt: "2024 Sydney Australia 02.jpg", city: "Sydney, Australia", date: "2024" },
       { src: "assets/photos/2024 Cairns Australia.jpg", alt: "2024 Cairns Australia.jpg", city: "Cairns, Australia", date: "2024" },
-      { src: "assets/photos/2024 Cairns Australia 02.jpg", alt: "2024 Cairns Australia 02.jpg", city: "Cairns, Australia", date: "2024" },
       { src: "assets/photos/2025 Queenstown New Zealand.jpg", alt: "2025 Queenstown New Zealand.jpg", city: "Queenstown, New Zealand", date: "2025" },
-      { src: "assets/photos/2024 Cairns Australia 03.jpg", alt: "2024 Cairns Australia 03.jpg", city: "Cairns, Australia", date: "2024" },
       { src: "assets/photos/2025 Hobbiton New Zealand.jpg", alt: "2025 Hobbiton New Zealand.jpg", city: "Hobbiton, New Zealand", date: "2025" },
       { src: "assets/photos/2025 Hobbiton New Zealand 02.jpg", alt: "2025 Hobbiton New Zealand 02.jpg", city: "Hobbiton, New Zealand", date: "2025" },
       { src: "assets/photos/2025 Mount Creighton New Zealand.jpg", alt: "2025 Mount Creighton New Zealand.jpg", city: "Mount Creighton, New Zealand", date: "2025" },
       { src: "assets/photos/2025 Mount Creighton New Zealand 02.jpg", alt: "2025 Mount Creighton New Zealand 02.jpg", city: "Mount Creighton, New Zealand", date: "2025" },
       { src: "assets/photos/2025 South Island New Zealand.jpg", alt: "2025 South Island New Zealand.jpg", city: "South Island, New Zealand", date: "2025" },
       { src: "assets/photos/2025 South Island New Zealand 02.jpg", alt: "2025 South Island New Zealand 02.jpg", city: "South Island, New Zealand", date: "2025" },
+      { src: "assets/photos/2025 South Island New Zealand 03.jpg", alt: "2025 South Island New Zealand 03.jpg", city: "South Island, New Zealand", date: "2025" },
       { src: "assets/photos/2025 Queenstown New Zealand 02.jpg", alt: "2025 Queenstown New Zealand 02.jpg", city: "Queenstown, New Zealand", date: "2025" },
       { src: "assets/photos/2025 Queenstown New Zealand 03.jpg", alt: "2025 Queenstown New Zealand 03.jpg", city: "Queenstown, New Zealand", date: "2025" },
       { src: "assets/photos/2024 Summerlands Australia.jpg", alt: "2024 Summerlands Australia.jpg", city: "Summerlands, Australia", date: "2024" },
       { src: "assets/photos/2024 Summerlands Australia 02.jpg", alt: "2024 Summerlands Australia 02.jpg", city: "Summerlands, Australia", date: "2024" },
-      { src: "assets/photos/2024 Sydney Australia 03.jpg", alt: "2024 Sydney Australia 03.jpg", city: "Sydney, Australia", date: "2024" }
+      { src: "assets/photos/2024 Sydney Australia 03.jpg", alt: "2024 Sydney Australia 03.jpg", city: "Sydney, Australia", date: "2024" },
+      { src: "assets/photos/2024 Sydney Australia 04.jpg", alt: "2024 Sydney Australia 04.jpg", city: "Sydney, Australia", date: "2024" }
     ]
   }
 ];
@@ -200,6 +226,31 @@ window.photoEntries = window.photoRegions.flatMap(region =>
     region: region.name
   }))
 );
+
+window.homePhotoLookup = {
+  "Philadelphia, USA": [
+    { src: "assets/photos/2023 Philadelphia USA.jpg", alt: "2023 Philadelphia USA.jpg", location: "Philadelphia, USA", date: "2023" }
+  ],
+  "Baltimore, USA": [
+    { src: "assets/photos/2024 Baltimore USA.jpg", alt: "2024 Baltimore USA.jpg", location: "Baltimore, USA", date: "2024" },
+    { src: "assets/photos/2024 Baltimore USA 02.jpg", alt: "2024 Baltimore USA 02.jpg", location: "Baltimore, USA", date: "2024" }
+  ],
+  "Basel, Switzerland": [
+    { src: "assets/photos/2019 Basel Switzerland.jpg", alt: "2019 Basel Switzerland.jpg", location: "Basel, Switzerland", date: "2019" }
+  ],
+  "Washington, USA": [
+    { src: "assets/photos/2024 Washington DC USA.jpg", alt: "2024 Washington DC USA.jpg", location: "Washington, USA", date: "2024" }
+  ],
+  "Nags Head, USA": [
+    { src: "assets/photos/2024 Nags Head USA.jpg", alt: "2024 Nags Head USA.jpg", location: "Nags Head, USA", date: "2024" }
+  ],
+  "Jockeys Ridge, USA": [
+    { src: "assets/photos/2024 Jockeys Ridge USA.jpg", alt: "2024 Jockeys Ridge USA.jpg", location: "Jockeys Ridge, USA", date: "2024" }
+  ],
+  "Harpers Ferry, USA": [
+    { src: "assets/photos/2025 Harpers Ferry USA.jpg", alt: "2025 Harpers Ferry USA.jpg", location: "Harpers Ferry, USA", date: "2025" }
+  ]
+};
 
 window.homeBases = [
   {

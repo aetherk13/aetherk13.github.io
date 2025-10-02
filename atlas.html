@@ -271,6 +271,103 @@ body {
     }
 
 
+    .atlas-info-toggle {
+      position: absolute;
+      top: 104px;
+      right: 24px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(17, 24, 39, 0.16);
+      border: 1px solid rgba(17, 24, 39, 0.2);
+      color: rgba(17, 24, 39, 0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(4px);
+      z-index: 1050;
+    }
+
+    .atlas-info-toggle:hover,
+    .atlas-info-toggle:focus {
+      background: rgba(17, 24, 39, 0.28);
+      color: #fffaf0;
+      border-color: rgba(17, 24, 39, 0.3);
+      outline: none;
+    }
+
+    .atlas-info-panel {
+      position: absolute;
+      top: 160px;
+      right: 24px;
+      width: min(320px, 80vw);
+      background: rgba(17, 24, 39, 0.92);
+      color: #e2e8f0;
+      border-radius: 18px;
+      padding: 18px 22px;
+      box-shadow: 0 22px 45px rgba(15, 23, 42, 0.35);
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 1050;
+    }
+
+    .atlas-info-panel.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .atlas-info-panel h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fbd38d;
+      margin-bottom: 10px;
+    }
+
+    .atlas-info-panel p {
+      font-size: 13px;
+      margin-bottom: 12px;
+      color: #cbd5f5;
+    }
+
+    .atlas-legend {
+      border-top: 1px solid rgba(148, 163, 184, 0.25);
+      padding-top: 12px;
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .atlas-legend__item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: #e2e8f0;
+    }
+
+    .atlas-legend__swatch {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.4);
+    }
+
+    .atlas-legend__swatch--photo {
+      background: rgba(249, 99, 50, 0.85);
+    }
+
+    .atlas-legend__swatch--home {
+      background: rgba(17, 24, 39, 0.95);
+    }
+
 
     body.lightbox-open {
       overflow: hidden;
@@ -323,6 +420,19 @@ body {
       .photo-lightbox__nav--next {
         right: 12px;
       }
+
+      .atlas-info-toggle {
+        top: 92px;
+        right: 16px;
+        width: 34px;
+        height: 34px;
+        font-size: 15px;
+      }
+
+      .atlas-info-panel {
+        top: 150px;
+        right: 16px;
+      }
     }
   </style>
 </head>
@@ -358,6 +468,19 @@ body {
 
   <div class="atlas-wrapper">
     <div id="atlas-map" role="region" aria-label="Interactive map of travel photography locations"></div>
+    <button class="atlas-info-toggle" id="atlas-info-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="atlas-info-panel">i</button>
+    <aside class="atlas-info-panel" id="atlas-info-panel" role="dialog" aria-modal="false">
+      <h3>Photo Atlas</h3>
+      <p>This atlas is a personal map of the places I have photographed. I'm an enthusiastic amateur, still learning each time I pack a camera.</p>  <div class="atlas-legend" aria-label="Marker legend">
+    <div class="atlas-legend__item"><span class="atlas-legend__swatch" style="background: #FF6B6B;"></span><span>Asia</span></div>
+    <div class="atlas-legend__item"><span class="atlas-legend__swatch" style="background: #6C8CFF;"></span><span>Europe</span></div>
+    <div class="atlas-legend__item"><span class="atlas-legend__swatch" style="background: #FFB347;"></span><span>Africa</span></div>
+    <div class="atlas-legend__item"><span class="atlas-legend__swatch" style="background: #50C878;"></span><span>North America</span></div>
+    <div class="atlas-legend__item"><span class="atlas-legend__swatch" style="background: #FF77AA;"></span><span>South America</span></div>
+    <div class="atlas-legend__item"><span class="atlas-legend__swatch" style="background: #64C7FF;"></span><span>Oceania</span></div>
+    <div class="atlas-legend__item"><span class="atlas-legend__swatch atlas-legend__swatch--home"></span><span>Places I've lived</span></div>
+</div>
+</aside>
   </div>
 
   <div id="photo-lightbox" class="photo-lightbox" aria-hidden="true">
@@ -422,66 +545,52 @@ body {
     const photos = Array.isArray(window.photoEntries) ? window.photoEntries : [];
     const cityLookup = window.photoCityLookup || {};
     const homeBases = Array.isArray(window.homeBases) ? window.homeBases : [];
+    const homePhotoLookup = window.homePhotoLookup || {};
 
     const preloadCache = new Map();
 
-    const primeImage = src => {
-      if (!src || preloadCache.has(src)) {
+    const preloadImage = src => {
+      if (!src) {
+        return Promise.reject(new Error('Missing image source'));
+      }
+      if (preloadCache.has(src)) {
         return preloadCache.get(src);
       }
-      const img = new Image();
-      const entry = {
-        image: img,
-        status: 'loading',
-        onLoad: [],
-        onError: []
-      };
-      img.onload = () => {
-        entry.status = 'loaded';
-        entry.onLoad.forEach(cb => {
-          try { cb(img); } catch (e) { console.error(e); }
-        });
-        entry.onLoad = [];
-        entry.onError = [];
-      };
-      img.onerror = () => {
-        entry.status = 'error';
-        entry.onError.forEach(cb => {
-          try { cb(); } catch (e) { console.error(e); }
-        });
-        entry.onLoad = [];
-        entry.onError = [];
-      };
-      img.src = src;
-      preloadCache.set(src, entry);
-      return entry;
+      if (!window.Image) {
+        return Promise.resolve(new Image());
+      }
+      const img = new window.Image();
+      const promise = new Promise((resolve, reject) => {
+        let settled = false;
+        const finalize = () => {
+          if (!settled) {
+            settled = true;
+            resolve(img);
+          }
+        };
+        img.onload = () => {
+          if (typeof img.decode === 'function') {
+            img.decode().then(finalize).catch(finalize);
+          } else {
+            finalize();
+          }
+        };
+        img.onerror = () => {
+          settled = true;
+          preloadCache.delete(src);
+          reject(new Error('Image failed to load'));
+        };
+        setTimeout(() => {
+          if (!settled && img.complete && img.naturalWidth > 0) {
+            finalize();
+          }
+        }, 600);
+        img.src = src;
+      });
+      preloadCache.set(src, promise);
+      return promise;
     };
 
-    const requestImage = (src, onLoad, onError) => {
-      if (!src) {
-        onError();
-        return;
-      }
-      const entry = primeImage(src);
-      if (!entry) {
-        onError();
-        return;
-      }
-      if (entry.status === 'loaded' && entry.image.complete && entry.image.naturalWidth > 0) {
-        onLoad(entry.image);
-        return;
-      }
-      if (entry.status === 'error') {
-        onError();
-        return;
-      }
-      entry.onLoad.push(onLoad);
-      entry.onError.push(onError);
-    };
-
-    photos.forEach(photo => {
-      primeImage(photo.src);
-    });
 
     const lightbox = document.getElementById("photo-lightbox");
     const lightboxContent = lightbox.querySelector(".photo-lightbox__content");
@@ -544,7 +653,7 @@ body {
         }, 600);
       };
 
-      requestImage(imageSrc, loadedImage => {
+      preloadImage(imageSrc).then(loadedImage => {
         if (loadToken !== currentLoadToken) {
           return;
         }
@@ -567,7 +676,21 @@ body {
         const animationClass = direction === 'next' ? 'animate-next' : 'animate-prev';
         const animationName = direction === 'next' ? 'lightboxSlideNext' : 'lightboxSlidePrev';
         finishAnimation(animationClass, animationName);
-      }, () => {
+
+        if (currentSequence.length > 1) {
+          const length = currentSequence.length;
+          [1, -1].forEach(offset => {
+            const neighborIndex = ((currentIndex + offset) % length + length) % length;
+            if (neighborIndex === currentIndex) {
+              return;
+            }
+            const neighbor = currentSequence[neighborIndex];
+            if (neighbor && neighbor.src) {
+              preloadImage(neighbor.src).catch(() => {});
+            }
+          });
+        }
+      }).catch(() => {
         if (loadToken !== currentLoadToken) {
           return;
         }
@@ -909,26 +1032,44 @@ body {
       const tooltipLabel = base.name || 'Home location';
       marker.bindTooltip(tooltipLabel, { direction: 'top' });
 
-      const popupSegments = [`<strong>${tooltipLabel}</strong>`];
-      if (base.detail) {
-        popupSegments.push(`<span>${base.detail}</span>`);
+      const homePhotos = Array.isArray(homePhotoLookup[tooltipLabel]) ? homePhotoLookup[tooltipLabel] : null;
+
+      if (!homePhotos || !homePhotos.length) {
+        const popupSegments = [`<strong>${tooltipLabel}</strong>`];
+        if (base.detail) {
+          popupSegments.push(`<span>${base.detail}</span>`);
+        }
+        marker.bindPopup(popupSegments.join('<br>'));
       }
-      marker.bindPopup(popupSegments.join('<br>'));
 
       marker.on('add', () => {
         const element = marker.getElement();
         if (element) {
           element.setAttribute('tabindex', '0');
           element.setAttribute('role', 'button');
-          element.setAttribute('aria-label', tooltipLabel);
+          element.setAttribute('aria-label', homePhotos && homePhotos.length ? `${tooltipLabel} photo story` : tooltipLabel);
           element.addEventListener('keydown', event => {
             if (event.key === 'Enter' || event.key === ' ') {
               event.preventDefault();
-              marker.openPopup();
+              if (homePhotos && homePhotos.length) {
+                openLightbox(homePhotos[0], marker, homePhotos, 0);
+              } else {
+                marker.openPopup();
+              }
             }
           });
         }
       });
+
+      if (homePhotos && homePhotos.length) {
+        marker.on('click', () => {
+          openLightbox(homePhotos[0], marker, homePhotos, 0);
+        });
+      } else {
+        marker.on('click', () => {
+          marker.openPopup();
+        });
+      }
 
       markers.push(marker);
     });
@@ -953,6 +1094,50 @@ body {
     window.addEventListener('resize', () => {
       refreshMapSize();
     });
+
+    const infoToggle = document.getElementById('atlas-info-toggle');
+    const infoPanel = document.getElementById('atlas-info-panel');
+
+    if (infoToggle && infoPanel) {
+      const hidePanel = () => {
+        infoPanel.classList.remove('is-visible');
+        infoToggle.setAttribute('aria-expanded', 'false');
+      };
+
+      const showPanel = () => {
+        infoPanel.classList.add('is-visible');
+        infoToggle.setAttribute('aria-expanded', 'true');
+      };
+
+      let panelVisible = false;
+
+      infoToggle.addEventListener('click', event => {
+        event.preventDefault();
+        panelVisible = !panelVisible;
+        if (panelVisible) {
+          showPanel();
+        } else {
+          hidePanel();
+        }
+      });
+
+      infoToggle.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          infoToggle.click();
+        }
+      });
+
+      document.addEventListener('click', event => {
+        if (!panelVisible) {
+          return;
+        }
+        if (!infoPanel.contains(event.target) && event.target !== infoToggle) {
+          panelVisible = false;
+          hidePanel();
+        }
+      });
+    }
 
   </script>
 </body>

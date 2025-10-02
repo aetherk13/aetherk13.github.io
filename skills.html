@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" sizes="76x76" href="./assets/media/icon.png">
+  <link rel="icon" type="image/png" href="./assets/media/icon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Kedar Krishnan | Skills</title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="./assets/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
+  <link href="./assets/demo/demo.css" rel="stylesheet" />
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      overflow: hidden;
+      background-color: rgba(212, 218, 220, 1);
+    }
+
+    .navbar.navbar-transparent {
+      background-color: rgba(255, 255, 255, 0.96) !important;
+      box-shadow: 0 4px 18px rgba(17, 17, 17, 0.12);
+    }
+
+    .navbar.navbar-transparent .navbar-brand,
+    .navbar.navbar-transparent .navbar-nav > li > a,
+    .navbar.navbar-transparent .btn {
+      color: #101418 !important;
+    }
+
+    .navbar.navbar-transparent .btn.btn-danger {
+      background-color: #e74c3c;
+      border-color: #e74c3c;
+      color: #ffffff !important;
+    }
+
+    .navbar.navbar-transparent .navbar-toggler-bar {
+      background: #101418;
+    }
+
+    .skills-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      padding-top: 92px;
+      padding-bottom: 96px;
+      box-sizing: border-box;
+      background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.96) 0%,
+          rgba(212, 218, 220, 0.96) 12%,
+          rgba(212, 218, 220, 1) 32%,
+          rgba(212, 218, 220, 1) 100%);
+    }
+
+    #skill-galaxy-viz {
+      position: absolute;
+      top: 92px;
+      left: 0;
+      right: 0;
+      bottom: 96px;
+      overflow: hidden;
+      border-radius: 0;
+      background:
+        linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.94) 0%,
+          rgba(255, 255, 255, 0.7) 8%,
+          rgba(212, 218, 220, 0) 26%),
+        radial-gradient(circle at top, rgba(255, 244, 214, 0.5), rgba(255, 255, 255, 0));
+      box-shadow: inset 0 0 60px rgba(249, 99, 50, 0.08);
+    }
+
+    .skill-galaxy__svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .skill-galaxy__tooltip {
+      position: absolute;
+      pointer-events: none;
+      background: rgba(15, 23, 42, 0.92);
+      color: #f7fafc;
+      padding: 14px 18px;
+      border-radius: 14px;
+      font-size: 14px;
+      line-height: 1.4;
+      box-shadow: 0 18px 36px rgba(15, 23, 42, 0.35);
+      opacity: 0;
+      transform: translate(-50%, -60%) scale(0.94);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 20;
+      max-width: min(360px, 72vw);
+    }
+
+    .skill-galaxy__tooltip.is-visible {
+      opacity: 1;
+      transform: translate(-50%, -80%) scale(1);
+    }
+
+    .skill-galaxy__tooltip h4 {
+      margin: 0 0 6px 0;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fbd38d;
+    }
+
+    .skill-galaxy__tooltip ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .skill-galaxy__tooltip li {
+      margin-bottom: 4px;
+    }
+
+
+    .footer-social {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .footer-social a {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-social a + a {
+      margin-left: 12px;
+    }
+
+    .footer.footer-white .footer-social a {
+      color: #f96332;
+    }
+
+    .footer.footer-white .footer-social a:hover {
+      color: #c44218;
+    }
+
+    .footer-social svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    footer.footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: 600;
+      background-color: rgba(255, 255, 255, 0.96);
+      margin: 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .skills-info-toggle {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(17, 24, 39, 0.14);
+      border: 1px solid rgba(17, 24, 39, 0.18);
+      color: rgba(17, 24, 39, 0.75);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(6px);
+      z-index: 1050;
+    }
+
+    .skills-info-toggle:hover,
+    .skills-info-toggle:focus {
+      background: rgba(17, 24, 39, 0.26);
+      color: #fffaf0;
+      border-color: rgba(17, 24, 39, 0.28);
+      outline: none;
+    }
+
+    .skills-info-panel {
+      position: absolute;
+      top: 76px;
+      right: 24px;
+      width: min(340px, 82vw);
+      background: rgba(17, 24, 39, 0.94);
+      color: #e2e8f0;
+      border-radius: 18px;
+      padding: 18px 22px;
+      box-shadow: 0 22px 45px rgba(15, 23, 42, 0.35);
+      opacity: 0;
+      transform: translateY(-10px);
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      z-index: 1050;
+    }
+
+    .skills-info-panel.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .skills-info-panel h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fbd38d;
+      margin-bottom: 10px;
+    }
+
+    .skills-info-panel p {
+      font-size: 13px;
+      margin-bottom: 10px;
+      color: #cbd5f5;
+    }
+
+    .skill-node circle,
+    .subfocus-node circle,
+    .category-node circle {
+      transition: stroke-width 0.25s ease, opacity 0.25s ease, fill 0.25s ease;
+    }
+
+    .skill-node text,
+    .subfocus-node text,
+    .category-node text {
+      transition: opacity 0.25s ease;
+    }
+
+    .skill-node.is-focused circle {
+      stroke-width: 4;
+    }
+
+    .subfocus-node.is-focused circle {
+      stroke-width: 3.2;
+    }
+
+    .skill-node.is-dimmed circle,
+    .skill-node.is-dimmed text,
+    .subfocus-node.is-dimmed circle,
+    .subfocus-node.is-dimmed text {
+      opacity: 0.25;
+    }
+
+    .category-node.is-dimmed circle,
+    .category-node.is-dimmed text {
+      opacity: 0.35;
+    }
+
+    @media (max-width: 767.98px) {
+      .skills-wrapper {
+        padding-top: 86px;
+      }
+
+      #skill-galaxy-viz {
+        top: 86px;
+        bottom: 96px;
+        left: 0;
+        right: 0;
+        background:
+          linear-gradient(to bottom,
+            rgba(255, 255, 255, 0.96) 0%,
+            rgba(255, 255, 255, 0.78) 14%,
+            rgba(212, 218, 220, 0) 32%),
+          radial-gradient(circle at top, rgba(255, 244, 214, 0.5), rgba(255, 255, 255, 0));
+      }
+
+      .skill-galaxy__tooltip {
+        font-size: 13px;
+        padding: 12px 14px;
+      }
+
+      .skills-info-toggle {
+        top: 18px;
+        right: 18px;
+        width: 36px;
+        height: 36px;
+      }
+
+      .skills-info-panel {
+        top: 66px;
+        right: 18px;
+      }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+  </style>
+</head>
+
+<body class="index-page sidebar-collapse">
+  <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300">
+    <div class="container">
+      <div class="navbar-translate">
+        <a class="navbar-brand" href="index.html" rel="tooltip" title="Coded by Kedar Krishnan" data-placement="bottom">
+          Kedar Krishnan
+        </a>
+        <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse justify-content-end" id="navigation">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="experience.html" class="btn btn-danger btn-round">Experiences</a>
+          </li>
+          <li class="nav-item">
+            <a href="projects.html" class="btn btn-danger btn-round">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a href="atlas.html" class="btn btn-danger btn-round">Photo Atlas</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="skills-wrapper">
+    <h1 class="sr-only" id="skill-galaxy-heading">Skill Constellation</h1>
+    <div id="skill-galaxy-viz">
+      <button class="skills-info-toggle" id="skills-info-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="skills-info-panel">i</button>
+      <svg class="skill-galaxy__svg" role="img" aria-labelledby="skill-galaxy-heading"></svg>
+      <div class="skill-galaxy__tooltip" id="skill-galaxy-tooltip">
+        <h4 id="skill-galaxy-title"></h4>
+        <ul></ul>
+      </div>
+      <aside class="skills-info-panel" id="skills-info-panel" role="dialog" aria-modal="false">
+        <h3>About the Constellation</h3>
+        <p>This galaxy maps how research, collaboration, and side projects reinforce my core skills. Each orbit represents a focus area; each node highlights a capability and the work behind it.</p>
+        <p>I’m still building this out—more filters, timelines, and context will land here soon.</p>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="footer footer-black footer-white">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="footer-social">
+            <a href="https://www.linkedin.com/in/kedar-krishnan/" target="_blank" aria-label="LinkedIn">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+              </svg>
+            </a>
+            <a href="https://github.com/aetherk13" target="_blank" aria-label="GitHub">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+              </svg>
+            </a>
+            <a href="https://www.instagram.com/kedark13/" target="_blank" aria-label="Instagram">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12,9.52A2.48,2.48,0,1,0,14.48,12,2.48,2.48,0,0,0,12,9.52Zm9.93-2.45a6.53,6.53,0,0,0-.42-2.26,4,4,0,0,0-2.32-2.32,6.53,6.53,0,0,0-2.26-.42C15.64,2,15.26,2,12,2s-3.64,0-4.93.07a6.53,6.53,0,0,0-2.26.42A4,4,0,0,0,2.49,4.81a6.53,6.53,0,0,0-.42,2.26C2,8.36,2,8.74,2,12s0,3.64.07,4.93a6.86,6.86,0,0,0,.42,2.27,3.94,3.94,0,0,0,.91,1.4,3.89,3.89,0,0,0,1.41.91,6.53,6.53,0,0,0,2.26.42C8.36,22,8.74,22,12,22s3.64,0,4.93-.07a6.53,6.53,0,0,0,2.26-.42,3.89,3.89,0,0,0,1.41-.91,3.94,3.94,0,0,0,.91-1.4,6.6,6.6,0,0,0,.42-2.27C22,15.64,22,15.26,22,12S22,8.36,21.93,7.07Zm-2.54,8A5.73,5.73,0,0,1,19,16.87,3.86,3.86,0,0,1,16.87,19a5.73,5.73,0,0,1-1.81.35c-.79,0-1,0-3.06,0s-2.27,0-3.06,0A5.73,5.73,0,0,1,7.13,19a3.51,3.51,0,0,1-1.31-.86A3.51,3.51,0,0,1,5,16.87a5.49,5.49,0,0,1-.34-1.81c0-.79,0-1,0-3.06s0-2.27,0-3.06A5.49,5.49,0,0,1,5,7.13a3.51,3.51,0,0,1,.86-1.31A3.59,3.59,0,0,1,7.13,5a5.73,5.73,0,0,1,1.81-.35h0c.79,0,1,0,3.06,0s2.27,0,3.06,0A5.73,5.73,0,0,1,16.87,5a3.51,3.51,0,0,1,1.31.86A3.51,3.51,0,0,1,19,7.13a5.73,5.73,0,0,1,.35,1.81c0,.79,0,1,0,3.06S19.42,14.27,19.39,15.06Zm-1.6-7.44a.9.9,0,0,1,0-1.79h0a.9.9,0,0,1,0,1.79Z"></path>
+              </svg>
+            </a>
+            <a href="https://scholar.google.com/citations?hl=en&amp;authuser=1&amp;user=g2t3ed4AAAAJ" target="_blank" aria-label="Google Scholar">
+              <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3 1.5 8.25 12 13.5 22.5 8.25 12 3zm0 12.27-6.75-3.78v3.3c0 2.82 2.86 5.21 6.75 5.21s6.75-2.39 6.75-5.21v-3.3L12 15.27zm8.25-4.32v5.5h1.5v-6.3l-1.5.8z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="col-md-6 text-md-right">
+          <div class="credits ml-auto">
+            <span class="copyright">
+              © <script>document.write(new Date().getFullYear())</script> Kedar Krishnan · Design adapted from <a href="https://www.creative-tim.com/product/paper-kit-2" target="_blank">Paper Kit 2</a> by Creative Tim
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
+  <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
+  <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+  <script src="./assets/js/plugins/bootstrap-switch.js"></script>
+  <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+  <script src="./assets/js/plugins/moment.min.js" type="text/javascript"></script>
+  <script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+  <script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script src="./assets/data/skill-map.js"></script>
+  <script>
+    (function() {
+      const container = document.getElementById('skill-galaxy-viz');
+      const svgElement = container ? container.querySelector('svg') : null;
+      const tooltip = document.getElementById('skill-galaxy-tooltip');
+      const infoToggle = document.getElementById('skills-info-toggle');
+      const infoPanel = document.getElementById('skills-info-panel');
+
+      if (!container || !svgElement || !tooltip || !window.skillGalaxy) {
+        return;
+      }
+
+      let panelVisible = false;
+      const showPanel = () => {
+        if (!infoPanel || !infoToggle) return;
+        panelVisible = true;
+        infoPanel.classList.add('is-visible');
+        infoToggle.setAttribute('aria-expanded', 'true');
+      };
+      const hidePanel = () => {
+        if (!infoPanel || !infoToggle) return;
+        panelVisible = false;
+        infoPanel.classList.remove('is-visible');
+        infoToggle.setAttribute('aria-expanded', 'false');
+      };
+
+      if (infoToggle && infoPanel) {
+        infoToggle.addEventListener('click', event => {
+          event.stopPropagation();
+          panelVisible ? hidePanel() : showPanel();
+        });
+        infoToggle.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            infoToggle.click();
+          }
+        });
+        document.addEventListener('click', event => {
+          if (!panelVisible) return;
+          if (!infoPanel.contains(event.target) && event.target !== infoToggle) {
+            hidePanel();
+          }
+        });
+      }
+
+      const svg = d3.select(svgElement);
+      const tooltipTitle = tooltip.querySelector('h4');
+      const tooltipList = tooltip.querySelector('ul');
+
+      const categories = Array.isArray(window.skillGalaxy.categories) ? window.skillGalaxy.categories : [];
+      if (!categories.length) {
+        return;
+      }
+
+      const nodes = [];
+      const links = [];
+      const nodeById = new Map();
+
+      const coreNode = {
+        id: 'skill-core',
+        type: 'core',
+        label: 'Skill Core',
+        color: '#f6ad55',
+        x: 0,
+        y: 0
+      };
+      nodes.push(coreNode);
+      nodeById.set(coreNode.id, coreNode);
+
+      categories.forEach(category => {
+        const groups = Array.isArray(category.groups) ? category.groups : [];
+        const categoryNode = {
+          id: category.id,
+          type: 'category',
+          label: category.label,
+          color: category.color,
+          size: 32 + Math.min(groups.length, 5) * 6,
+          projects: []
+        };
+        nodes.push(categoryNode);
+        nodeById.set(categoryNode.id, categoryNode);
+        links.push({ source: categoryNode.id, target: coreNode.id, strength: 0.6 });
+
+        groups.forEach(group => {
+          const skills = Array.isArray(group.skills) ? group.skills : [];
+          const groupNode = {
+            id: `${category.id}__${group.id}`,
+            type: 'subfocus',
+            label: group.label,
+            color: category.color,
+            category: categoryNode.id,
+            size: 22 + Math.min(skills.length, 5) * 3,
+            projects: [],
+            skillLabels: []
+          };
+          nodes.push(groupNode);
+          nodeById.set(groupNode.id, groupNode);
+          links.push({ source: groupNode.id, target: categoryNode.id, strength: 0.75 });
+
+          skills.forEach(skill => {
+            const skillNode = {
+              id: skill.id,
+              type: 'skill',
+              label: skill.label,
+              color: category.color,
+              weight: skill.weight || 2,
+              projects: Array.isArray(skill.projects) && skill.projects.length ? skill.projects : ['Project work in progress'],
+              category: categoryNode.id,
+              group: groupNode.id
+            };
+            nodes.push(skillNode);
+            nodeById.set(skillNode.id, skillNode);
+            links.push({ source: skillNode.id, target: groupNode.id, strength: 0.9 });
+            groupNode.skillLabels.push(skill.label);
+          });
+
+          groupNode.projects = groupNode.skillLabels.length ? groupNode.skillLabels : ['Explore related skills within this subfocus.'];
+          categoryNode.projects.push(group.label);
+        });
+
+        if (!categoryNode.projects.length) {
+          categoryNode.projects = ['Explore subfocus areas in this track.'];
+        }
+      });
+
+      const getNode = ref => (typeof ref === 'object' ? ref : nodeById.get(ref));
+      const getType = ref => {
+        const node = getNode(ref);
+        return node ? node.type : null;
+      };
+      const getColor = ref => {
+        const node = getNode(ref);
+        return node && node.color ? node.color : '#94a3b8';
+      };
+
+      const categoryNodeData = nodes.filter(node => node.type === 'category');
+      const subfocusNodeData = nodes.filter(node => node.type === 'subfocus');
+      const skillNodeData = nodes.filter(node => node.type === 'skill');
+
+      const subfocusByCategory = new Map();
+      subfocusNodeData.forEach(node => {
+        if (!subfocusByCategory.has(node.category)) {
+          subfocusByCategory.set(node.category, []);
+        }
+        subfocusByCategory.get(node.category).push(node);
+      });
+      const subfocusLookup = new Map(subfocusNodeData.map(node => [node.id, node]));
+
+      const spreadAngles = categoryNodeData.map((node, idx) => {
+        const baseAngle = (Math.PI * 2 * idx) / Math.max(categoryNodeData.length, 1);
+        const jitter = (idx % 2 === 0 ? 1 : -1) * (Math.PI / 18);
+        return baseAngle + jitter;
+      });
+
+      const linkLookup = new Map();
+      links.forEach(link => {
+        const sourceId = getNode(link.source).id;
+        const targetId = getNode(link.target).id;
+        if (!linkLookup.has(sourceId)) linkLookup.set(sourceId, new Set());
+        if (!linkLookup.has(targetId)) linkLookup.set(targetId, new Set());
+        linkLookup.get(sourceId).add(targetId);
+        linkLookup.get(targetId).add(sourceId);
+      });
+
+      const baseLinkOpacity = link => {
+        const sourceType = getType(link.source);
+        const targetType = getType(link.target);
+        if (sourceType === 'category' || targetType === 'category') return 0.45;
+        if (sourceType === 'subfocus' || targetType === 'subfocus') return 0.32;
+        return 0.26;
+      };
+
+      const baseLinkWidth = link => {
+        const sourceType = getType(link.source);
+        const targetType = getType(link.target);
+        if (sourceType === 'category' || targetType === 'category') return 2.2;
+        if (sourceType === 'subfocus' || targetType === 'subfocus') return 1.6;
+        return 1.2;
+      };
+
+      const showTooltip = (node, x, y) => {
+        tooltipTitle.textContent = node.label;
+        tooltipList.innerHTML = '';
+        const items = node.projects && node.projects.length ? node.projects.slice(0, 8) : ['Explore connected work and skills.'];
+        items.forEach(entry => {
+          const li = document.createElement('li');
+          li.textContent = entry;
+          tooltipList.appendChild(li);
+        });
+        tooltip.style.left = `${x}px`;
+        tooltip.style.top = `${y}px`;
+        tooltip.classList.add('is-visible');
+      };
+
+      const hideTooltip = () => {
+        tooltip.classList.remove('is-visible');
+      };
+
+      let width = 0;
+      let height = 0;
+      let focusedNode = null;
+      let initializedPositions = false;
+
+      const simulation = d3.forceSimulation(nodes)
+        .force('link', d3.forceLink(links)
+          .id(d => d.id)
+          .distance(link => {
+            const sourceType = getType(link.source);
+            const targetType = getType(link.target);
+            if ((sourceType === 'category' && targetType === 'core') || (sourceType === 'core' && targetType === 'category')) return 260;
+            if ((sourceType === 'subfocus' && targetType === 'category') || (sourceType === 'category' && targetType === 'subfocus')) return 170;
+            return 120;
+          })
+          .strength(link => {
+            const sourceType = getType(link.source);
+            const targetType = getType(link.target);
+            if (sourceType === 'category' || targetType === 'category') return 0.5;
+            if (sourceType === 'subfocus' || targetType === 'subfocus') return 0.82;
+            return link.strength || 0.78;
+          }))
+        .force('charge', d3.forceManyBody().strength(d => {
+          if (d.type === 'core') return -900;
+          if (d.type === 'category') return -420;
+          if (d.type === 'subfocus') return -260;
+          return -130;
+        }))
+        .force('collision', d3.forceCollide().radius(d => {
+          if (d.type === 'core') return 110;
+          if (d.type === 'category') return 74;
+          if (d.type === 'subfocus') return 52;
+          return 24 + d.weight * 2.6;
+        }).strength(0.9))
+        .force('x', d3.forceX().strength(d => {
+          if (d.type === 'skill') return 0.08;
+          if (d.type === 'subfocus') return 0.12;
+          return 0.16;
+        }))
+        .force('y', d3.forceY().strength(d => {
+          if (d.type === 'skill') return 0.08;
+          if (d.type === 'subfocus') return 0.12;
+          return 0.16;
+        }))
+        .alphaDecay(0.03);
+
+      const linksGroup = svg.append('g').attr('class', 'skill-galaxy__links');
+      const nodesGroup = svg.append('g').attr('class', 'skill-galaxy__nodes');
+
+      const linkSelection = linksGroup.selectAll('line')
+        .data(links)
+        .enter()
+        .append('line')
+        .attr('stroke', link => getColor(link.source))
+        .attr('stroke-opacity', link => baseLinkOpacity(link))
+        .attr('stroke-width', link => baseLinkWidth(link));
+
+      const nodeSelection = nodesGroup.selectAll('g')
+        .data(nodes)
+        .enter()
+        .append('g')
+        .attr('class', d => `${d.type}-node`)
+        .call(d3.drag()
+          .on('start', (event, d) => {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+          })
+          .on('drag', (event, d) => {
+            d.fx = event.x;
+            d.fy = event.y;
+          })
+          .on('end', (event, d) => {
+            if (!event.active) simulation.alphaTarget(0);
+            if (focusedNode !== d) {
+              d.fx = null;
+              d.fy = null;
+            }
+          })
+        );
+
+      const categoryNodes = nodeSelection.filter(d => d.type === 'category');
+      categoryNodes.append('circle')
+        .attr('r', d => d.size)
+        .attr('fill', d => d3.color(d.color).copy({ opacity: 0.18 }))
+        .attr('stroke', d => d.color)
+        .attr('stroke-width', 2.8);
+
+      categoryNodes.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('dy', '.35em')
+        .attr('font-size', 12)
+        .attr('font-weight', 600)
+        .attr('fill', '#1a202c')
+        .text(d => d.label);
+
+      const subfocusNodes = nodeSelection.filter(d => d.type === 'subfocus');
+      subfocusNodes.append('circle')
+        .attr('r', d => d.size)
+        .attr('fill', d => d3.color(d.color).copy({ opacity: 0.16 }))
+        .attr('stroke', d => d.color)
+        .attr('stroke-width', 2.2);
+
+      subfocusNodes.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('dy', '.35em')
+        .attr('font-size', 11)
+        .attr('font-weight', 600)
+        .attr('fill', '#1f2937')
+        .text(d => d.label);
+
+      const coreNodes = nodeSelection.filter(d => d.type === 'core');
+      coreNodes.append('circle')
+        .attr('r', 50)
+        .attr('fill', '#fbd38d')
+        .attr('stroke', '#f97316')
+        .attr('stroke-width', 3.5)
+        .attr('stroke-opacity', 0.8);
+
+      coreNodes.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('dy', '.35em')
+        .attr('font-size', 14)
+        .attr('font-weight', 700)
+        .attr('fill', '#1a202c')
+        .text('Focus Areas');
+
+      const skillNodes = nodeSelection.filter(d => d.type === 'skill');
+      skillNodes.append('circle')
+        .attr('r', d => 10 + d.weight * 2)
+        .attr('fill', d => d3.color(d.color).copy({ opacity: 0.85 }))
+        .attr('stroke', d => d.color)
+        .attr('stroke-width', 2.2);
+
+      skillNodes.append('text')
+        .attr('dy', 4)
+        .attr('font-size', 11)
+        .attr('font-weight', 600)
+        .attr('fill', '#1a202c')
+        .text(d => d.label)
+        .attr('text-anchor', 'middle')
+        .attr('transform', 'translate(0, 22)');
+
+      const focusNode = node => {
+        if (focusedNode && focusedNode !== node) {
+          focusedNode.fx = null;
+          focusedNode.fy = null;
+        }
+        focusedNode = node;
+        hideTooltip();
+
+        node.fx = width / 2;
+        node.fy = height / 2;
+        simulation.alphaTarget(0.6).restart();
+        setTimeout(() => simulation.alphaTarget(0.05), 400);
+
+        const linked = linkLookup.get(node.id) || new Set();
+        nodeSelection.classed('is-focused', d => d === node)
+          .classed('is-dimmed', d => d !== node && !linked.has(d.id) && d.id !== 'skill-core');
+
+        linkSelection
+          .attr('stroke-opacity', link => {
+            const sourceId = getNode(link.source).id;
+            const targetId = getNode(link.target).id;
+            if (sourceId === node.id || targetId === node.id || linked.has(sourceId) || linked.has(targetId)) {
+              return 0.86;
+            }
+            return baseLinkOpacity(link) * 0.4;
+          })
+          .attr('stroke-width', link => {
+            const sourceId = getNode(link.source).id;
+            const targetId = getNode(link.target).id;
+            if (sourceId === node.id || targetId === node.id || linked.has(sourceId) || linked.has(targetId)) {
+              return 3;
+            }
+            return baseLinkWidth(link);
+          });
+
+        if (node.type === 'skill' || node.type === 'category' || node.type === 'subfocus') {
+          showTooltip(node, node.x, node.y - 24);
+        } else {
+          hideTooltip();
+        }
+      };
+
+      const releaseFocus = () => {
+        if (!focusedNode) {
+          return;
+        }
+        focusedNode.fx = null;
+        focusedNode.fy = null;
+        focusedNode = null;
+        nodeSelection.classed('is-focused', false).classed('is-dimmed', false);
+        linkSelection
+          .attr('stroke-opacity', link => baseLinkOpacity(link))
+          .attr('stroke-width', link => baseLinkWidth(link));
+        hideTooltip();
+        simulation.alphaTarget(0.2).restart();
+        setTimeout(() => simulation.alphaTarget(0), 300);
+      };
+
+      skillNodes.on('click', (event, d) => {
+        event.stopPropagation();
+        focusNode(d);
+      });
+
+      subfocusNodes.on('click', (event, d) => {
+        event.stopPropagation();
+        focusNode(d);
+      });
+
+      categoryNodes.on('click', (event, d) => {
+        event.stopPropagation();
+        focusNode(d);
+      });
+
+      svg.on('click', event => {
+        if (panelVisible) {
+          hidePanel();
+        }
+        releaseFocus();
+      });
+
+      simulation.on('tick', () => {
+        const padding = 60;
+        nodes.forEach(node => {
+          node.x = Math.max(padding, Math.min(width - padding, node.x));
+          node.y = Math.max(padding, Math.min(height - padding, node.y));
+        });
+
+        linkSelection
+          .attr('x1', d => getNode(d.source).x)
+          .attr('y1', d => getNode(d.source).y)
+          .attr('x2', d => getNode(d.target).x)
+          .attr('y2', d => getNode(d.target).y);
+
+        nodeSelection.attr('transform', d => `translate(${d.x}, ${d.y})`);
+
+        if (tooltip.classList.contains('is-visible') && focusedNode) {
+          tooltip.style.left = `${focusedNode.x}px`;
+          tooltip.style.top = `${focusedNode.y - 30}px`;
+        }
+      });
+
+      const handleResize = () => {
+        const bounds = container.getBoundingClientRect();
+        width = bounds.width;
+        const isCompact = window.innerWidth < 992;
+        height = Math.max(isCompact ? 540 : 460, width * (isCompact ? 0.9 : 0.52));
+        svg.attr('width', width).attr('height', height);
+        simulation.force('center', d3.forceCenter(width / 2, height / 2));
+        simulation.force('x', d3.forceX(width / 2).strength(0.08));
+        simulation.force('y', d3.forceY(height / 2).strength(0.08));
+        coreNode.fx = width / 2;
+        coreNode.fy = height / 2;
+
+        const marginX = Math.min(width * 0.1, 260);
+        const marginY = Math.min(height * 0.18, 200);
+        const baseRadiusX = Math.max((width - marginX * 2) / 2, width * 0.34);
+        const baseRadiusY = Math.max((height - marginY * 2) / 2, height * 0.4);
+        const spanRadiusX = Math.min(baseRadiusX, width / 2 - marginX * 0.4);
+        const spanRadiusY = Math.min(baseRadiusY, height / 2 - marginY * 0.4);
+
+        coreNode.x = width / 2;
+        coreNode.y = height / 2;
+
+        categoryNodeData.forEach((node, idx) => {
+          const angle = spreadAngles[idx] - Math.PI / 2;
+          node.x = width / 2 + spanRadiusX * Math.cos(angle);
+          node.y = height / 2 + spanRadiusY * Math.sin(angle);
+          node.fx = null;
+          node.fy = null;
+        });
+
+        categoryNodeData.forEach(categoryNode => {
+          const groupNodes = subfocusByCategory.get(categoryNode.id) || [];
+          if (!groupNodes.length) return;
+          const localRadiusX = Math.min(spanRadiusX - 80, Math.max(width * 0.24, 200));
+          const localRadiusY = Math.min(spanRadiusY - 70, Math.max(height * 0.28, 180));
+          groupNodes.forEach((groupNode, groupIdx) => {
+            const angle = (Math.PI * 2 * groupIdx) / Math.max(groupNodes.length, 1) + (groupNodes.length > 2 ? (groupIdx % 2 === 0 ? 0.2 : -0.2) : 0);
+            groupNode.x = categoryNode.x + localRadiusX * Math.cos(angle);
+            groupNode.y = categoryNode.y + localRadiusY * Math.sin(angle);
+            groupNode.fx = null;
+            groupNode.fy = null;
+            groupNode.orbitRadiusX = localRadiusX;
+            groupNode.orbitRadiusY = localRadiusY;
+          });
+        });
+
+        skillNodeData.forEach(skillNode => {
+          const parent = subfocusLookup.get(skillNode.group) || nodeById.get(skillNode.category) || coreNode;
+          if (typeof skillNode.__angle !== 'number') {
+            skillNode.__angle = Math.random() * Math.PI * 2;
+          }
+          if (typeof skillNode.__radiusFactor !== 'number') {
+            skillNode.__radiusFactor = 0.85 + Math.random() * 0.4;
+          }
+
+          const orbitXBase = parent.orbitRadiusX || spanRadiusX * 0.7;
+          const orbitYBase = parent.orbitRadiusY || spanRadiusY * 0.7;
+          const orbitX = Math.max(orbitXBase * 1.15, width * 0.26);
+          const orbitY = Math.max(orbitYBase * 1.15, height * 0.32);
+
+          skillNode.x = parent.x + orbitX * skillNode.__radiusFactor * Math.cos(skillNode.__angle);
+          skillNode.y = parent.y + orbitY * skillNode.__radiusFactor * Math.sin(skillNode.__angle);
+          skillNode.fx = null;
+          skillNode.fy = null;
+        });
+
+        simulation.alpha(1).restart();
+        initializedPositions = true;
+      };
+
+    handleResize();    handleResize();
+      window.addEventListener('resize', () => {
+        hideTooltip();
+        handleResize();
+      });
+    })();
+  </script>
+</body>
+
+</html>
