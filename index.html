@@ -124,6 +124,10 @@ The above copyright notice and this permission notice shall be included in all c
       object-fit: cover;
     }
 
+    .page-carousel.card {
+      width: 100%;
+    }
+
     .photo-preview-atlas-btn {
       display: inline-flex;
       align-items: center;
@@ -206,6 +210,146 @@ The above copyright notice and this permission notice shall be included in all c
     .section-odd .description {
       color: #3a495d;
     }
+
+    .contact-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 18px;
+      padding: 28px 32px;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-card p {
+      margin-bottom: 14px;
+      gap: 12px;
+      font-size: 16px;
+      color: #2d3748;
+    }
+
+    .contact-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-card i {
+      font-size: 20px;
+      color: #2b6cb0;
+      width: 28px;
+      text-align: center;
+    }
+
+    .contact-card span strong {
+      margin-right: 6px;
+    }
+
+    .contact-card a {
+      color: #2b6cb0;
+      font-weight: 600;
+    }
+
+    .contact-card a:hover {
+      color: #1a436c;
+      text-decoration: none;
+    }
+
+    @media (max-width: 767.98px) {
+      .contact-card {
+        padding: 24px;
+      }
+
+      .contact-card p {
+        font-size: 15px;
+      }
+    }
+
+    /*
+    .stats-card {
+      position: relative;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 24px;
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .stats-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .stats-card--summary {
+      align-items: center;
+      text-align: center;
+    }
+
+    .stats-card--detail {
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .stats-metric {
+      font-size: 38px;
+      font-weight: 700;
+      color: #f96332;
+      margin-bottom: 8px;
+    }
+
+    .stats-label {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #4a5568;
+    }
+
+    .stats-subtitle {
+      font-size: 20px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #2d3748;
+      margin-bottom: 8px;
+    }
+
+    .stats-highlight {
+      background: rgba(249, 99, 50, 0.1);
+      border-radius: 12px;
+      padding: 14px 20px;
+      text-align: center;
+      color: #c44218;
+      font-weight: 600;
+    }
+
+    .stats-detail__title {
+      font-size: 22px;
+      font-weight: 600;
+      color: #1a202c;
+      margin-bottom: 10px;
+    }
+
+    .stats-detail__body {
+      color: #4a5568;
+      margin-bottom: 12px;
+    }
+
+    .stats-detail__meta {
+      font-size: 14px;
+      font-weight: 600;
+      color: #718096;
+    }
+
+    @media (max-width: 767.98px) {
+      .stats-card {
+        padding: 20px;
+      }
+
+      .stats-metric {
+        font-size: 32px;
+      }
+    }
+    */
 
 
 
@@ -311,7 +455,7 @@ The above copyright notice and this permission notice shall be included in all c
       </div>
       <div class="container">
         <div class="row">
-          <div class="col-md-8 ml-auto mr-auto">
+          <div class="col-12 col-lg-10 ml-auto mr-auto">
             <div class="card page-carousel">
               <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -421,6 +565,72 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
       </div>
     </div>
+
+    <!--
+    <div class="section section-odd" id="impact-stats">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8 ml-auto mr-auto text-center">
+            <h2 class="section-title">By the Numbers</h2>
+            <p class="description">Snapshot of the work I am most excited about right now.</p>
+          </div>
+        </div>
+        <div class="row" aria-live="polite">
+          <div class="col-12 mb-3">
+            <div class="stats-highlight">Latest milestone: IRB submission filed for the Locaze concussion pilot (2025).</div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mb-4">
+            <div class="stats-card stats-card--summary">
+              <div class="stats-metric">7</div>
+              <div class="stats-label">Research projects led</div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mb-4">
+            <div class="stats-card stats-card--summary">
+              <div class="stats-metric">4</div>
+              <div class="stats-label">Institutions collaborated with</div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mb-4">
+            <div class="stats-card stats-card--summary">
+              <div class="stats-metric">2</div>
+              <div class="stats-label">Publications in peer-reviewed journals</div>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mb-4">
+            <div class="stats-card stats-card--summary">
+              <div class="stats-metric">19</div>
+              <div class="stats-label">Documented side projects & coursework</div>
+            </div>
+          </div>
+          <div class="col-12 mt-2 mb-2">
+            <h3 class="stats-subtitle text-center">Where the time goes</h3>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="stats-card stats-card--detail">
+              <h3 class="stats-detail__title">Bench Science</h3>
+              <p class="stats-detail__body">Biomaterials, regenerative medicine, and in vivo studies exploring therapies that bridge the lab and the clinic.</p>
+              <span class="stats-detail__meta">Focus areas: biomaterials · immune response</span>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="stats-card stats-card--detail">
+              <h3 class="stats-detail__title">Clinical Translation</h3>
+              <p class="stats-detail__body">Prototyping Locaze, standing up IRB workflows, and coordinating pilots that support concussion detection.</p>
+              <span class="stats-detail__meta">Cross-functional with engineers & clinicians</span>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="stats-card stats-card--detail">
+              <h3 class="stats-detail__title">Teaching & Outreach</h3>
+              <p class="stats-detail__body">Mentoring student teams, sharing work at conferences, and keeping language skills sharp through coursework.</p>
+              <span class="stats-detail__meta">Always curious, always learning</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    -->
 
     <div class="section section-odd" id="contact">
       <div class="container">

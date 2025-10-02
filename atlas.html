@@ -120,6 +120,7 @@ body {
       max-height: 90vh;
       object-fit: contain;
       border-radius: 10px;
+      transition: opacity 0.3s ease;
     }
 
     .photo-lightbox__image.animate-next,
@@ -127,6 +128,14 @@ body {
       animation-duration: 0.45s;
       animation-timing-function: ease;
       animation-fill-mode: both;
+    }
+
+    .photo-lightbox__image.is-loading {
+      opacity: 0;
+    }
+
+    .photo-lightbox__image.photo-lightbox__image--error {
+      opacity: 0;
     }
 
     @keyframes lightboxSlideNext {
@@ -412,6 +421,67 @@ body {
   <script>
     const photos = Array.isArray(window.photoEntries) ? window.photoEntries : [];
     const cityLookup = window.photoCityLookup || {};
+    const homeBases = Array.isArray(window.homeBases) ? window.homeBases : [];
+
+    const preloadCache = new Map();
+
+    const primeImage = src => {
+      if (!src || preloadCache.has(src)) {
+        return preloadCache.get(src);
+      }
+      const img = new Image();
+      const entry = {
+        image: img,
+        status: 'loading',
+        onLoad: [],
+        onError: []
+      };
+      img.onload = () => {
+        entry.status = 'loaded';
+        entry.onLoad.forEach(cb => {
+          try { cb(img); } catch (e) { console.error(e); }
+        });
+        entry.onLoad = [];
+        entry.onError = [];
+      };
+      img.onerror = () => {
+        entry.status = 'error';
+        entry.onError.forEach(cb => {
+          try { cb(); } catch (e) { console.error(e); }
+        });
+        entry.onLoad = [];
+        entry.onError = [];
+      };
+      img.src = src;
+      preloadCache.set(src, entry);
+      return entry;
+    };
+
+    const requestImage = (src, onLoad, onError) => {
+      if (!src) {
+        onError();
+        return;
+      }
+      const entry = primeImage(src);
+      if (!entry) {
+        onError();
+        return;
+      }
+      if (entry.status === 'loaded' && entry.image.complete && entry.image.naturalWidth > 0) {
+        onLoad(entry.image);
+        return;
+      }
+      if (entry.status === 'error') {
+        onError();
+        return;
+      }
+      entry.onLoad.push(onLoad);
+      entry.onError.push(onError);
+    };
+
+    photos.forEach(photo => {
+      primeImage(photo.src);
+    });
 
     const lightbox = document.getElementById("photo-lightbox");
     const lightboxContent = lightbox.querySelector(".photo-lightbox__content");
@@ -429,6 +499,8 @@ body {
     let currentIndex = 0;
     let isAnimating = false;
 
+    let currentLoadToken = 0;
+
     const renderCurrentPhoto = direction => {
       if (!currentSequence.length) {
         lightboxImage.src = "";
@@ -441,55 +513,72 @@ body {
       const photo = currentSequence[currentIndex];
       const locationInfo = cityLookup[photo.location] || {};
       const locationLabel = locationInfo.name || photo.location;
-
-      const applyPhoto = () => {
-        const imageSrc = photo.src;
-        if (lightboxImage.src !== imageSrc) {
-          lightboxImage.src = imageSrc;
-        }
-        lightboxImage.alt = photo.alt || locationLabel || "";
-        lightboxLocation.textContent = locationLabel;
-        lightboxDate.textContent = photo.date || "";
-      };
-
-      if (!direction || !lightboxImage) {
-        applyPhoto();
-        return;
-      }
-
-      if (isAnimating) {
-        return;
-      }
-
-      const animationClass = direction === 'next' ? 'animate-next' : 'animate-prev';
-      const animationName = direction === 'next' ? 'lightboxSlideNext' : 'lightboxSlidePrev';
+      const imageSrc = photo.src;
+      const loadToken = ++currentLoadToken;
 
       isAnimating = true;
+      lightboxImage.classList.remove('photo-lightbox__image--error');
+      lightboxImage.classList.add('is-loading');
+      lightboxLocation.textContent = locationLabel;
+      lightboxDate.textContent = 'Loading…';
 
-      const startAnimation = () => {
-        lightboxImage.removeEventListener('load', startAnimation);
+      const finishAnimation = (animationClass, animationName) => {
         lightboxImage.classList.remove('animate-next', 'animate-prev');
         requestAnimationFrame(() => {
           lightboxImage.style.animationName = animationName;
           lightboxImage.classList.add(animationClass);
         });
+        const handleEnd = () => {
+          lightboxImage.removeEventListener('animationend', handleEnd);
+          lightboxImage.classList.remove(animationClass);
+          lightboxImage.style.animationName = '';
+          isAnimating = false;
+        };
+        lightboxImage.addEventListener('animationend', handleEnd, { once: true });
+        setTimeout(() => {
+          if (currentLoadToken === loadToken && isAnimating) {
+            lightboxImage.classList.remove(animationClass);
+            lightboxImage.style.animationName = '';
+            isAnimating = false;
+          }
+        }, 600);
       };
 
-      const handleEnd = () => {
-        lightboxImage.removeEventListener('animationend', handleEnd);
-        lightboxImage.classList.remove(animationClass);
-        lightboxImage.style.animationName = '';
+      requestImage(imageSrc, loadedImage => {
+        if (loadToken !== currentLoadToken) {
+          return;
+        }
+
+        lightboxImage.classList.remove('is-loading');
+        lightboxImage.classList.remove('photo-lightbox__image--error');
+
+        if (lightboxImage.src !== loadedImage.src) {
+          lightboxImage.src = loadedImage.src;
+        }
+        lightboxImage.alt = photo.alt || locationLabel || "";
+        lightboxLocation.textContent = locationLabel;
+        lightboxDate.textContent = photo.date || "";
+
+        if (!direction || !lightboxImage) {
+          isAnimating = false;
+          return;
+        }
+
+        const animationClass = direction === 'next' ? 'animate-next' : 'animate-prev';
+        const animationName = direction === 'next' ? 'lightboxSlideNext' : 'lightboxSlidePrev';
+        finishAnimation(animationClass, animationName);
+      }, () => {
+        if (loadToken !== currentLoadToken) {
+          return;
+        }
+        lightboxImage.classList.remove('is-loading');
+        lightboxImage.classList.add('photo-lightbox__image--error');
+        lightboxImage.removeAttribute('src');
+        lightboxImage.alt = 'Photo failed to load';
+        lightboxLocation.textContent = locationLabel;
+        lightboxDate.textContent = 'Photo failed to load';
         isAnimating = false;
-      };
-
-      applyPhoto();
-      lightboxImage.addEventListener('animationend', handleEnd, { once: true });
-
-      if (!lightboxImage.complete || lightboxImage.naturalWidth === 0) {
-        lightboxImage.addEventListener('load', startAnimation, { once: true });
-      } else {
-        startAnimation();
-      }
+      });
     };
 
     const updateNavControls = () => {
@@ -529,6 +618,7 @@ body {
       document.body.classList.remove("lightbox-open");
       lightboxImage.src = "";
       lightboxImage.alt = "";
+      lightboxImage.classList.remove('is-loading', 'photo-lightbox__image--error', 'animate-next', 'animate-prev');
       if (lightboxContent) {
         lightboxContent.style.transition = '';
         lightboxContent.style.transform = 'translate3d(0, 0, 0) scale(1)';
@@ -578,6 +668,7 @@ body {
         finalizeClose();
       }
       lightbox.classList.remove("is-closing");
+      lightboxImage.classList.remove('is-loading', 'photo-lightbox__image--error');
 
       if (lightboxContent) {
         let originX = 50;
@@ -799,6 +890,49 @@ body {
       markers.push(marker);
     });
 
+    homeBases.forEach(base => {
+      if (!base || typeof base.lat !== 'number' || typeof base.lng !== 'number') {
+        return;
+      }
+
+      const marker = L.circleMarker([base.lat, base.lng], {
+        radius: 10,
+        fillColor: '#1f2933',
+        color: '#ffffff',
+        weight: 2,
+        opacity: 1,
+        fillOpacity: 0.96
+      });
+
+      marker.addTo(map);
+
+      const tooltipLabel = base.name || 'Home location';
+      marker.bindTooltip(tooltipLabel, { direction: 'top' });
+
+      const popupSegments = [`<strong>${tooltipLabel}</strong>`];
+      if (base.detail) {
+        popupSegments.push(`<span>${base.detail}</span>`);
+      }
+      marker.bindPopup(popupSegments.join('<br>'));
+
+      marker.on('add', () => {
+        const element = marker.getElement();
+        if (element) {
+          element.setAttribute('tabindex', '0');
+          element.setAttribute('role', 'button');
+          element.setAttribute('aria-label', tooltipLabel);
+          element.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              marker.openPopup();
+            }
+          });
+        }
+      });
+
+      markers.push(marker);
+    });
+
     if (markers.length) {
       const bounds = L.latLngBounds(markers.map(marker => marker.getLatLng()));
       map.fitBounds(bounds.pad(0.08));
@@ -819,6 +953,7 @@ body {
     window.addEventListener('resize', () => {
       refreshMapSize();
     });
+
   </script>
 </body>
 
