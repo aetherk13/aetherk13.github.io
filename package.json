@@ -2,6 +2,9 @@
   "name": "kedar-bio",
   "description": "Bio Page",
   "version": "1.1.0",
+  "scripts": {
+    "build:skills": "node scripts/build-skills.mjs"
+  },
   "author": "Kedar Krishnan",
   "devDependencies": {
     "gulp": "^3.9.1",

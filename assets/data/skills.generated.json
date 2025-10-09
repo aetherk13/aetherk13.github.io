@@ -1,0 +1,420 @@
+{
+  "interaction-design": {
+    "label": "Interaction Design",
+    "items": [
+      {
+        "title": "Profile Website",
+        "url": "projects.html#profile-website",
+        "kind": "project",
+        "slug": "profile-website"
+      },
+      {
+        "title": "BME Design Team",
+        "url": "projects.html#bme-design-team",
+        "kind": "project",
+        "slug": "bme-design-team"
+      },
+      {
+        "title": "Locaze: Eye Movement Tracking for Concussion Detection",
+        "url": "experience.html#locaze-eye-movement-tracking-for-concussion-detection",
+        "kind": "experience",
+        "slug": "locaze-eye-movement-tracking-for-concussion-detection"
+      }
+    ]
+  },
+  "data-visualization": {
+    "label": "Data Visualization",
+    "items": [
+      {
+        "title": "Profile Website",
+        "url": "projects.html#profile-website",
+        "kind": "project",
+        "slug": "profile-website"
+      },
+      {
+        "title": "Class: Computer Vision",
+        "url": "projects.html#class-computer-vision",
+        "kind": "project",
+        "slug": "class-computer-vision"
+      }
+    ]
+  },
+  "app-prototypes": {
+    "label": "App Prototypes",
+    "items": [
+      {
+        "title": "Profile Website",
+        "url": "projects.html#profile-website",
+        "kind": "project",
+        "slug": "profile-website"
+      },
+      {
+        "title": "BME Design Team",
+        "url": "projects.html#bme-design-team",
+        "kind": "project",
+        "slug": "bme-design-team"
+      },
+      {
+        "title": "Locaze: Eye Movement Tracking for Concussion Detection",
+        "url": "experience.html#locaze-eye-movement-tracking-for-concussion-detection",
+        "kind": "experience",
+        "slug": "locaze-eye-movement-tracking-for-concussion-detection"
+      }
+    ]
+  },
+  "scientific-writing": {
+    "label": "Scientific Writing",
+    "items": [
+      {
+        "title": "NSF:GRFP Proposal",
+        "url": "projects.html#proj_highlight",
+        "kind": "project",
+        "slug": "proj_highlight"
+      },
+      {
+        "title": "Class: Tissue Engineering",
+        "url": "projects.html#class-tissue-engineering",
+        "kind": "project",
+        "slug": "class-tissue-engineering"
+      },
+      {
+        "title": "Class: Microphysiological Systems",
+        "url": "projects.html#class-microphysiological-systems",
+        "kind": "project",
+        "slug": "class-microphysiological-systems"
+      },
+      {
+        "title": "Class: Computer Ethics",
+        "url": "projects.html#class-computer-ethics",
+        "kind": "project",
+        "slug": "class-computer-ethics"
+      },
+      {
+        "title": "Class: Ancient Near Eastern Civilizations",
+        "url": "projects.html#class-ancient-near-eastern-civilizations",
+        "kind": "project",
+        "slug": "class-ancient-near-eastern-civilizations"
+      },
+      {
+        "title": "Extended Essay",
+        "url": "projects.html#extended-essay",
+        "kind": "project",
+        "slug": "extended-essay"
+      },
+      {
+        "title": "Theory of Knowledge",
+        "url": "projects.html#theory-of-knowledge",
+        "kind": "project",
+        "slug": "theory-of-knowledge"
+      },
+      {
+        "title": "Blood-Joint Transwell Model for Diabetic Osteoarthritis Research",
+        "url": "experience.html#blood-joint-transwell-model-for-diabetic-osteoarthritis-research",
+        "kind": "experience",
+        "slug": "blood-joint-transwell-model-for-diabetic-osteoarthritis-research"
+      }
+    ]
+  },
+  "study-design-irb": {
+    "label": "Study Design & IRB",
+    "items": [
+      {
+        "title": "NSF:GRFP Proposal",
+        "url": "projects.html#proj_highlight",
+        "kind": "project",
+        "slug": "proj_highlight"
+      },
+      {
+        "title": "Class: Tissue Engineering",
+        "url": "projects.html#class-tissue-engineering",
+        "kind": "project",
+        "slug": "class-tissue-engineering"
+      }
+    ]
+  },
+  "experimental-design-analytics": {
+    "label": "Experimental Design Analytics",
+    "items": [
+      {
+        "title": "NSF:GRFP Proposal",
+        "url": "projects.html#proj_highlight",
+        "kind": "project",
+        "slug": "proj_highlight"
+      },
+      {
+        "title": "Blood-Joint Transwell Model for Diabetic Osteoarthritis Research",
+        "url": "experience.html#blood-joint-transwell-model-for-diabetic-osteoarthritis-research",
+        "kind": "experience",
+        "slug": "blood-joint-transwell-model-for-diabetic-osteoarthritis-research"
+      }
+    ]
+  },
+  "data-wrangling-pipelines": {
+    "label": "Data Wrangling & Pipelines",
+    "items": [
+      {
+        "title": "Class: Computational Genomics",
+        "url": "projects.html#class-computational-genomics",
+        "kind": "project",
+        "slug": "class-computational-genomics"
+      },
+      {
+        "title": "Class: Matlab",
+        "url": "projects.html#class-matlab",
+        "kind": "project",
+        "slug": "class-matlab"
+      }
+    ]
+  },
+  "model-development": {
+    "label": "Model Development",
+    "items": [
+      {
+        "title": "Class: Computational Genomics",
+        "url": "projects.html#class-computational-genomics",
+        "kind": "project",
+        "slug": "class-computational-genomics"
+      },
+      {
+        "title": "Class: Deep Learning",
+        "url": "projects.html#class-deep-learning",
+        "kind": "project",
+        "slug": "class-deep-learning"
+      },
+      {
+        "title": "Class: Matlab",
+        "url": "projects.html#class-matlab",
+        "kind": "project",
+        "slug": "class-matlab"
+      },
+      {
+        "title": "Locaze: Eye Movement Tracking for Concussion Detection",
+        "url": "experience.html#locaze-eye-movement-tracking-for-concussion-detection",
+        "kind": "experience",
+        "slug": "locaze-eye-movement-tracking-for-concussion-detection"
+      }
+    ]
+  },
+  "vision-pipelines": {
+    "label": "Vision Pipelines",
+    "items": [
+      {
+        "title": "Class: Deep Learning",
+        "url": "projects.html#class-deep-learning",
+        "kind": "project",
+        "slug": "class-deep-learning"
+      },
+      {
+        "title": "Class: Computer Vision",
+        "url": "projects.html#class-computer-vision",
+        "kind": "project",
+        "slug": "class-computer-vision"
+      },
+      {
+        "title": "Locaze: Eye Movement Tracking for Concussion Detection",
+        "url": "experience.html#locaze-eye-movement-tracking-for-concussion-detection",
+        "kind": "experience",
+        "slug": "locaze-eye-movement-tracking-for-concussion-detection"
+      }
+    ]
+  },
+  "hardware-integration": {
+    "label": "Hardware Integration",
+    "items": [
+      {
+        "title": "BME Design Team",
+        "url": "projects.html#bme-design-team",
+        "kind": "project",
+        "slug": "bme-design-team"
+      }
+    ]
+  },
+  "multilingual-outreach": {
+    "label": "Multilingual Outreach",
+    "items": [
+      {
+        "title": "Class: German",
+        "url": "projects.html#class-german",
+        "kind": "project",
+        "slug": "class-german"
+      },
+      {
+        "title": "Class: Japanese",
+        "url": "projects.html#class-japanese",
+        "kind": "project",
+        "slug": "class-japanese"
+      },
+      {
+        "title": "Class: Italian",
+        "url": "projects.html#class-italian",
+        "kind": "project",
+        "slug": "class-italian"
+      }
+    ]
+  },
+  "teaching-mentorship": {
+    "label": "Teaching & Mentorship",
+    "items": [
+      {
+        "title": "SYPT: Magnetic Levitation",
+        "url": "projects.html#sypt-magnetic-levitation",
+        "kind": "project",
+        "slug": "sypt-magnetic-levitation"
+      },
+      {
+        "title": "SYPT: Looping Pendulum",
+        "url": "projects.html#sypt-looping-pendulum",
+        "kind": "project",
+        "slug": "sypt-looping-pendulum"
+      },
+      {
+        "title": "SYPT: Weighing Time",
+        "url": "projects.html#sypt-weighing-time",
+        "kind": "project",
+        "slug": "sypt-weighing-time"
+      }
+    ]
+  },
+  "visual-storytelling": {
+    "label": "Visual Storytelling",
+    "items": [
+      {
+        "title": "SYPT: Magnetic Levitation",
+        "url": "projects.html#sypt-magnetic-levitation",
+        "kind": "project",
+        "slug": "sypt-magnetic-levitation"
+      },
+      {
+        "title": "SYPT: Looping Pendulum",
+        "url": "projects.html#sypt-looping-pendulum",
+        "kind": "project",
+        "slug": "sypt-looping-pendulum"
+      },
+      {
+        "title": "SYPT: Weighing Time",
+        "url": "projects.html#sypt-weighing-time",
+        "kind": "project",
+        "slug": "sypt-weighing-time"
+      }
+    ]
+  },
+  "hydrogel-architecture": {
+    "label": "Hydrogel Architecture",
+    "items": [
+      {
+        "title": "Tunable Nanofiber-Hydrogel Composite for Regenerative Inflammation",
+        "url": "experience.html#tunable-nanofiber-hydrogel-composite-for-regenerative-inflammation",
+        "kind": "experience",
+        "slug": "tunable-nanofiber-hydrogel-composite-for-regenerative-inflammation"
+      },
+      {
+        "title": "Injectable Macroporous Hydrogel for Enhanced Regeneration",
+        "url": "experience.html#injectable-macroporous-hydrogel-for-enhanced-regeneration",
+        "kind": "experience",
+        "slug": "injectable-macroporous-hydrogel-for-enhanced-regeneration"
+      },
+      {
+        "title": "Variably Crosslinked Hydrogels to Enhance Cell Infiltration",
+        "url": "experience.html#variably-crosslinked-hydrogels-to-enhance-cell-infiltration",
+        "kind": "experience",
+        "slug": "variably-crosslinked-hydrogels-to-enhance-cell-infiltration"
+      }
+    ]
+  },
+  "mechanical-characterization": {
+    "label": "Mechanical Characterization",
+    "items": [
+      {
+        "title": "Tunable Nanofiber-Hydrogel Composite for Regenerative Inflammation",
+        "url": "experience.html#tunable-nanofiber-hydrogel-composite-for-regenerative-inflammation",
+        "kind": "experience",
+        "slug": "tunable-nanofiber-hydrogel-composite-for-regenerative-inflammation"
+      },
+      {
+        "title": "Variably Crosslinked Hydrogels to Enhance Cell Infiltration",
+        "url": "experience.html#variably-crosslinked-hydrogels-to-enhance-cell-infiltration",
+        "kind": "experience",
+        "slug": "variably-crosslinked-hydrogels-to-enhance-cell-infiltration"
+      }
+    ]
+  },
+  "cell-culture-operations": {
+    "label": "Cell Culture Operations",
+    "items": [
+      {
+        "title": "Tunable Nanofiber-Hydrogel Composite for Regenerative Inflammation",
+        "url": "experience.html#tunable-nanofiber-hydrogel-composite-for-regenerative-inflammation",
+        "kind": "experience",
+        "slug": "tunable-nanofiber-hydrogel-composite-for-regenerative-inflammation"
+      },
+      {
+        "title": "Blood-Joint Transwell Model for Diabetic Osteoarthritis Research",
+        "url": "experience.html#blood-joint-transwell-model-for-diabetic-osteoarthritis-research",
+        "kind": "experience",
+        "slug": "blood-joint-transwell-model-for-diabetic-osteoarthritis-research"
+      },
+      {
+        "title": "Cellular Heterogeneity and Organoid Growth Research",
+        "url": "experience.html#cellular-heterogeneity-and-organoid-growth-research",
+        "kind": "experience",
+        "slug": "cellular-heterogeneity-and-organoid-growth-research"
+      }
+    ]
+  },
+  "in-vivo-models": {
+    "label": "In Vivo Models",
+    "items": [
+      {
+        "title": "Injectable Macroporous Hydrogel for Enhanced Regeneration",
+        "url": "experience.html#injectable-macroporous-hydrogel-for-enhanced-regeneration",
+        "kind": "experience",
+        "slug": "injectable-macroporous-hydrogel-for-enhanced-regeneration"
+      },
+      {
+        "title": "Nanofiber-Hydrogel for Radiation Dermatitis Prevention",
+        "url": "experience.html#nanofiber-hydrogel-for-radiation-dermatitis-prevention",
+        "kind": "experience",
+        "slug": "nanofiber-hydrogel-for-radiation-dermatitis-prevention"
+      },
+      {
+        "title": "Variably Crosslinked Hydrogels to Enhance Cell Infiltration",
+        "url": "experience.html#variably-crosslinked-hydrogels-to-enhance-cell-infiltration",
+        "kind": "experience",
+        "slug": "variably-crosslinked-hydrogels-to-enhance-cell-infiltration"
+      }
+    ]
+  },
+  "delivery-platforms": {
+    "label": "Delivery Platforms",
+    "items": [
+      {
+        "title": "Nanofiber-Hydrogel for Radiation Dermatitis Prevention",
+        "url": "experience.html#nanofiber-hydrogel-for-radiation-dermatitis-prevention",
+        "kind": "experience",
+        "slug": "nanofiber-hydrogel-for-radiation-dermatitis-prevention"
+      }
+    ]
+  },
+  "microscopy-imaging": {
+    "label": "Microscopy & Imaging",
+    "items": [
+      {
+        "title": "Cellular Heterogeneity and Organoid Growth Research",
+        "url": "experience.html#cellular-heterogeneity-and-organoid-growth-research",
+        "kind": "experience",
+        "slug": "cellular-heterogeneity-and-organoid-growth-research"
+      }
+    ]
+  },
+  "lab-automation-data-logging": {
+    "label": "Lab Automation & Data Logging",
+    "items": [
+      {
+        "title": "Cellular Heterogeneity and Organoid Growth Research",
+        "url": "experience.html#cellular-heterogeneity-and-organoid-growth-research",
+        "kind": "experience",
+        "slug": "cellular-heterogeneity-and-organoid-growth-research"
+      }
+    ]
+  }
+}

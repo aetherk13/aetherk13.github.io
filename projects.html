@@ -142,6 +142,9 @@ The above copyright notice and this permission notice shall be included in all c
             <a href="projects.html" class="btn btn-danger btn-round">Projects</a>
           </li>
           <li class="nav-item">
+            <a href="constellation.html" class="btn btn-danger btn-round">Skills</a>
+          </li>
+          <li class="nav-item">
             <a href="atlas.html" class="btn btn-danger btn-round">Photo Atlas</a>
           </li>
         </ul>
@@ -164,9 +167,7 @@ The above copyright notice and this permission notice shall be included in all c
   <div class="main">
     <div class="section text-center">
       <div class="container mt-5" id="projects-container">
-        <div class="row g-4 d-flex align-items-stretch" id="project-list">
-          <!-- Cards will be dynamically added here -->
-        </div>            
+        <div class="row g-4 d-flex align-items-stretch" id="projects-root"></div>
       </div>
     </div>
   </div>
@@ -269,210 +270,114 @@ The above copyright notice and this permission notice shall be included in all c
         window.scrollTo(0, target);
       });
     </script>
-    <script>
-      // Array of project data
-      const projects = [
-      {
-    title: "Profile Website",
-    description: "Designed and developed a personal portfolio website to showcase projects, experiences, and skills. Built using modern web technologies, the site features a dynamic layout, responsive design, and interactive elements for an engaging user experience.",
-    imgSrc: "assets/media/proj_web.png",
-    badges1: ["Javascript", "Immunostaining"],
-    badges2: ["Web Design"],
-    link: "index.html"
-  },
-  {
-    id: "proj_highlight",
-    title: "NSF:GRFP Proposal",
-    description: "This NSF GRFP proposal introduces a two-phase nanofiber hydrogel system for sustained extracellular vesicle (EV) release to improve diabetic foot ulcer (DFU) healing. Short-term EV release addresses inflammation, while long-term release supports tissue regeneration. Covalently crosslinked PCL nanofibers enhance mechanical stability. In vitro and in vivo studies will validate its potential to overcome current DFU treatment limitations, offering a translatable solution to improve outcomes and reduce healthcare costs.",
-    imgSrc: "assets/media/proj_grfp.png",
-    badges1: ["Study Design"],
-    badges2: ["Biomaterials", "Regernative Engineering"],
-    link: "assets/media/proj_grfp.pdf",
-  },
-  {
-    title: "Class: Computational Genomics",
-    description: "Developed innovative tools for NGS data analysis, combining Cuckoo Filter and Count-Min Sketch algorithms to address sequence redundancy and k-mer frequency tracking. Created KMerTracker, EnhancedKMerTracker, and DynamicKMerTracker to improve deduplication and accuracy while maintaining memory efficiency. Tested on real-world and synthetic datasets, achieving up to 98.74% accuracy for complex genomic sequences, with applications in genomics research and large-scale sequencing projects.",
-    imgSrc: "assets/media/proj_cg.png",
-    badges1: ["Python"],
-    badges2: ["Genomics", "Data Structures"],
-    link: "https://github.com/nicolesaadea/CompGenProject"
-  },
-  {
-    title: "Class: Deep Learning",
-    description: "Developed an enhanced BBANet model for precise robotic tool segmentation in challenging laparoscopic environments, leveraging multi-scale feature fusion and attention mechanisms using the Endovis2018 dataset.",
-    imgSrc: "assets/media/proj_dl.gif",
-    badges1: ["Python"],
-    badges2: ["Deep Learning", "Computer Vision"],
-    link: "https://github.com/sameerkhan7/Robot_Tool_Segmentation"
-  },
-  {
-    title: "Class: Tissue Engineering",
-    description: "Developed a research proposal for a Tissue Engineering course to design multilayered cartilage constructs mimicking native articular cartilage. Focused on using biomechanical cues like compression and shear to enhance tissue organization and functionality, with potential applications in osteoarthritis treatment.",
-    imgSrc: "assets/media/proj_te.png",
-    badges1: ["Study Design"],
-    badges2: ["Tissue Engineering", "Cartilage Engineering"],
-    link: "assets/media/proj_te.pdf"
-  },
-  {
-  title: "BME Design Team",
-    description: "As a founding member of a JHU Biomedical Engineering design team, collaborated with Mendaera and clinicians to create an innovative device aimed at reducing prostate biopsy duration and improving patient comfort. Contributed to design strategies that streamline targeting and retrieval processes. Entered the prototyping phase in December 2023, with low-fidelity prototype testing initiated in March 2024.",
-    imgSrc: "assets/media/proj_dt.png",
-    badges1: ["CAD", "Prototyping"],
-    badges2: ["Design Process"],
-    link: "https://www.mendaera.com/"
-  },
-  {
-  title: "Class: Computer Vision",
-    description: "Developed an automated system for identifying and grading Pokémon trading cards using computer vision and deep learning techniques. The project incorporated traditional methods like Canny Edge Detection for card extraction and advanced models such as EasyOCR for text recognition, VGG-16 and ResNet50 for feature classification, and YOLOv5 for defect detection. The system successfully extracted features like set symbols, rarity, and HP, achieving high accuracy rates, while the object detection model identified defects like scratches and edge wear with precision.",
-    imgSrc: "assets/media/proj_cv.png",
-    badges1: ["Python"],
-    badges2: ["Computer Vision", "Machine Learning"],
-    link: "assets/media/proj_cv.pdf",
-  },
-  {
-  title: "Class: Microphysiological Systems",
-    description: "Reviewed the application of microphysiological systems (MPS) in space research to study spaceflight-induced changes like radiation effects, muscle atrophy, and cardiovascular deconditioning. Highlighted MPS as a tool for disease modeling, drug testing, and regenerative medicine advancements in microgravity.",
-    imgSrc: "assets/media/proj_mps.png",
-    badges1: ["Review Writing"],
-    badges2: ["MPS", "Tissue Engineering"],
-    link: "assets/media/proj_mps.pdf",
-  },
-  {
-  title: "Class: Computer Ethics",
-    description: "Wrote an essay on computer ethics, examining topics such as machine autonomy, data privacy, intellectual property, bias, and cyber warfare, and evaluating their implications for responsible technology design and regulation.",
-    imgSrc: "assets/media/proj_eth.png",
-    badges1: ["Essay Writing"],
-    badges2: ["Ethics", "Computer Science"],
-    link: "assets/media/proj_eth.pdf",
-  },
-  {
-  title: "Class: German",
-    description: "Read and analyzed a selection of German short stories, writing thematic essays that explored literary techniques, cultural context, and narrative style. Developed critical reading and analytical writing skills while deepening understanding of German language and literature.",
-    imgSrc: "assets/media/proj_ger.png",
-    badges1: ["German Writing", "German Reading"],
-    badges2: ["German"],
-    link: "assets/media/proj_ger.pdf",
-  },
-  {
-  title: "Class: Japanese",
-    description: "Created and performed a concise script inspired by the Japanese book Miller-san, showcasing its key themes and characters. This project combined creative writing with theatrical presentation, highlighting cultural nuances and storytelling elements from the original work, all in Japanese.",
-    imgSrc: "assets/media/proj_jap.png",
-    badges1: ["Japanese Writing", "Japanese Speaking"],
-    badges2: ["Japanese"],
-    link: "assets/media/proj_jap.pdf",
-  },
-  {
-  title: "Class: Italian",
-    description: "Watched the Italian film 18 Regali and wrote a short review summarizing the plot and offering personal reflections. Practiced basic Italian writing and expression while engaging with contemporary Italian cinema.",
-    imgSrc: "assets/media/proj_ital.png",
-    badges1: ["Italian Writing", "Japanese Listening"],
-    badges2: ["Italian"],
-    link: "assets/media/proj_ital.pdf",
-  },
-  {
-  title: "Class: Ancient Near Eastern Civilizations",
-    description: "This essay, written for my Near Eastern Civilizations class, explores how Mesopotamian rulers from the Akkadian Empire (circa 2350 B.C.) to the Old Babylonian Empire (circa 1600 B.C.) strategically used religion to assert control over their populations. By analyzing the deification of kings like Naram-Sin, the religious reforms of Shulgi, and the propaganda within texts such as the Enuma Eliš, the paper highlights the evolution of religious control mechanisms. It examines how these tactics fostered loyalty, justified authority, and facilitated societal changes, ultimately shaping Mesopotamian civilization.",
-    imgSrc: "assets/media/proj_anec.png",
-    badges1: ["Historical Research", "Historical Writing"],
-    badges2: ["Ancient History"],
-    link: "assets/media/proj_anec.pdf",
-  },
-  {
-  title: "Class: Matlab",
-    description: "Developed a functional MATLAB implementation of Conway’s Game of Life, including custom functions to compute generations, simulate 100 iterations of dynamic patterns like the Pi-heptomino, and import initial patterns using Run-Length Encoding (RLE). The project also featured a full GUI for visualizing complex simulations, such as Traffic Jam and other unique patterns.",
-    imgSrc: "assets/media/proj_matlab.png",
-    badges1: ["Matlab"],
-    badges2: ["GUI"],
-    link: "https://github.com/aetherk13/aetherk13-cs-projects/tree/main/matlab_bootcamp"
-  },
-  {
-  title: "Extended Essay",
-    description: "In this extended essay, I explored minimizing the surface area of a function rotated about a horizontal line by analyzing the impact of the line’s position. The study utilized mathematical optimization techniques, including the bisection method, golden section search, and Newton-Raphson method, to determine the most efficient approach. Applications included calculating surface areas for various functions and comparing optimization methods for accuracy and convergence speed.",
-    imgSrc: "assets/media/proj_ee.png",
-    badges1: ["Mathematical Writing", "Proofs"],
-    badges2: ["Math", "IB"],
-    link: "assets/media/proj_ee.pdf",
-  },
-  {
-  title: "Theory of Knowledge",
-    description: "This Theory of Knowledge essay explores the relationship between trust and the acceptance of knowledge claims across the areas of History and the Arts. By examining the role of trust in evaluating sources and methods, as well as the influence of personal Ways of Knowing like emotion and intuition, the essay argues that while trust often plays a key role in accepting external knowledge claims, it is not always required when knowledge is formed internally. The analysis concludes that trust is frequently, but not always, involved in the acceptance of knowledge claims.",
-    imgSrc: "assets/media/proj_tok.webp",
-    badges1: ["Logic", "Essay Writing"],
-    badges2: ["TOK", "IB"],
-    link: "assets/media/proj_tok.pdf",
-  },
-  {
-  title: "SYPT: Magnetic Levitation",
-    description: "This presentation, prepared for the 2020 Swiss Young Physicists' Tournament (SYPT), explores the intriguing phenomenon of magnetic levitation in a system where a large disk-shaped magnet is placed on a non-magnetic conductive plate, while a smaller magnet moves beneath it. Under specific conditions, the top magnet may levitate or exhibit unique motion patterns.",
-    imgSrc: "assets/media/proj_sypt3.png",
-    badges1: ["Scientific Presentation", "Study Design"],
-    badges2: ["Physics"],
-    link: "assets/media/proj_sypt2.pdf",
-  },
-  {
-  title: "SYPT: Looping Pendulum",
-    description: "This presentation, created for the 2019 Swiss Young Physicists' Tournament (SYPT), delves into the intriguing dynamics of a looping pendulum. A system with a heavy load and a lighter load, connected by a string over a horizontal rod, is analyzed as the lighter load's release causes it to sweep around the rod, preventing the heavier load from falling. Through experimental analysis and theoretical modeling, I investigated the forces, energy transfer, and motion involved. ",
-    imgSrc: "assets/media/proj_sypt2.png",
-    badges1: ["Scientific Presentation", "Study Design"],
-    badges2: ["Physics"],
-    link: "assets/media/proj_sypt3.pdf",
-  },
-  {
-  title: "SYPT: Weighing Time",
-    description: "This presentation, prepared for the 2018 Swiss Young Physicists' Tournament (SYPT), explores the intriguing phenomenon of an hourglass appearing to change weight while its sand flows. Through detailed experiments and theoretical modeling, I investigated the dynamic forces at play during sand flow, including the interplay of momentum transfer, impact forces, and system equilibrium. ",
-    imgSrc: "assets/media/proj_sypt1.png",
-    badges1: ["Scientific Presentation", "Study Design"],
-    badges2: ["Physics"],
-    link: "assets/media/proj_sypt1.pdf",
-  },
-];
+    <script type="module">
+      const root = document.getElementById("projects-root");
 
+      const slugify = (value = "") =>
+        value
+          .toLowerCase()
+          .normalize("NFKD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-z0-9\s-]/g, "")
+          .trim()
+          .replace(/\s+/g, "-");
 
-// Function to dynamically create cards
-function renderProjects() {
-  const container = document.getElementById("project-list");
-  container.innerHTML = ""; // Clear the container
+      function renderProjects(projects = []) {
+        if (!root) return;
+        root.innerHTML = "";
 
-  projects.forEach((project) => {
-    const wrapper = document.createElement("div");
-    wrapper.classList.add("col-md-4", "mb-4");
+        if (!projects.length) {
+          const empty = document.createElement("div");
+          empty.className = "col-12";
+          empty.innerHTML = '<p class="text-muted mb-0">New projects coming soon.</p>';
+          root.appendChild(empty);
+          return;
+        }
 
-    // Dynamically add the id if it exists
-    const cardId = project.id ? `id="${project.id}"` : "";
+        projects.forEach((project) => {
+          const slug = project.slug || slugify(project.title || "");
 
-    const card = `
-      <div class="card-vertical" ${cardId}>
-        <h5 class="card-title"><strong>${project.title}</strong></h5>
-        <img src="${project.imgSrc}" alt="${project.title}">
-        <div class="scrollable-content">
-          <p>${project.description}</p>
-        </div>
-        <div>
-          ${project.badges1
-            .map((badge) => `<span class="badge badge-info">${badge}</span>`)
-            .join("")}
-          ${project.badges2
-            .map((badge) => `<span class="badge badge-warning">${badge}</span>`)
-            .join("")}
-        </div>
-        <a href="${project.link}" target="_blank" class="btn btn-primary btn-sm mt-2">View Work</a>
-      </div>
-    `;
+          const col = document.createElement("div");
+          col.className = "col-md-4 mb-4 d-flex";
 
-    wrapper.innerHTML = card;
-    container.appendChild(wrapper);
-  });
-  
-}
+          const card = document.createElement("article");
+          card.className = "card-vertical w-100";
+          card.id = slug;
 
+          const title = document.createElement("h5");
+          title.className = "card-title";
+          const strong = document.createElement("strong");
+          strong.textContent = project.title || "Untitled project";
+          title.appendChild(strong);
+          card.appendChild(title);
 
+          const thumb = project.media?.thumb;
+          if (thumb) {
+            const img = document.createElement("img");
+            img.src = thumb;
+            img.alt = project.title || "";
+            card.appendChild(img);
+          }
 
+          if (project.summary) {
+            const scrollable = document.createElement("div");
+            scrollable.className = "scrollable-content";
+            const paragraph = document.createElement("p");
+            paragraph.textContent = project.summary;
+            scrollable.appendChild(paragraph);
+            card.appendChild(scrollable);
+          }
 
+          const badges = document.createElement("div");
 
+          (project.skills || []).forEach((skill) => {
+            const link = document.createElement("a");
+            link.className = "badge badge-info mr-1";
+            link.dataset.badge = "1";
+            link.href = "constellation.html?skill=" + encodeURIComponent(slugify(skill));
+            link.textContent = skill;
+            badges.appendChild(link);
+          });
 
-// Initial render
-renderProjects();
-  </script>
+          (project.topics || []).forEach((topic) => {
+            const span = document.createElement("span");
+            span.className = "badge badge-warning mr-1";
+            span.dataset.badge = "2";
+            span.textContent = topic;
+            badges.appendChild(span);
+          });
+
+          card.appendChild(badges);
+
+          const primaryHref = project.links?.primary || "#" + slug;
+          if (primaryHref) {
+            const button = document.createElement("a");
+            button.className = "btn btn-primary btn-sm mt-2";
+            button.href = primaryHref;
+            button.textContent = "View Work";
+            card.appendChild(button);
+          }
+
+          col.appendChild(card);
+          root.appendChild(col);
+        });
+      }
+
+      async function loadProjects() {
+        if (!root) return;
+        try {
+          const response = await fetch("./assets/data/site-data.json", { cache: "no-cache" });
+          if (!response.ok) throw new Error(`Failed to load site data (${response.status})`);
+          const siteData = await response.json();
+          renderProjects(siteData.projects || []);
+        } catch (error) {
+          console.error(error);
+          root.innerHTML = '<div class="col-12"><p class="text-danger mb-0">Unable to load projects right now.</p></div>';
+        }
+      }
+
+      loadProjects();
+    </script>
   <script>
       document.addEventListener("DOMContentLoaded", function () {
         // Check if there's a hash in the URL

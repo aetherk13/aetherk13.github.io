@@ -1,0 +1,564 @@
+{
+  "projects": [
+    {
+      "slug": "profile-website",
+      "title": "Profile Website",
+      "summary": "Designed and developed a personal portfolio website to showcase projects, experiences, and skills. Built using modern web technologies, the site features a dynamic layout, responsive design, and interactive elements for an engaging user experience.",
+      "skills": [
+        "Interaction Design",
+        "Data Visualization",
+        "App Prototypes"
+      ],
+      "topics": [
+        "Web Development",
+        "UI/UX"
+      ],
+      "links": {
+        "card": "projects.html#profile-website",
+        "primary": "index.html"
+      },
+      "media": {
+        "thumb": "assets/media/proj_web.png"
+      }
+    },
+    {
+      "slug": "proj_highlight",
+      "title": "NSF:GRFP Proposal",
+      "summary": "This NSF GRFP proposal introduces a two-phase nanofiber hydrogel system for sustained extracellular vesicle (EV) release to improve diabetic foot ulcer (DFU) healing. Short-term EV release addresses inflammation, while long-term release supports tissue regeneration. Covalently crosslinked PCL nanofibers enhance mechanical stability. In vitro and in vivo studies will validate its potential to overcome current DFU treatment limitations, offering a translatable solution to improve outcomes and reduce healthcare costs.",
+      "skills": [
+        "Scientific Writing",
+        "Study Design & IRB",
+        "Experimental Design Analytics"
+      ],
+      "topics": [
+        "Biomaterials",
+        "Regenerative Engineering"
+      ],
+      "links": {
+        "card": "projects.html#proj_highlight",
+        "primary": "assets/media/proj_grfp.pdf"
+      },
+      "media": {
+        "thumb": "assets/media/proj_grfp.png"
+      }
+    },
+    {
+      "slug": "class-computational-genomics",
+      "title": "Class: Computational Genomics",
+      "summary": "Developed innovative tools for NGS data analysis, combining Cuckoo Filter and Count-Min Sketch algorithms to address sequence redundancy and k-mer frequency tracking. Created KMerTracker, EnhancedKMerTracker, and DynamicKMerTracker to improve deduplication and accuracy while maintaining memory efficiency. Tested on real-world and synthetic datasets, achieving up to 98.74% accuracy for complex genomic sequences, with applications in genomics research and large-scale sequencing projects.",
+      "skills": [
+        "Data Wrangling & Pipelines",
+        "Model Development"
+      ],
+      "topics": [
+        "Genomics",
+        "Algorithms"
+      ],
+      "links": {
+        "card": "projects.html#class-computational-genomics",
+        "primary": "https://github.com/nicolesaadea/CompGenProject"
+      },
+      "media": {
+        "thumb": "assets/media/proj_cg.png"
+      }
+    },
+    {
+      "slug": "class-deep-learning",
+      "title": "Class: Deep Learning",
+      "summary": "Developed an enhanced BBANet model for precise robotic tool segmentation in challenging laparoscopic environments, leveraging multi-scale feature fusion and attention mechanisms using the Endovis2018 dataset.",
+      "skills": [
+        "Model Development",
+        "Vision Pipelines"
+      ],
+      "topics": [
+        "Computer Vision",
+        "Deep Learning"
+      ],
+      "links": {
+        "card": "projects.html#class-deep-learning",
+        "primary": "https://github.com/sameerkhan7/Robot_Tool_Segmentation"
+      },
+      "media": {
+        "thumb": "assets/media/proj_dl.gif"
+      }
+    },
+    {
+      "slug": "class-tissue-engineering",
+      "title": "Class: Tissue Engineering",
+      "summary": "Developed a research proposal for a Tissue Engineering course to design multilayered cartilage constructs mimicking native articular cartilage. Focused on using biomechanical cues like compression and shear to enhance tissue organization and functionality, with potential applications in osteoarthritis treatment.",
+      "skills": [
+        "Study Design & IRB",
+        "Scientific Writing"
+      ],
+      "topics": [
+        "Tissue Engineering",
+        "Cartilage Tissue Engineering"
+      ],
+      "links": {
+        "card": "projects.html#class-tissue-engineering",
+        "primary": "assets/media/proj_te.pdf"
+      },
+      "media": {
+        "thumb": "assets/media/proj_te.png"
+      }
+    },
+    {
+      "slug": "bme-design-team",
+      "title": "BME Design Team",
+      "summary": "As a founding member of a JHU Biomedical Engineering design team, collaborated with Mendaera and clinicians to create an innovative device aimed at reducing prostate biopsy duration and improving patient comfort. Contributed to design strategies that streamline targeting and retrieval processes. Entered the prototyping phase in December 2023, with low-fidelity prototype testing initiated in March 2024.",
+      "skills": [
+        "Hardware Integration",
+        "Interaction Design",
+        "App Prototypes"
+      ],
+      "topics": [
+        "Biomedical Device Design",
+        "Human-Centered Design"
+      ],
+      "links": {
+        "card": "projects.html#bme-design-team",
+        "primary": "https://www.mendaera.com/"
+      },
+      "media": {
+        "thumb": "assets/media/proj_dt.png"
+      }
+    },
+    {
+      "slug": "class-computer-vision",
+      "title": "Class: Computer Vision",
+      "summary": "Developed an automated system for identifying and grading Pokémon trading cards using computer vision and deep learning techniques. The project incorporated traditional methods like Canny Edge Detection for card extraction and advanced models such as EasyOCR for text recognition, VGG-16 and ResNet50 for feature classification, and YOLOv5 for defect detection. The system successfully extracted features like set symbols, rarity, and HP, achieving high accuracy rates, while the object detection model identified defects like scratches and edge wear with precision.",
+      "skills": [
+        "Vision Pipelines",
+        "Data Visualization"
+      ],
+      "topics": [
+        "Computer Vision",
+        "Machine Learning"
+      ],
+      "links": {
+        "card": "projects.html#class-computer-vision",
+        "primary": "assets/media/proj_cv.pdf"
+      },
+      "media": {
+        "thumb": "assets/media/proj_cv.png"
+      }
+    },
+    {
+      "slug": "class-microphysiological-systems",
+      "title": "Class: Microphysiological Systems",
+      "summary": "Reviewed the application of microphysiological systems (MPS) in space research to study spaceflight-induced changes like radiation effects, muscle atrophy, and cardiovascular deconditioning. Highlighted MPS as a tool for disease modeling, drug testing, and regenerative medicine advancements in microgravity.",
+      "skills": [
+        "Scientific Writing"
+      ],
+      "topics": [
+        "Organ-on-a-Chip",
+        "Space Biology"
+      ],
+      "links": {
+        "card": "projects.html#class-microphysiological-systems",
+        "primary": "assets/media/proj_mps.pdf"
+      },
+      "media": {
+        "thumb": "assets/media/proj_mps.png"
+      }
+    },
+    {
+      "slug": "class-computer-ethics",
+      "title": "Class: Computer Ethics",
+      "summary": "Wrote an essay on computer ethics, examining topics such as machine autonomy, data privacy, intellectual property, bias, and cyber warfare, and evaluating their implications for responsible technology design and regulation.",
+      "skills": [
+        "Scientific Writing"
+      ],
+      "topics": [
+        "Technology Ethics",
+        "Computing & Society"
+      ],
+      "links": {
+        "card": "projects.html#class-computer-ethics",
+        "primary": "assets/media/proj_eth.pdf"
+      },
+      "media": {
+        "thumb": "assets/media/proj_eth.png"
+      }
+    },
+    {
+      "slug": "class-german",
+      "title": "Class: German",
+      "summary": "Read and analyzed a selection of German short stories, writing thematic essays that explored literary techniques, cultural context, and narrative style. Developed critical reading and analytical writing skills while deepening understanding of German language and literature.",
+      "skills": [
+        "Multilingual Outreach"
+      ],
+      "topics": [
+        "German Studies"
+      ],
+      "links": {
+        "card": "projects.html#class-german",
+        "primary": "assets/media/proj_ger.pdf"
+      },
+      "media": {
+        "thumb": "assets/media/proj_ger.png"
+      }
+    },
+    {
+      "slug": "class-japanese",
+      "title": "Class: Japanese",
+      "summary": "Created and performed a concise script inspired by the Japanese book Miller-san, showcasing its key themes and characters. This project combined creative writing with theatrical presentation, highlighting cultural nuances and storytelling elements from the original work, all in Japanese.",
+      "skills": [
+        "Multilingual Outreach"
+      ],
+      "topics": [
+        "Japanese Studies"
+      ],
+      "links": {
+        "card": "projects.html#class-japanese",
+        "primary": "assets/media/proj_jap.pdf"
+      },
+      "media": {
+        "thumb": "assets/media/proj_jap.png"
+      }
+    },
+    {
+      "slug": "class-italian",
+      "title": "Class: Italian",
+      "summary": "Watched the Italian film 18 Regali and wrote a short review summarizing the plot and offering personal reflections. Practiced basic Italian writing and expression while engaging with contemporary Italian cinema.",
+      "skills": [
+        "Multilingual Outreach"
+      ],
+      "topics": [
+        "Italian Studies"
+      ],
+      "links": {
+        "card": "projects.html#class-italian",
+        "primary": "assets/media/proj_ital.pdf"
+      },
+      "media": {
+        "thumb": "assets/media/proj_ital.png"
+      }
+    },
+    {
+      "slug": "class-ancient-near-eastern-civilizations",
+      "title": "Class: Ancient Near Eastern Civilizations",
+      "summary": "This essay, written for my Near Eastern Civilizations class, explores how Mesopotamian rulers from the Akkadian Empire (circa 2350 B.C.) to the Old Babylonian Empire (circa 1600 B.C.) strategically used religion to assert control over their populations. By analyzing the deification of kings like Naram-Sin, the religious reforms of Shulgi, and the propaganda within texts such as the Enuma Eliš, the paper highlights the evolution of religious control mechanisms. It examines how these tactics fostered loyalty, justified authority, and facilitated societal changes, ultimately shaping Mesopotamian civilization.",
+      "skills": [
+        "Scientific Writing"
+      ],
+      "topics": [
+        "Ancient History",
+        "Religious Studies"
+      ],
+      "links": {
+        "card": "projects.html#class-ancient-near-eastern-civilizations",
+        "primary": "assets/media/proj_anec.pdf"
+      },
+      "media": {
+        "thumb": "assets/media/proj_anec.png"
+      }
+    },
+    {
+      "slug": "class-matlab",
+      "title": "Class: Matlab",
+      "summary": "Developed a functional MATLAB implementation of Conway’s Game of Life, including custom functions to compute generations, simulate 100 iterations of dynamic patterns like the Pi-heptomino, and import initial patterns using Run-Length Encoding (RLE). The project also featured a full GUI for visualizing complex simulations, such as Traffic Jam and other unique patterns.",
+      "skills": [
+        "Data Wrangling & Pipelines",
+        "Model Development"
+      ],
+      "topics": [
+        "Scientific Computing",
+        "Human–Computer Interaction"
+      ],
+      "links": {
+        "card": "projects.html#class-matlab",
+        "primary": "https://github.com/aetherk13/aetherk13-cs-projects/tree/main/matlab_bootcamp"
+      },
+      "media": {
+        "thumb": "assets/media/proj_matlab.png"
+      }
+    },
+    {
+      "slug": "extended-essay",
+      "title": "Extended Essay",
+      "summary": "In this extended essay, I explored minimizing the surface area of a function rotated about a horizontal line by analyzing the impact of the line’s position. The study utilized mathematical optimization techniques, including the bisection method, golden section search, and Newton-Raphson method, to determine the most efficient approach. Applications included calculating surface areas for various functions and comparing optimization methods for accuracy and convergence speed.",
+      "skills": [
+        "Scientific Writing"
+      ],
+      "topics": [
+        "Applied Mathematics",
+        "Optimization"
+      ],
+      "links": {
+        "card": "projects.html#extended-essay",
+        "primary": "assets/media/proj_ee.pdf"
+      },
+      "media": {
+        "thumb": "assets/media/proj_ee.png"
+      }
+    },
+    {
+      "slug": "theory-of-knowledge",
+      "title": "Theory of Knowledge",
+      "summary": "This Theory of Knowledge essay explores the relationship between trust and the acceptance of knowledge claims across the areas of History and the Arts. By examining the role of trust in evaluating sources and methods, as well as the influence of personal Ways of Knowing like emotion and intuition, the essay argues that while trust often plays a key role in accepting external knowledge claims, it is not always required when knowledge is formed internally. The analysis concludes that trust is frequently, but not always, involved in the acceptance of knowledge claims.",
+      "skills": [
+        "Scientific Writing"
+      ],
+      "topics": [
+        "Theory of Knowledge",
+        "Epistemology"
+      ],
+      "links": {
+        "card": "projects.html#theory-of-knowledge",
+        "primary": "assets/media/proj_tok.pdf"
+      },
+      "media": {
+        "thumb": "assets/media/proj_tok.webp"
+      }
+    },
+    {
+      "slug": "sypt-magnetic-levitation",
+      "title": "SYPT: Magnetic Levitation",
+      "summary": "This presentation, prepared for the 2020 Swiss Young Physicists' Tournament (SYPT), explores the intriguing phenomenon of magnetic levitation in a system where a large disk-shaped magnet is placed on a non-magnetic conductive plate, while a smaller magnet moves beneath it. Under specific conditions, the top magnet may levitate or exhibit unique motion patterns.",
+      "skills": [
+        "Teaching & Mentorship",
+        "Visual Storytelling"
+      ],
+      "topics": [
+        "Physics",
+        "Experimental Mechanics"
+      ],
+      "links": {
+        "card": "projects.html#sypt-magnetic-levitation",
+        "primary": "assets/media/proj_sypt2.pdf"
+      },
+      "media": {
+        "thumb": "assets/media/proj_sypt3.png"
+      }
+    },
+    {
+      "slug": "sypt-looping-pendulum",
+      "title": "SYPT: Looping Pendulum",
+      "summary": "This presentation, created for the 2019 Swiss Young Physicists' Tournament (SYPT), delves into the intriguing dynamics of a looping pendulum. A system with a heavy load and a lighter load, connected by a string over a horizontal rod, is analyzed as the lighter load's release causes it to sweep around the rod, preventing the heavier load from falling. Through experimental analysis and theoretical modeling, I investigated the forces, energy transfer, and motion involved.",
+      "skills": [
+        "Teaching & Mentorship",
+        "Visual Storytelling"
+      ],
+      "topics": [
+        "Physics",
+        "Nonlinear Dynamics"
+      ],
+      "links": {
+        "card": "projects.html#sypt-looping-pendulum",
+        "primary": "assets/media/proj_sypt3.pdf"
+      },
+      "media": {
+        "thumb": "assets/media/proj_sypt2.png"
+      }
+    },
+    {
+      "slug": "sypt-weighing-time",
+      "title": "SYPT: Weighing Time",
+      "summary": "This presentation, prepared for the 2018 Swiss Young Physicists' Tournament (SYPT), explores the intriguing phenomenon of an hourglass appearing to change weight while its sand flows. Through detailed experiments and theoretical modeling, I investigated the dynamic forces at play during sand flow, including the interplay of momentum transfer, impact forces, and system equilibrium.",
+      "skills": [
+        "Teaching & Mentorship",
+        "Visual Storytelling"
+      ],
+      "topics": [
+        "Physics",
+        "Granular Materials"
+      ],
+      "links": {
+        "card": "projects.html#sypt-weighing-time",
+        "primary": "assets/media/proj_sypt1.pdf"
+      },
+      "media": {
+        "thumb": "assets/media/proj_sypt1.png"
+      }
+    }
+  ],
+  "experiences": [
+    {
+      "title": "Tunable Nanofiber-Hydrogel Composite for Regenerative Inflammation",
+      "org": "Institute of NanoBioTechnology",
+      "dateStart": "2023-09-01",
+      "dateEnd": "2025-05-01",
+      "summary": "Developed a tunable nanofiber-hydrogel composite (NHC) with adjustable stiffness by modulating cross-linker and hyaluronic acid densities, enabling enhanced regenerative effects following subcutaneous injection.",
+      "skills": [
+        "Hydrogel Architecture",
+        "Mechanical Characterization",
+        "Cell Culture Operations"
+      ],
+      "topics": [
+        "Biomaterials",
+        "Materials Characterization"
+      ],
+      "links": {
+        "card": "experience.html#tunable-nanofiber-hydrogel-composite-for-regenerative-inflammation",
+        "primary": "https://onlinelibrary.wiley.com/doi/full/10.1002/adhm.202403094"
+      },
+      "media": {
+        "thumb": "assets/media/exp1.png"
+      },
+      "slug": "tunable-nanofiber-hydrogel-composite-for-regenerative-inflammation",
+      "bodyHtml": "<p>As part of the <a href=\"https://maogroup.jhu.edu/\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"styled-link\">Mao Lab</a> at Johns Hopkins University, developed a tunable nanofiber-hydrogel composite (NHC) with adjustable stiffness by modulating cross-linker and hyaluronic acid (HA) densities. This project aimed to enhance regenerative effects following subcutaneous injection of the NHC. Through this work, I built proficiency in hydrogel formulation and material characterization techniques, including rheology and SEM. <a href=\"https://onlinelibrary.wiley.com/doi/full/10.1002/adhm.202403094\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"styled-link\">Advanced Healthcare Materials</a>.</p>",
+      "sectionId": "mao-section"
+    },
+    {
+      "title": "Injectable Macroporous Hydrogel for Enhanced Regeneration",
+      "org": "Institute of NanoBioTechnology",
+      "dateStart": "2023-09-01",
+      "dateEnd": "2025-05-01",
+      "summary": "Engineered an injectable macroporous hydrogel composite with microgels of varied degradation rates to improve matrix porosity, cell infiltration, and pro-regenerative angiogenesis in vivo.",
+      "skills": [
+        "Hydrogel Architecture",
+        "In Vivo Models"
+      ],
+      "topics": [
+        "Regenerative Medicine",
+        "In Vivo Methods",
+        "Immunohistochemistry"
+      ],
+      "links": {
+        "card": "experience.html#injectable-macroporous-hydrogel-for-enhanced-regeneration",
+        "primary": "https://advanced.onlinelibrary.wiley.com/doi/abs/10.1002/adhm.202502353"
+      },
+      "media": {
+        "thumb": "assets/media/exp2.png"
+      },
+      "slug": "injectable-macroporous-hydrogel-for-enhanced-regeneration",
+      "bodyHtml": "<p>Developed and tested a novel injectable macroporous hydrogel composite with microgels of varying degradation profiles to enhance matrix porosity and cell infiltration. Conducted in vivo studies using rat models to evaluate tissue response, performing subcutaneous injections, macrophage depletion, and immunostaining. Findings demonstrated improved host cell infiltration, 3D cellular network formation, and pro-regenerative angiogenesis, offering a promising approach for tissue engineering applications. <a href=\"https://advanced.onlinelibrary.wiley.com/doi/abs/10.1002/adhm.202502353\" target=\"_blank\" rel=\"noopener noreferrer\" class=\"styled-link\">Advanced Healthcare Materials</a>.</p>",
+      "mediaSide": "right"
+    },
+    {
+      "title": "Nanofiber-Hydrogel for Radiation Dermatitis Prevention",
+      "org": "Institute of NanoBioTechnology",
+      "dateStart": "2023-09-01",
+      "dateEnd": "2025-05-01",
+      "summary": "Developed a nanofiber-hydrogel composite loaded with extracellular vesicles to mitigate radiation-induced skin damage, demonstrating improved host cell infiltration and reduced fibrosis in vivo.",
+      "skills": [
+        "Delivery Platforms",
+        "In Vivo Models"
+      ],
+      "topics": [
+        "Radiation Biology",
+        "Regenerative Medicine",
+        "Biomedical Imaging"
+      ],
+      "media": {
+        "thumb": "assets/media/exp3.png"
+      },
+      "slug": "nanofiber-hydrogel-for-radiation-dermatitis-prevention",
+      "links": {
+        "card": "experience.html#nanofiber-hydrogel-for-radiation-dermatitis-prevention",
+        "primary": "experience.html#nanofiber-hydrogel-for-radiation-dermatitis-prevention"
+      },
+      "bodyHtml": "<p>Developed an innovative nanofiber-hydrogel composite (NHC) loaded with extracellular vesicles (EVs) derived from adipose stem cells to address radiation-induced skin damage. Designed and conducted assays to evaluate EV release profiles and their regenerative effects. In vivo studies demonstrated the NHC-EVs effectively promoted cell infiltration, reduced fibrotic tissue formation, and supported the regeneration of fat and hair follicles. This work offers a novel, off-the-shelf approach to preventing radiation dermatitis and restoring skin functionality, with significant implications for cancer therapy.</p>"
+    },
+    {
+      "title": "Variably Crosslinked Hydrogels to Enhance Cell Infiltration",
+      "org": "Institute of NanoBioTechnology",
+      "dateStart": "2024-01-01",
+      "dateEnd": "2025-05-01",
+      "summary": "Leading the design of hybrid hydrogels combining high- and low-stiffness components to balance mechanical stability with macroporosity, promoting comprehensive soft-tissue regeneration.",
+      "skills": [
+        "Hydrogel Architecture",
+        "Mechanical Characterization",
+        "In Vivo Models"
+      ],
+      "topics": [
+        "Biomaterials",
+        "Tissue Regeneration"
+      ],
+      "media": {
+        "thumb": "assets/media/exp4.png"
+      },
+      "slug": "variably-crosslinked-hydrogels-to-enhance-cell-infiltration",
+      "links": {
+        "card": "experience.html#variably-crosslinked-hydrogels-to-enhance-cell-infiltration",
+        "primary": "experience.html#variably-crosslinked-hydrogels-to-enhance-cell-infiltration"
+      },
+      "bodyHtml": "<p>Currently leading a project to develop innovative hydrogels that combine high- and low-stiffness components to balance mechanical stability and cellular infiltration. By integrating hydrogels with varying cross-linking densities, this approach aims to create macroporous structures that promote cell infiltration while preserving the structural integrity of the matrix. Early results demonstrate improved cell infiltration and promising in vivo stability, suggesting the potential for these hydrogels to support comprehensive soft-tissue restoration and advance tissue engineering applications.</p>",
+      "mediaSide": "right"
+    },
+    {
+      "title": "Locaze: Eye Movement Tracking for Concussion Detection",
+      "org": "Locaze",
+      "dateStart": "2022-01-01",
+      "dateEnd": "2025-12-31",
+      "summary": "Co-founded Locaze and led development of a neural network powered mobile app that analyzes eye movements to detect concussions, securing funding and preparing for IRB-backed trials.",
+      "skills": [
+        "Model Development",
+        "Vision Pipelines",
+        "App Prototypes",
+        "Interaction Design"
+      ],
+      "topics": [
+        "mHealth",
+        "Computer Vision",
+        "Machine Learning"
+      ],
+      "links": {
+        "card": "experience.html#locaze-eye-movement-tracking-for-concussion-detection",
+        "primary": "https://locaze.co"
+      },
+      "media": {
+        "thumb": "assets/media/locaze.avif"
+      },
+      "slug": "locaze-eye-movement-tracking-for-concussion-detection",
+      "bodyHtml": "<p><a href=\"https://locaze.co\" target=\"_blank\" class=\"styled-link\">Locaze</a> is a mobile application developed in collaboration with Johns Hopkins Medical Institute to detect concussions through advanced eye movement tracking. As CTO and a founding member, I have led the app’s development, combining neural networks and front-end design to create an innovative, user-friendly tool. With $7,500 in seed funding secured and IRB-approved testing set to begin in 2024, Locaze is poised to transform sports medicine by offering accessible and accurate concussion detection.</p>",
+      "sectionId": "locaze-section"
+    },
+    {
+      "title": "Blood-Joint Transwell Model for Diabetic Osteoarthritis Research",
+      "org": "Columbia University",
+      "dateStart": "2024-06-01",
+      "dateEnd": "2024-08-31",
+      "summary": "Built a blood-joint transwell system integrating endothelial cells, synoviocytes, and chondrocytes to study diabetic impacts on joint inflammation and ECM degradation, presenting findings at BMES 2024.",
+      "skills": [
+        "Cell Culture Operations",
+        "Experimental Design Analytics",
+        "Scientific Writing"
+      ],
+      "topics": [
+        "Diabetes Research",
+        "Osteoarthritis",
+        "Molecular Biology",
+        "Inflammation Biology"
+      ],
+      "links": {
+        "card": "experience.html#blood-joint-transwell-model-for-diabetic-osteoarthritis-research",
+        "primary": "https://www.thehunglab.com/news/2024/10/8/kedar-krishnan-completes-sure-program-at-cel"
+      },
+      "media": {
+        "thumb": "assets/media/sure.jpeg"
+      },
+      "slug": "blood-joint-transwell-model-for-diabetic-osteoarthritis-research",
+      "bodyHtml": "<p>As a Summer Research Intern in Prof. Clark T. Hung's <a href=\"https://www.thehunglab.com/news/2024/10/8/kedar-krishnan-completes-sure-program-at-cel\" target=\"_blank\" class=\"styled-link\">Cellular Engineering Lab</a>, contributed to advancing regenerative strategies for load-bearing tissues such as articular cartilage. My work involved developing a novel blood-joint transwell system combining human umbilical vein endothelial cells, fibroblast-like synoviocytes, and articular chondrocytes to model joint space interactions. I investigated the effects of euglycemic and hyperglycemic conditions on cell viability, inflammation, and extracellular matrix (ECM) degradation, elucidating the impact of metabolic conditions on joint degeneration. These findings were presented in a poster at the <a href=\"assets/media/bmes_poster.pdf\" target=\"_blank\" class=\"styled-link\">Biomedical Engineering Society Annual Meeting</a> in October 2024.</p>"
+    },
+    {
+      "title": "Cellular Heterogeneity and Organoid Growth Research",
+      "org": "Friedrich Miescher Institute",
+      "dateStart": "2022-06-01",
+      "dateEnd": "2022-08-31",
+      "summary": "Optimized multiplexed immunostaining, performed Cas9-Nickase gene editing, and automated imaging pipelines to study cellular heterogeneity in intestinal organoid development.",
+      "skills": [
+        "Cell Culture Operations",
+        "Microscopy & Imaging",
+        "Lab Automation & Data Logging"
+      ],
+      "topics": [
+        "Organoid Biology",
+        "Stem Cell Biology",
+        "Genetic Engineering",
+        "High-Content Imaging",
+        "Lab Automation"
+      ],
+      "links": {
+        "card": "experience.html#cellular-heterogeneity-and-organoid-growth-research",
+        "primary": "https://liberalilab.org/"
+      },
+      "media": {
+        "thumb": "assets/media/fmi.jpg"
+      },
+      "slug": "cellular-heterogeneity-and-organoid-growth-research",
+      "bodyHtml": "<p>During my internship at the <a href=\"https://liberalilab.org/\" target=\"_blank\" class=\"styled-link\">Friedrich Miescher Institute for Biomedical Research</a> in the lab of Prof. Prisca Liberali, I contributed to studies investigating cellular heterogeneity during collective cell behavior, focusing on intestinal organoid growth. My work involved optimizing multiplexed immunostaining protocols to enhance visualization of cellular morphology and subtypes critical for organogenesis. I also performed cloning and Cas9-Nickase gene editing for cell lineage tracking and collaborated on training neural networks and developing Python scripts to automate image analysis. These efforts provided valuable insights into stem cell roles and processes driving organoid formation.</p>"
+    }
+  ]
+}

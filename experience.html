@@ -64,6 +64,64 @@ The above copyright notice and this permission notice shall be included in all c
       width: 28px;
       height: 28px;
     }
+
+    .experience-card {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+      padding: 20px;
+      border-radius: 15px;
+      background-color: rgba(255, 255, 255, 0.9);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+      width: 100%;
+    }
+
+    .experience-card img {
+      width: 33%;
+      max-width: 320px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+      flex: 1;
+    }
+
+    .experience-card__body {
+      flex: 2;
+      text-align: center;
+    }
+
+    .experience-card__badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .experience-card__image--left {
+      margin-right: 20px;
+    }
+
+    .experience-card__image--right {
+      margin-left: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .experience-card {
+        flex-direction: column;
+        text-align: left;
+      }
+
+      .experience-card img {
+        width: 100%;
+        margin-right: 0;
+      }
+
+      .experience-card__image--left,
+      .experience-card__image--right {
+        margin: 0 0 15px;
+      }
+    }
   </style>
 </head>
 
@@ -93,6 +151,9 @@ The above copyright notice and this permission notice shall be included in all c
             <a href="projects.html" class="btn btn-danger btn-round">Projects</a>
           </li>
           <li class="nav-item">
+            <a href="constellation.html" class="btn btn-danger btn-round">Skills</a>
+          </li>
+          <li class="nav-item">
             <a href="atlas.html" class="btn btn-danger btn-round">Photo Atlas</a>
           </li>
         </ul>
@@ -114,240 +175,9 @@ The above copyright notice and this permission notice shall be included in all c
   </div>
   <div class="main">
     <div class="section text-center">
-      <div class="container" id="mao-section">
-        <div class="title">
-          <h2>Institute of NanoBioTechnology (2023 - 2025)</h2>
-        </div>
-        <div class="container mt-5">
-          <div class="card mb-4 shadow" style="display: flex; flex-direction: row; align-items: center; padding: 20px; border-radius: 15px; background-color: rgba(255, 255, 255, 0.9);">
-            <!-- Image on the Left -->
-            <img src="assets/media/exp1.png" alt="Project Image" class="card-img-left" style="width: 33%; height: auto; object-fit: cover; border-radius: 10px; margin-right: 20px;">
-
-            <!-- Content on the Right -->
-            <div style="flex: 2;">
-              <h5 class="card-title font-weight-bold">Tunable Nanofiber-Hydrogel Composite for Regenerative Inflammation</h5>
-              <p>
-                As part of the 
-                <a href="https://maogroup.jhu.edu/" 
-                  target="_blank" rel="noopener noreferrer" class="styled-link">Mao Lab
-                </a>
-                  at Johns Hopkins University, developed a tunable nanofiber-hydrogel composite (NHC) with adjustable stiffness by modulating cross-linker and hyaluronic acid (HA) densities. This project aimed to enhance regenerative effects following subcutaneous injection of the NHC. Through this work, I built proficiency in hydrogel formulation and material characterization techniques, including rheology and SEM. 
-                <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/adhm.202403094" 
-                  target="_blank" rel="noopener noreferrer" class="styled-link">
-                  Advanced Healthcare Materials
-                </a>.
-              </p>
-              <br>
-              <!-- Labels/Badges -->
-              <div>
-                <span class="badge badge-warning badge-pill mr-2">Rheology</span>
-                <span class="badge badge-warning badge-pill mr-2">SEM</span>
-                <span class="badge badge-info badge-pill mr-2">Biomaterials</span>
-                <span class="badge badge-info badge-pill mr-2">In vitro</span>
-              </div>
-              <br>
-            </div>
-          </div>
-        </div>
-        <div class="container mt-5">
-          <div class="card mb-4 shadow" style="display: flex; flex-direction: row; align-items: center; padding: 20px; border-radius: 15px; background-color: rgba(255, 255, 255, 0.9);">
-
-            <!-- Content on the Right -->
-            <div style="flex: 2;">
-              <h5 class="card-title font-weight-bold">Injectable Macroporous Hydrogel for Enhanced Regeneration</h5>
-              <p>
-                Developed and tested a novel injectable macroporous hydrogel composite with microgels 
-                of varying degradation profiles to enhance matrix porosity and cell infiltration. 
-                Conducted in vivo studies using rat models to evaluate tissue response, performing 
-                subcutaneous injections, macrophage depletion, and immunostaining. Findings 
-                demonstrated improved host cell infiltration, 3D cellular network formation, and 
-                pro-regenerative angiogenesis, offering a promising approach for tissue engineering applications.
-                <a href="https://advanced.onlinelibrary.wiley.com/doi/abs/10.1002/adhm.202502353" 
-                  target="_blank" rel="noopener noreferrer" class="styled-link">
-                  Advanced Healthcare Materials
-                </a>.
-              </p>
-              <br>
-              <!-- Labels/Badges -->
-              <div>
-                <span class="badge badge-warning badge-pill mr-2">Subcutaneous Injections</span>
-                <span class="badge badge-warning badge-pill mr-2">Tail Vein Injections</span>
-                <span class="badge badge-warning badge-pill mr-2">Immunostaining</span>
-                <span class="badge badge-info badge-pill mr-2">Biomaterials</span>
-                <span class="badge badge-info badge-pill mr-2">Immune Response</span>
-                <span class="badge badge-info badge-pill">In vivo</span>
-              </div>
-              <br>
-            </div>
-            <img src="assets/media/exp2.png" alt="Project Image" class="card-img-left" style="width: 33%; height: auto; object-fit: cover; border-radius: 10px; margin-right: 20px;">
-          </div>
-        </div>
-        <div class="container mt-5">
-          <div class="card mb-4 shadow" style="display: flex; flex-direction: row; align-items: center; padding: 20px; border-radius: 15px; background-color: rgba(255, 255, 255, 0.9);">
-            <!-- Image on the Left -->
-            <img src="assets/media/exp3.png" alt="Project Image" class="card-img-left" style="width: 33%; height: auto; object-fit: cover; border-radius: 10px; margin-right: 20px;">
-
-            <!-- Content on the Right -->
-            <div style="flex: 2;">
-              <h5 class="card-title font-weight-bold">Nanofiber-Hydrogel for Radiation Dermatitis Prevention</h5>
-              <p>
-                Developed an innovative nanofiber-hydrogel composite (NHC) loaded with extracellular 
-                vesicles (EVs) derived from adipose stem cells to address radiation-induced skin 
-                damage. Designed and conducted assays to evaluate EV release profiles and their 
-                regenerative effects. In vivo studies demonstrated the NHC-EVs effectively promoted 
-                cell infiltration, reduced fibrotic tissue formation, and supported the regeneration 
-                of fat and hair follicles. This work offers a novel, off-the-shelf approach to 
-                preventing radiation dermatitis and restoring skin functionality, with significant 
-                implications for cancer therapy.
-              </p>
-              <br>
-              <!-- Labels/Badges -->
-              <div>
-                <span class="badge badge-warning badge-pill mr-2">Confocal Imaging</span>
-                <span class="badge badge-warning badge-pill mr-2">Study Design</span>
-                <span class="badge badge-warning badge-pill mr-2">Scientific Writing</span>
-                <span class="badge badge-info badge-pill mr-2">Biomaterials</span>
-                <span class="badge badge-info badge-pill mr-2">Immune Response</span>
-                <span class="badge badge-info badge-pill">In vivo</span>
-              </div>
-              <br>
-            </div>
-          </div>
-        </div>
-        <div class="container mt-5">
-          <div class="card mb-4 shadow" style="display: flex; flex-direction: row; align-items: center; padding: 20px; border-radius: 15px; background-color: rgba(255, 255, 255, 0.9);">
-
-            <!-- Content on the Right -->
-            <div style="flex: 2;">
-              <h5 class="card-title font-weight-bold">Variably Crosslinked Hydrogels to Enhance Cell Infiltration</h5>
-              <p>
-                Currently leading a project to develop innovative hydrogels that combine high- 
-                and low-stiffness components to balance mechanical stability and cellular infiltration. 
-                By integrating hydrogels with varying cross-linking densities, this approach aims to 
-                create macroporous structures that promote cell infiltration while preserving the 
-                structural integrity of the matrix. Early results demonstrate improved cell 
-                infiltration and promising in vivo stability, suggesting the potential for these 
-                hydrogels to support comprehensive soft-tissue restoration and advance tissue 
-                engineering applications.
-              </p>
-              <br>
-              <!-- Labels/Badges -->
-              <div>
-                <span class="badge badge-warning badge-pill mr-2">Independent Study Design</span>
-                <span class="badge badge-warning badge-pill mr-2">Scientific Writing</span>
-                <span class="badge badge-info badge-pill mr-2">Biomaterials</span>
-                <span class="badge badge-info badge-pill mr-2">Immune Response</span>
-                <span class="badge badge-info badge-pill">In vivo</span>
-              </div>
-              <br>
-            </div>
-            <img src="assets/media/exp4.png" alt="Project Image" class="card-img-left" style="width: 33%; height: auto; object-fit: cover; border-radius: 10px; margin-right: 20px;">
-          </div>
-        </div>
-      </div>
-      <br>
-      <div class="container" id="locaze-section">
-        <div class="title">
-          <h2>Locaze (2022 - 2025)</h2>
-        </div>
-        <div class="container mt-5">
-          <div class="card mb-4 shadow" style="display: flex; flex-direction: row; align-items: center; padding: 20px; border-radius: 15px; background-color: rgba(255, 255, 255, 0.9);">
-            <!-- Image on the Left -->
-            <img src="assets/media/locaze.avif" alt="Project Image" class="card-img-left" style="width: 33%; height: auto; object-fit: cover; border-radius: 10px; margin-right: 20px;">
-
-            <!-- Content on the Right -->
-            <div style="flex: 2;">
-              <h5 class="card-title font-weight-bold">Locaze: Eye Movement Tracking for Concussion Detection</h5>
-              <p>
-                <a href="https://locaze.co" target="_blank" class="styled-link">Locaze</a> is a mobile application developed in collaboration with Johns Hopkins Medical Institute to detect concussions through advanced eye movement tracking. As CTO and a founding member, I have led the app’s development, combining neural networks and front-end design to create an innovative, user-friendly tool. With $7,500 in seed funding secured and IRB-approved testing set to begin in 2024, Locaze is poised to transform sports medicine by offering accessible and accurate concussion detection.
-              </p>
-              <br>
-              <!-- Labels/Badges -->
-              <div>
-                <span class="badge badge-warning badge-pill mr-2">Javascript</span>
-                <span class="badge badge-warning badge-pill mr-2">React Native</span>
-                <span class="badge badge-warning badge-pill mr-2">Python</span>
-                <span class="badge badge-warning badge-pill mr-2">Tensorflow</span>
-                <span class="badge badge-info badge-pill mr-2">Computer Vision</span>
-                <span class="badge badge-info badge-pill mr-2">Machine Learning</span>
-                <span class="badge badge-info badge-pill">Design</span>
-              </div>
-              <br>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-      <div class="container">
-        <div class="title">
-          <h2>Columbia University (2024)</h2>
-        </div>
-        <div class="container mt-5">
-          <div class="card mb-4 shadow" style="display: flex; flex-direction: row; align-items: center; padding: 20px; border-radius: 15px; background-color: rgba(255, 255, 255, 0.9);">
-            <!-- Image on the Left -->
-            <img src="assets/media/sure.jpeg" alt="Project Image" class="card-img-left" style="width: 33%; height: auto; object-fit: cover; border-radius: 10px; margin-right: 20px;">
-
-            <!-- Content on the Right -->
-            <div style="flex: 2;">
-              <h5 class="card-title font-weight-bold">Blood-Joint Transwell Model for Diabetic Osteoarthritis Research</h5>
-              <p>
-                As a Summer Research Intern in Prof. Clark T. Hung's <a href="https://www.thehunglab.com/news/2024/10/8/kedar-krishnan-completes-sure-program-at-cel" target="_blank" class="styled-link">Cellular Engineering Lab</a>, contributed to advancing regenerative strategies for load-bearing tissues such as articular cartilage. My work involved developing a novel blood-joint transwell system combining human umbilical vein endothelial cells, fibroblast-like synoviocytes, and articular chondrocytes to model joint space interactions. I investigated the effects of euglycemic and hyperglycemic conditions on cell viability, inflammation, and extracellular matrix (ECM) degradation, elucidating the impact of metabolic conditions on joint degeneration. These findings were presented in a poster at the <a href="assets/media/bmes_poster.pdf" target="_blank" class="styled-link">Biomedical Engineering Society Annual Meeting</a> in October 2024.
-              </p>
-              <br>
-              <!-- Labels/Badges -->
-              <div>
-                <span class="badge badge-warning badge-pill mr-2">PCR</span>
-                <span class="badge badge-warning badge-pill mr-2">Media Assays</span>
-                <span class="badge badge-warning badge-pill mr-2">Immunostaining</span>
-                <span class="badge badge-warning badge-pill mr-2">Scientific Presentation</span>
-                <span class="badge badge-warning badge-pill mr-2">Study Design</span>
-                <span class="badge badge-info badge-pill mr-2">Diabetes</span>
-                <span class="badge badge-info badge-pill">Osteoarthritis</span>
-              </div>
-              <br>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-      <div class="container">
-        <div class="title">
-          <h2>Friedrich Miescher Institute (2022)</h2>
-        </div>
-        <div class="container mt-5">
-          <div class="card mb-4 shadow" style="display: flex; flex-direction: row; align-items: center; padding: 20px; border-radius: 15px; background-color: rgba(255, 255, 255, 0.9);">
-            <!-- Image on the Left -->
-            <img src="assets/media/fmi.jpg" alt="Project Image" class="card-img-left" style="width: 33%; height: auto; object-fit: cover; border-radius: 10px; margin-right: 20px;">
-
-            <!-- Content on the Right -->
-            <div style="flex: 2;">
-              <h5 class="card-title font-weight-bold">Cellular Heterogeneity and Organoid Growth Research</h5>
-              <p>
-                During my internship at the <a href="https://liberalilab.org/" target="_blank" class="styled-link">Friedrich Miescher Institute for Biomedical Research</a> in the lab of Prof. Prisca Liberali, I contributed to studies investigating cellular heterogeneity during collective cell behavior, focusing on intestinal organoid growth. My work involved optimizing multiplexed immunostaining protocols to enhance visualization of cellular morphology and subtypes critical for organogenesis. I also performed cloning and Cas9-Nickase gene editing for cell lineage tracking and collaborated on training neural networks and developing Python scripts to automate image analysis. These efforts provided valuable insights into stem cell roles and processes driving organoid formation.
-              </p>
-              <br>
-              <!-- Labels/Badges -->
-              <div>
-                <span class="badge badge-warning badge-pill mr-2">Gene Editing</span>
-                <span class="badge badge-warning badge-pill mr-2">Cell Culture</span>
-                <span class="badge badge-warning badge-pill mr-2">Immunostaining</span>
-                <span class="badge badge-warning badge-pill mr-2">Confocal Imaging</span>
-                <span class="badge badge-warning badge-pill mr-2">Python</span>
-                <span class="badge badge-warning badge-pill mr-2">Raspberry Pi</span>
-                <span class="badge badge-info badge-pill mr-2">Stem Cells</span>
-                <span class="badge badge-info badge-pill mr-2">Organoids</span>
-              </div>
-              <br>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      <div class="container mt-5" id="experiences-root"></div>
     </div>
-    
-    
-    
-      
+  </div>
     <footer class="footer footer-black footer-white">
       <div class="container">
         <div class="row align-items-center">
@@ -400,6 +230,180 @@ The above copyright notice and this permission notice shall be included in all c
     <script src="./assets/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
     <!--  Google Maps Plugin    -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <script type="module">
+      const root = document.getElementById("experiences-root");
+
+      const slugify = (value = "") =>
+        value
+          .toLowerCase()
+          .normalize("NFKD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-z0-9\s-]/g, "")
+          .trim()
+          .replace(/\s+/g, "-");
+
+      const parseDate = (value) => {
+        if (!value) return null;
+        const ms = Date.parse(value);
+        return Number.isNaN(ms) ? null : new Date(ms);
+      };
+
+      const formatRange = (minDate, maxDate) => {
+        const startYear = minDate?.getFullYear();
+        const endYear = maxDate?.getFullYear();
+        if (startYear && endYear) {
+          return startYear === endYear ? `${startYear}` : `${startYear} - ${endYear}`;
+        }
+        return startYear || endYear || "";
+      };
+
+      function groupExperiences(experiences = []) {
+        const groups = new Map();
+
+        experiences.forEach((exp) => {
+          const slug = exp.slug || slugify(exp.title || "");
+          const start = parseDate(exp.dateStart);
+          const end = parseDate(exp.dateEnd);
+          const org = exp.org || "Experience";
+          if (!groups.has(org)) {
+            groups.set(org, { org, items: [], minStart: null, maxEnd: null, sectionId: null });
+          }
+          const group = groups.get(org);
+          group.items.push({ ...exp, slug, start, end });
+          if (start && (!group.minStart || start < group.minStart)) group.minStart = start;
+          if (end && (!group.maxEnd || end > group.maxEnd)) group.maxEnd = end;
+          if (exp.sectionId && !group.sectionId) group.sectionId = exp.sectionId;
+        });
+
+        return Array.from(groups.values());
+      }
+
+      function renderExperiences(experiences = []) {
+        if (!root) return;
+        root.innerHTML = "";
+
+        const groups = groupExperiences(experiences);
+        if (!groups.length) {
+          const empty = document.createElement("p");
+          empty.className = "text-muted";
+          empty.textContent = "Experiences coming soon.";
+          root.appendChild(empty);
+          return;
+        }
+
+        groups.forEach((group, groupIndex) => {
+          const section = document.createElement("div");
+          section.className = "container text-center";
+          if (groupIndex > 0) section.classList.add("mt-5");
+          if (group.sectionId) section.id = group.sectionId;
+
+          const headingWrap = document.createElement("div");
+          headingWrap.className = "title";
+          const heading = document.createElement("h2");
+          const range = formatRange(group.minStart, group.maxEnd);
+          heading.textContent = range ? `${group.org} (${range})` : group.org;
+          headingWrap.appendChild(heading);
+          section.appendChild(headingWrap);
+
+          group.items.forEach((exp) => {
+            const container = document.createElement("div");
+            container.className = "container mt-5 text-center";
+
+            const card = document.createElement("div");
+            card.className = "card mb-4 shadow experience-card";
+            card.id = exp.slug;
+
+            const body = document.createElement("div");
+            body.className = "experience-card__body";
+
+            const title = document.createElement("h5");
+            title.className = "card-title font-weight-bold";
+            title.textContent = exp.title || "Experience";
+            body.appendChild(title);
+
+            if (exp.bodyHtml) {
+              const bodyContent = document.createElement("div");
+              bodyContent.innerHTML = exp.bodyHtml;
+              body.appendChild(bodyContent);
+              body.appendChild(document.createElement("br"));
+            } else if (exp.summary) {
+              const paragraph = document.createElement("p");
+              paragraph.textContent = exp.summary;
+              body.appendChild(paragraph);
+              body.appendChild(document.createElement("br"));
+            }
+
+            const badges = document.createElement("div");
+            badges.className = "experience-card__badges";
+
+            (exp.skills || []).forEach((skill) => {
+              const link = document.createElement("a");
+              link.className = "badge badge-info badge-pill";
+              link.dataset.badge = "1";
+              link.href = "constellation.html?skill=" + encodeURIComponent(slugify(skill));
+              link.textContent = skill;
+              badges.appendChild(link);
+            });
+
+            (exp.topics || []).forEach((topic) => {
+              const span = document.createElement("span");
+              span.className = "badge badge-warning badge-pill";
+              span.dataset.badge = "2";
+              span.textContent = topic;
+              badges.appendChild(span);
+            });
+
+            if (badges.children.length) {
+              body.appendChild(badges);
+              body.appendChild(document.createElement("br"));
+            }
+
+            const thumb = exp.media?.thumb;
+            const mediaSide = (exp.mediaSide || "left").toLowerCase();
+            let imageNode = null;
+            if (thumb) {
+              const img = document.createElement("img");
+              img.src = thumb;
+              img.alt = exp.title || "";
+              img.classList.add(mediaSide === "right" ? "experience-card__image--right" : "experience-card__image--left");
+              imageNode = img;
+            }
+
+            if (mediaSide === "right") {
+              card.appendChild(body);
+              if (imageNode) card.appendChild(imageNode);
+            } else {
+              if (imageNode) card.appendChild(imageNode);
+              card.appendChild(body);
+            }
+
+            container.appendChild(card);
+            section.appendChild(container);
+          });
+
+          root.appendChild(section);
+          if (groupIndex !== groups.length - 1) {
+            root.appendChild(document.createElement("br"));
+          }
+        });
+      }
+
+      async function loadExperiences() {
+        if (!root) return;
+        try {
+          const response = await fetch("./assets/data/site-data.json", { cache: "no-cache" });
+          if (!response.ok) throw new Error(`Failed to load site data (${response.status})`);
+          const siteData = await response.json();
+          renderExperiences(siteData.experiences || []);
+        } catch (error) {
+          console.error(error);
+          root.innerHTML = '<p class="text-danger">Unable to load experiences right now.</p>';
+        }
+      }
+
+      loadExperiences();
+    </script>
+
     <script>
       $(document).ready(function() {
 

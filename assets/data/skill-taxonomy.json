@@ -1,0 +1,138 @@
+{
+  "categories": [
+    {
+      "id": "lab-techniques",
+      "label": "Lab Techniques",
+      "display": "Lab Techniques",
+      "color": "#f97316",
+      "groups": [
+        {
+          "id": "molecular-analysis",
+          "label": "Molecular Analysis",
+          "display": "Molecular Analysis",
+          "skills": [
+            { "id": "lab automation & data logging", "label": "Lab Automation & Data Logging" }
+          ]
+        },
+        {
+          "id": "imaging-culture",
+          "label": "Imaging & Culture",
+          "display": "Imaging & Culture",
+          "skills": [
+            { "id": "microscopy & imaging", "label": "Microscopy & Imaging" },
+            { "id": "cell culture operations", "label": "Cell Culture Operations" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "regenerative-engineering",
+      "label": "Regenerative Engineering",
+      "display": "Regenerative Engineering",
+      "color": "#f59e0b",
+      "groups": [
+        {
+          "id": "biomaterials",
+          "label": "Biomaterials Design",
+          "display": "Biomaterials Design",
+          "skills": [
+            { "id": "hydrogel architecture", "label": "Hydrogel Architecture" },
+            { "id": "mechanical characterization", "label": "Mechanical Characterization" }
+          ]
+        },
+        {
+          "id": "delivery-systems",
+          "label": "Delivery Systems",
+          "display": "Delivery Systems",
+          "skills": [
+            { "id": "delivery platforms", "label": "Delivery Platforms" },
+            { "id": "in vivo models", "label": "In Vivo Models" }
+          ]
+        },
+        {
+          "id": "translational-readiness",
+          "label": "Translational Readiness",
+          "display": "Translational Readiness",
+          "skills": [
+            { "id": "study design & irb", "label": "Study Design & IRB" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "computational-products",
+      "label": "Computational Products",
+      "display": "Computational Products",
+      "color": "#2563eb",
+      "groups": [
+        {
+          "id": "machine-learning",
+          "label": "Machine Learning",
+          "display": "Machine Learning",
+          "skills": [
+            { "id": "model development", "label": "Model Development" },
+            { "id": "vision pipelines", "label": "Vision Pipelines" }
+          ]
+        },
+        {
+          "id": "data-engineering",
+          "label": "Data Engineering",
+          "display": "Data Engineering",
+          "skills": [
+            { "id": "data wrangling & pipelines", "label": "Data Wrangling & Pipelines" },
+            { "id": "experimental design analytics", "label": "Experimental Design Analytics" }
+          ]
+        },
+        {
+          "id": "product-prototyping",
+          "label": "Product Prototyping",
+          "display": "Product Prototyping",
+          "skills": [
+            { "id": "app prototypes", "label": "App Prototypes" },
+            { "id": "interaction design", "label": "Interaction Design" },
+            { "id": "hardware integration", "label": "Hardware Integration" },
+            { "id": "data visualization", "label": "Data Visualization" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "communication",
+      "label": "Communication",
+      "display": "Communication",
+      "color": "#7c3aed",
+      "groups": [
+        {
+          "id": "scientific-communication",
+          "label": "Scientific Communication",
+          "display": "Scientific Communication",
+          "skills": [
+            { "id": "scientific writing", "label": "Scientific Writing" },
+            { "id": "visual storytelling", "label": "Visual Storytelling" },
+            { "id": "teaching & mentorship", "label": "Teaching & Mentorship" }
+          ]
+        },
+        {
+          "id": "language-outreach",
+          "label": "Language Outreach",
+          "display": "Language Outreach",
+          "skills": [
+            { "id": "multilingual outreach", "label": "Multilingual Outreach" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "unsorted",
+      "label": "Unsorted",
+      "hidden": true,
+      "groups": [
+        {
+          "id": "tbd",
+          "label": "To Place",
+          "skills": []
+        }
+      ]
+    }
+  ]
+}

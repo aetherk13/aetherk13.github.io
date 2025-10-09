@@ -126,6 +126,8 @@
       font-weight: 700;
       color: #0f172a;
       letter-spacing: .2px;
+      padding-right: 32px;
+      font-size: 1.6rem;
     }
 
     /* Close button */
@@ -140,11 +142,34 @@
 
     /* Body */
     .modal-skill .modal-body {
-      padding: 16px 18px;
+      padding: 18px 20px;
+      color: #0c1220;
+    }
+    .modal-skill .modal-body p { margin-bottom: 10px; line-height: 1.55; }
+    .modal-skill .modal-body .muted { color: #475569; font-size: 0.95em; }
+    .modal-skill .modal-context {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #475569;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(100, 116, 139, 0.16);
+      margin-bottom: 12px;
+    }
+    .modal-skill .modal-description {
+      margin: 4px 0 14px 0;
+      font-size: 0.96rem;
       color: #0f172a;
     }
-    .modal-skill .modal-body p { margin-bottom: 10px; line-height: 1.45; }
-    .modal-skill .modal-body .muted { color: #475569; font-size: 0.95em; }
+    .modal-skill .modal-description--empty {
+      color: #94a3b8;
+      font-style: italic;
+    }
 
     /* Project link list */
     .modal-skill .proj-list {
@@ -154,12 +179,13 @@
     .modal-skill .proj-list li + li { margin-top: 6px; }
     .modal-skill .proj-link {
       text-decoration: none;
-      border-bottom: 1px dashed rgba(249, 99, 50, .35);
+      color: #17a2b8;
+      border-bottom: 1px dashed rgba(70, 12, 194, 0.45);
       transition: color .15s ease, border-color .15s ease;
     }
     .modal-skill .proj-link:hover {
-      color: #c44218;
-      border-color: rgba(196, 66, 24, .75);
+      color: #0e6774;
+      border-color: rgba(154, 52, 18, .85);
     }
 
     /* Footer */
@@ -230,7 +256,7 @@
           <h4>Debug</h4>
           <div class="row">
             <label for="toggle-debug">Show radii</label>
-            <input id="toggle-debug" type="checkbox" checked />
+            <input id="toggle-debug" type="checkbox" />
           </div>
           <div class="row">
             <label>Ellipse ratio</label>
@@ -300,6 +326,7 @@
 
   <!-- D3 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+  <script src="./assets/data/skill-map.js"></script>
 
   <!-- Constellation logic (elliptical metric everywhere) -->
   <script>
@@ -313,7 +340,7 @@
     const ellipseRatioLabel = document.getElementById('ellipse-ratio-label');
     if (!container || !svgEl) return;
 
-    let skillGalaxy = { categories: [] };
+    let hiddenCategoryIds = new Set();
     let skillsGenerated = {};
     try {
       const [taxonomy, generated] = await Promise.all([
@@ -325,11 +352,13 @@
           .then((res) => (res.ok ? res.json() : {}))
           .catch(() => ({}))
       ]);
-      skillGalaxy = taxonomy || skillGalaxy;
+      hiddenCategoryIds = new Set((taxonomy?.categories || []).filter((c) => c.hidden).map((c) => c.id));
       skillsGenerated = generated || {};
     } catch (err) {
       console.error("Failed to load skill data", err);
     }
+
+    const skillGalaxy = window.skillGalaxy || { categories: [] };
 
     const slugify = (value = "") =>
       value
@@ -399,118 +428,84 @@
     // =========================
     const svg = d3.select(svgEl);
 
-    const rawCats = [];
-    const cats = [];
+    const rawCats = (skillGalaxy.categories || [])
+      .filter((cat) => !hiddenCategoryIds.has(cat?.id))
+      .map((c, i) => ({
+        id: c.id,
+        label: c.label ?? c.id,
+        display: c.display ?? null,
+        color: c.color || '#64748b',
+        groups: c.groups || [],
+        _idx: i
+      }));
+
+    const cats = rawCats.map(d => ({
+      id: d.id,
+      label: d.display || d.label || d.id,
+      fullLabel: d.label || d.id,
+      color: d.color,
+      type: 'category',
+      x: 0, y: 0, vx: 0, vy: 0,
+      r: P.catR,
+      m: P.mass.category
+    }));
+
     const subs = [];
     const skills = [];
-    const hasRelatedIndex = Object.keys(relatedIndex).length > 0;
 
-    (skillGalaxy.categories || []).forEach((catSource) => {
-      if (catSource?.hidden) return;
-
-      const color = catSource.color || '#64748b';
-      const filteredGroups = [];
-
-      (catSource.groups || []).forEach((group, gi) => {
-        const groupId = group.id || `g${gi}`;
-        const subId = `${catSource.id}__${groupId}`;
-        const groupSkills = [];
-
-        (group.skills || []).forEach((skill, si) => {
-          const skillLabel = skill.display || skill.label || skill.id || `skill-${si}`;
-          const slug = slugify(skill.label || skillLabel);
-          const fallbackProjects = Array.isArray(skill.projects) ? skill.projects : [];
-          const indexItems = hasRelatedIndex ? (relatedIndex[slug]?.items || []) : [];
-          const fallbackItems = fallbackProjects.map(title => {
-            let url = '#';
-            if (typeof PROJECT_LINKS !== 'undefined' && PROJECT_LINKS && typeof PROJECT_LINKS.get === 'function') {
-              url = PROJECT_LINKS.get(title) || url;
-            }
-            return { title, url, kind: 'project', slug: slugify(title) };
-          });
-          const relatedItems = indexItems.length ? indexItems : fallbackItems;
-          if (!relatedItems.length) return;
-
-          const skillId = `${subId}__${skill.id || `s${si}`}`;
-          skills.push({
-            id: skillId,
-            slug,
-            label: skillLabel,
-            fullLabel: skill.label || skillLabel,
-            color,
-            type: 'skill',
-            parentId: subId,
-            x: 0,
-            y: 0,
-            vx: 0,
-            vy: 0,
-            r: P.skillR,
-            m: P.mass.skill,
-            related: relatedItems,
-            weight: skill.weight || 1,
-            projects: fallbackProjects
-          });
-
-          groupSkills.push({
-            id: skill.id || `s${si}`,
-            label: skill.label,
-            display: skill.display,
-            slug,
-            related: relatedItems
-          });
-        });
-
-        if (!groupSkills.length) return;
-
+    rawCats.forEach((c, ci) => {
+      (c.groups || []).forEach((g, gi) => {
+        const subId = `${c.id}__${g.id || ('g'+gi)}`;
         subs.push({
           id: subId,
-          label: group.display || group.label || subId,
-          fullLabel: group.label || subId,
-          color,
+          label: (g.display || g.label || subId),
+          fullLabel: (g.label || subId),
+          color: c.color,
           type: 'subfocus',
-          parentId: catSource.id,
-          x: 0,
-          y: 0,
-          vx: 0,
-          vy: 0,
+          parentId: c.id,
+          x: 0, y: 0, vx: 0, vy: 0,
           r: P.subR,
           m: P.mass.subfocus
         });
-
-        filteredGroups.push({
-          id: groupId,
-          label: group.label,
-          display: group.display,
-          skills: groupSkills
+        (g.skills || []).forEach((s, si) => {
+          const skillId = `${subId}__${s.id || ('s'+si)}`;
+          const label = s.display || s.label || skillId;
+          const slug = slugify(s.label || label || skillId);
+          skills.push({
+            id: skillId,
+            slug,
+            label,
+            fullLabel: s.label || skillId,
+            color: c.color,
+            type: 'skill',
+            parentId: subId,
+            x: 0, y: 0, vx: 0, vy: 0,
+            r: P.skillR,
+            m: P.mass.skill,
+            weight: s.weight || 1,
+            related: [],
+            projects: Array.isArray(s.projects) ? s.projects : []
+          });
         });
       });
-
-      if (!filteredGroups.length) return;
-
-      const catIndex = rawCats.length;
-      rawCats.push({
-        id: catSource.id,
-        label: catSource.label ?? catSource.id,
-        display: catSource.display ?? null,
-        color,
-        groups: filteredGroups,
-        _idx: catIndex
-      });
-
-      cats.push({
-        id: catSource.id,
-        label: catSource.display || catSource.label || catSource.id,
-        fullLabel: catSource.label || catSource.id,
-        color,
-        type: 'category',
-        x: 0,
-        y: 0,
-        vx: 0,
-        vy: 0,
-        r: P.catR,
-        m: P.mass.category
-      });
     });
+
+    const hasRelatedIndex = Object.keys(relatedIndex).length > 0;
+    skills.forEach((skill) => {
+      const slug = skill.slug;
+      const fromIndex = hasRelatedIndex ? (relatedIndex[slug]?.items || []) : [];
+      if (fromIndex.length) {
+        skill.related = fromIndex;
+        return;
+      }
+      skill.related = (skill.projects || []).map((title) => ({
+        title,
+        url: '#',
+        kind: 'project',
+        slug: slugify(title)
+      }));
+    });
+
 
     const core = { id: 'core', type:'core', x: 0, y: 0, vx: 0, vy: 0, r: P.coreR, m: P.mass.core };
 
@@ -579,7 +574,7 @@
     // =========================
     // DEBUG (ellipses)
     // =========================
-    let showDebug = true;
+    let showDebug = false;
     const dbgPad  = gDebug.append('rect').attr('class', 'dbg-pad');
     const dbgCore = gDebug.append('ellipse').attr('class', 'dbg-core');
     const dbgWallCats = gDebug.append('rect').attr('class', 'dbg-wall');
@@ -972,17 +967,33 @@
       const relatedList = relatedItems.map(item => {
         const href = item.url || '#';
         const safeTitle = escapeHtml(item.title || '');
-        const kind = item.kind ? `<span class="text-muted small">(${escapeHtml(item.kind)})</span>` : '';
-        return `<li><a href="${href}">${safeTitle}</a>${kind ? ` ${kind}` : ''}</li>`;
+        const kind = item.kind ? `<span class=\"text-muted small\">(${escapeHtml(item.kind)})</span>` : '';
+        return `<li><a class=\"proj-link\" href=\"${href}\">${safeTitle}</a>${kind ? ` ${kind}` : ''}</li>`;
       }).join('');
 
-      const stars = '★'.repeat(Math.max(1, Math.min(5, skill.weight || 1)));
+      const contextHtml = context ? `<div class=\"modal-context\">${escapeHtml(context)}</div>` : '';
+      const description = (skill.description || '').trim();
+      const descriptionHtml = description
+        ? `<p class=\"modal-description\">${escapeHtml(description)}</p>`
+        : `<p class=\"modal-description modal-description--empty\">Add a brief description for this skill to highlight your experience.</p>`;
+      const relatedHtml = relatedList
+        ? `<h6 class=\"mt-3 mb-2\">Related work</h6><ul class=\"pl-3 proj-list\">${relatedList}</ul>`
+        : '<p class=\"text-muted\">No linked projects yet.</p>';
 
+      const modal = document.getElementById('skillModal');
+      const accent = modal.querySelector('.modal-accent');
+      if (accent) {
+        if (skill.color) {
+          accent.style.background = skill.color;
+        } else {
+          accent.style.background = 'linear-gradient(90deg, #f96332, #f6ad55)';
+        }
+      }
       document.getElementById('skillModalTitle').textContent = title;
       document.getElementById('skillModalBody').innerHTML = `
-        <p class="mb-1" style="font-weight:600">${context || ''}</p>
-        <p class="mb-2" aria-label="proficiency">${stars}</p>
-        ${relatedList ? `<h6 class="mt-3 mb-2">Related work</h6><ul class="pl-3">${relatedList}</ul>` : '<p class="text-muted">No linked projects yet.</p>'}
+        ${contextHtml}
+        ${descriptionHtml}
+        ${relatedHtml}
       `;
       $('#skillModal').modal('show');
     }
@@ -1035,6 +1046,7 @@
 
     // Panel wiring
     panelBtn.addEventListener('click', () => panel.classList.toggle('open'));
+    toggleDebugInput.checked = showDebug;
     toggleDebugInput.addEventListener('change', (e) => { showDebug = !!e.target.checked; renderDebug(); });
     btnResetParams.addEventListener('click', () => {
       const restored = JSON.parse(JSON.stringify(P_DEFAULT));
