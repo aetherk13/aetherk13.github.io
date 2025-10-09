@@ -265,13 +265,15 @@ The above copyright notice and this permission notice shall be included in all c
 
         var nav = document.querySelector('.navbar');
         var navHeight = nav ? nav.getBoundingClientRect().height : 0;
-        var target = Math.max(main.getBoundingClientRect().top + window.pageYOffset - navHeight, 0);
+        var extraOffset = 40;
+        var target = Math.max(main.getBoundingClientRect().top + window.pageYOffset - navHeight - extraOffset, 0);
 
         window.scrollTo(0, target);
       });
     </script>
     <script type="module">
       const root = document.getElementById("projects-root");
+      let didAutoScroll = false;
 
       const slugify = (value = "") =>
         value
@@ -281,6 +283,21 @@ The above copyright notice and this permission notice shall be included in all c
           .replace(/[^a-z0-9\s-]/g, "")
           .trim()
           .replace(/\s+/g, "-");
+
+      function scrollToFirstCard() {
+        if (didAutoScroll || window.location.hash) return;
+        const firstCard = document.querySelector("#projects-root .card-vertical");
+        if (!firstCard) return;
+        const nav = document.querySelector(".navbar");
+        const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+        const extraOffset = 20;
+        const target = Math.max(
+          firstCard.getBoundingClientRect().top + window.pageYOffset - navHeight - extraOffset,
+          0
+        );
+        window.scrollTo({ top: target, behavior: "auto" });
+        didAutoScroll = true;
+      }
 
       function renderProjects(projects = []) {
         if (!root) return;
@@ -361,6 +378,8 @@ The above copyright notice and this permission notice shall be included in all c
           col.appendChild(card);
           root.appendChild(col);
         });
+
+        requestAnimationFrame(scrollToFirstCard);
       }
 
       async function loadProjects() {

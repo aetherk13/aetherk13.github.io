@@ -232,6 +232,7 @@ The above copyright notice and this permission notice shall be included in all c
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <script type="module">
       const root = document.getElementById("experiences-root");
+      let didAutoScroll = false;
 
       const slugify = (value = "") =>
         value
@@ -256,6 +257,21 @@ The above copyright notice and this permission notice shall be included in all c
         }
         return startYear || endYear || "";
       };
+
+      function scrollToFirstExperience() {
+        if (didAutoScroll || window.location.hash) return;
+        const first = document.querySelector(".experience-card");
+        if (!first) return;
+        const nav = document.querySelector(".navbar");
+        const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+        const extraOffset = 20;
+        const target = Math.max(
+          first.getBoundingClientRect().top + window.pageYOffset - navHeight - extraOffset,
+          0
+        );
+        window.scrollTo({ top: target, behavior: "auto" });
+        didAutoScroll = true;
+      }
 
       function groupExperiences(experiences = []) {
         const groups = new Map();
@@ -386,6 +402,8 @@ The above copyright notice and this permission notice shall be included in all c
             root.appendChild(document.createElement("br"));
           }
         });
+
+        requestAnimationFrame(scrollToFirstExperience);
       }
 
       async function loadExperiences() {
@@ -446,7 +464,8 @@ The above copyright notice and this permission notice shall be included in all c
 
         var nav = document.querySelector('.navbar');
         var navHeight = nav ? nav.getBoundingClientRect().height : 0;
-        var target = Math.max(main.getBoundingClientRect().top + window.pageYOffset - navHeight, 0);
+        var extraOffset = 40;
+        var target = Math.max(main.getBoundingClientRect().top + window.pageYOffset - navHeight - extraOffset, 0);
 
         window.scrollTo(0, target);
       });
