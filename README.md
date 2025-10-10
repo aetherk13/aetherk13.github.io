@@ -56,3 +56,5 @@ python -m http.server 8080
 ```
 
 node scripts/build-skills.js
+
+node scripts/spotify-tracks.mjs

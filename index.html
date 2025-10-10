@@ -30,6 +30,7 @@ The above copyright notice and this permission notice shall be included in all c
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <!-- CSS Files -->
   <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -205,6 +206,7 @@ The above copyright notice and this permission notice shall be included in all c
 
     .section .description {
       color: #4a5568;
+      padding-bottom: 20PX;
     }
 
     .section-odd .description {
@@ -260,45 +262,82 @@ The above copyright notice and this permission notice shall be included in all c
       }
     }
 
-    /*
     .stats-card {
       position: relative;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.95);
-      padding: 24px;
-      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.97);
+      padding: 32px 30px;
+      box-shadow: 0 18px 36px rgba(17, 24, 39, 0.18);
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: flex-start;
+      justify-content: flex-start;
+      gap: 18px;
       height: 100%;
+      min-height: 230px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: left;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      color: #1a202c;
     }
 
     .stats-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 22px 40px rgba(0, 0, 0, 0.18);
+      transform: translateY(-8px);
+      box-shadow: 0 24px 46px rgba(15, 23, 42, 0.22);
     }
 
     .stats-card--summary {
       align-items: center;
       text-align: center;
+      justify-content: center;
+      gap: 14px;
+      background: linear-gradient(160deg, rgba(255, 255, 255, 0.98) 8%, rgba(245, 250, 255, 0.94) 100%);
+      padding: 36px 30px;
+    }
+
+    .stats-card--summary .stats-detail__meta {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #4a5568;
+      line-height: 1.5;
+      text-align: center;
     }
 
     .stats-card--detail {
-      align-items: flex-start;
+      align-items: stretch;
       text-align: left;
+      padding: 34px 32px;
+      gap: 20px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(247, 250, 252, 0.94) 100%);
+    }
+
+    .stats-card--listening {
+      background: rgba(255, 255, 255, 0.98);
+      color: #1a202c;
+      box-shadow: 0 20px 40px rgba(15, 23, 42, 0.14);
+    }
+
+    .stats-card--quote {
+      background: rgba(255, 255, 255, 0.98);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .stats-card--quote .stats-detail__title {
+      text-align: center;
     }
 
     .stats-metric {
-      font-size: 38px;
+      font-size: 60px;
       font-weight: 700;
       color: #f96332;
-      margin-bottom: 8px;
+      margin-bottom: 0;
+      letter-spacing: 0.01em;
     }
 
     .stats-label {
-      font-size: 13px;
+      font-size: 16px;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
@@ -323,10 +362,17 @@ The above copyright notice and this permission notice shall be included in all c
     }
 
     .stats-detail__title {
-      font-size: 22px;
+      font-size: 16px;
       font-weight: 600;
-      color: #1a202c;
-      margin-bottom: 10px;
+      color: #4a5568;
+      margin-bottom: 4px;
+      width: 100%;
+    }
+
+    .stats-card--detail .stats-detail__title {
+      text-align: center;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
     .stats-detail__body {
@@ -337,22 +383,298 @@ The above copyright notice and this permission notice shall be included in all c
     .stats-detail__meta {
       font-size: 14px;
       font-weight: 600;
-      color: #718096;
+      color: #4a5568;
+      margin-top: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .stats-spotify-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+    }
+
+    .stats-spotify-list > a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: rgba(241, 245, 249, 0.9);
+      color: #1a202c;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
+      width: 100%;
+    }
+
+    .stats-spotify-list > a:hover {
+      background: rgba(226, 232, 240, 0.9);
+      color: #2b6cb0;
+    }
+
+    .stats-spotify-list > a:last-child {
+      margin-bottom: 0;
+    }
+
+    .spotify-track {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 16px 20px;
+      border-radius: 14px;
+      background: rgba(12, 19, 33, 0.72);
+      border: 1px solid rgba(148, 174, 212, 0.18);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .spotify-track__cover {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 10px 20px rgba(12, 19, 33, 0.4);
+    }
+
+    .spotify-track__index {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .spotify-track__info {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .spotify-track__title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      color: #f7fafc;
+    }
+
+    .spotify-track__artist {
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      color: rgba(226, 232, 240, 0.7);
+    }
+
+    .spotify-track__artist:empty {
+      display: none;
+    }
+
+    .spotify-track__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      color: #1db954;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-left: auto;
+    }
+
+    .spotify-track__cta:hover {
+      color: #1ed760;
+      text-decoration: none;
+    }
+
+    .spotify-track__cta:focus-visible {
+      outline: 2px solid #1ed760;
+      outline-offset: 3px;
+    }
+
+    .spotify-track__cta svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .spotify-loading {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(74, 85, 104, 0.7);
+      text-align: center;
+      display: block;
+      margin: 12px 0;
+    }
+
+    .spotify-fallback {
+      font-size: 14px;
+      color: #4a5568;
+      text-align: center;
+      margin: 4px 0 0 0;
+    }
+
+    .stats-quote {
+      position: relative;
+      border-radius: 18px;
+      padding: 32px 36px 28px 42px;
+      background: rgba(249, 99, 50, 0.12);
+      font-family: 'Playfair Display', serif;
+      color: #1a202c;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin: 0;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+    }
+
+    .stats-quote::before {
+      content: "“";
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 68px;
+      color: rgba(249, 99, 50, 0.35);
+      line-height: 1;
+    }
+
+    .stats-quote p {
+      margin: 0;
+      font-size: 26px;
+      line-height: 1.6;
+      font-weight: 500;
+      text-align: center;
+    }
+
+    .stats-quote footer {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #c44218;
+      text-align: center;
+    }
+
+    .stats-quote footer::before {
+      content: "— ";
     }
 
     @media (max-width: 767.98px) {
       .stats-card {
-        padding: 20px;
+        padding: 24px;
+        min-height: auto;
+      }
+
+      .stats-card--detail {
+        padding: 26px 24px;
+      }
+
+      .stats-card--summary {
+        padding: 28px 24px;
       }
 
       .stats-metric {
-        font-size: 32px;
+        font-size: 38px;
+      }
+
+      .spotify-track {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .spotify-track__cta {
+        margin-left: 0;
+        margin-top: 6px;
+      }
+
+      .spotify-track__cover {
+        width: 52px;
+        height: 52px;
+      }
+
+      .stats-quote {
+        padding: 28px 28px 24px 34px;
+      }
+
+      .stats-quote p {
+        font-size: 22px;
       }
     }
-    */
 
+    .stats-card--progress {
+      align-items: center;
+      text-align: center;
+      gap: 18px;
+      padding: 36px 32px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(247, 250, 252, 0.94) 100%);
+    }
 
+    .progress-ring {
+      --progress: 0%;
+      width: 250px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      position: relative;
+      display: grid;
+      place-items: center;
+      background: conic-gradient(#f96332 var(--progress), rgba(12, 19, 33, 0.72) 0);
+      box-shadow: 0 18px 32px rgba(17, 24, 39, 0.18);
+    }
 
+    .progress-ring::after {
+      content: '';
+      position: absolute;
+      inset: 30px;
+      background: #ffffff;
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 1px rgba(226, 232, 240, 0.8);
+    }
+
+    .progress-ring__inner {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      color: #1a202c;
+    }
+
+    .progress-ring__value {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: #f96332;
+    }
+
+    .progress-ring__label {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #718096;
+    }
+
+    @media (max-width: 767.98px) {
+      .progress-ring {
+        width: 180px;
+      }
+
+      .progress-ring__value {
+        font-size: 26px;
+      }
+    }
   </style>
 </head>
 
@@ -405,7 +727,7 @@ The above copyright notice and this permission notice shall be included in all c
     <div class="moving-clouds" style="background-image: url('./assets/img/clouds.png'); "></div>
   </div>
   <div class="main">
-    <div class="section text-center section-even section-about">
+    <div class="section text-center section-odd section-about">
       <div class="container">
         <div class="row">
           <div class="mr-auto ml-auto my-auto col-11 col-sm-10 col-md-8 col-lg-4 col-xl-4">
@@ -451,7 +773,7 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
       </div>
     </div>
-    <div class="section pt-o section-odd" id="recent work">
+    <div class="section pt-o section-even" id="recent work">
       <div class="container text-center">
         <h2 class="section-title">Recent Work</h2>
         <p class="description mb-4">Selected projects and publications from the past year.</p>
@@ -503,7 +825,7 @@ The above copyright notice and this permission notice shall be included in all c
       </div>
     </div>
 
-    <div class="section section-even" id="photo-highlights">
+    <div class="section section-odd" id="photo-highlights">
       <div class="container">
         <div class="row">
           <div class="col-md-8 ml-auto mr-auto text-center">
@@ -567,71 +889,61 @@ The above copyright notice and this permission notice shall be included in all c
       </div>
     </div>
 
-    <!--
-    <div class="section section-odd" id="impact-stats">
+
+    <div class="section section-even" id="impact-stats">
       <div class="container">
         <div class="row">
           <div class="col-md-8 ml-auto mr-auto text-center">
             <h2 class="section-title">By the Numbers</h2>
-            <p class="description">Snapshot of the work I am most excited about right now.</p>
+            <p class="description">A few signals I’m keeping close tabs on this month.</p>
           </div>
         </div>
         <div class="row" aria-live="polite">
-          <div class="col-12 mb-3">
-            <div class="stats-highlight">Latest milestone: IRB submission filed for the Locaze concussion pilot (2025).</div>
-          </div>
-          <div class="col-lg-3 col-sm-6 mb-4">
+          <div class="col-lg-4 col-sm-6 mb-4">
             <div class="stats-card stats-card--summary">
-              <div class="stats-metric">7</div>
-              <div class="stats-label">Research projects led</div>
+              <div class="stats-metric">17</div>
+              <div class="stats-label">Countries visited</div>
+              <p class="stats-detail__meta">Last: Portugal · Next: Japan</p>
             </div>
           </div>
-          <div class="col-lg-3 col-sm-6 mb-4">
-            <div class="stats-card stats-card--summary">
-              <div class="stats-metric">4</div>
-              <div class="stats-label">Institutions collaborated with</div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-sm-6 mb-4">
+          <div class="col-lg-4 col-sm-6 mb-4">
             <div class="stats-card stats-card--summary">
               <div class="stats-metric">2</div>
-              <div class="stats-label">Publications in peer-reviewed journals</div>
+              <div class="stats-label">Papers published</div>
+              <p class="stats-detail__meta">Latest: Advanced Healthcare Materials (2025)</p>
             </div>
           </div>
-          <div class="col-lg-3 col-sm-6 mb-4">
+          <div class="col-lg-4 col-sm-6 mb-4">
             <div class="stats-card stats-card--summary">
-              <div class="stats-metric">19</div>
-              <div class="stats-label">Documented side projects & coursework</div>
+              <div class="stats-metric">4</div>
+              <div class="stats-label">Animal procedures trained</div>
+              <p class="stats-detail__meta">Best: Subcutaneous injection</p>
             </div>
           </div>
-          <div class="col-12 mt-2 mb-2">
-            <h3 class="stats-subtitle text-center">Where the time goes</h3>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="stats-card stats-card--detail">
-              <h3 class="stats-detail__title">Bench Science</h3>
-              <p class="stats-detail__body">Biomaterials, regenerative medicine, and in vivo studies exploring therapies that bridge the lab and the clinic.</p>
-              <span class="stats-detail__meta">Focus areas: biomaterials · immune response</span>
+          <div class="col-lg-6 col-sm-12 mb-4">
+            <div class="stats-card stats-card--detail stats-card--listening" aria-label="Top songs this month">
+              <h3 class="stats-detail__title">Top tracks this month</h3>
+              <div class="stats-spotify-list" data-spotify-source="assets/data/spotify-tracks.json">
+                <p class="spotify-fallback">Updating this month’s playlist…</p>
+              </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="stats-card stats-card--detail">
-              <h3 class="stats-detail__title">Clinical Translation</h3>
-              <p class="stats-detail__body">Prototyping Locaze, standing up IRB workflows, and coordinating pilots that support concussion detection.</p>
-              <span class="stats-detail__meta">Cross-functional with engineers & clinicians</span>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="stats-card stats-card--detail">
-              <h3 class="stats-detail__title">Teaching & Outreach</h3>
-              <p class="stats-detail__body">Mentoring student teams, sharing work at conferences, and keeping language skills sharp through coursework.</p>
-              <span class="stats-detail__meta">Always curious, always learning</span>
+          <div class="col-lg-6 col-sm-12 mb-4">
+            <div class="stats-card stats-card--detail stats-card--progress" aria-label="PhD progress tracker">
+              <h3 class="stats-detail__title">PhD journey</h3>
+              <div class="progress-ring" data-progress-ring>
+                <div class="progress-ring__inner">
+                  <span class="progress-ring__value" data-progress-value>0%</span>
+                  <span class="progress-ring__label">complete</span>
+                </div>
+              </div>
+              <p class="stats-detail__meta" data-progress-meta>Tracking progress…</p>
             </div>
           </div>
         </div>
       </div>
     </div>
-    -->
+
 
     <div class="section section-odd" id="contact">
       <div class="container">
@@ -707,6 +1019,174 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
       </div>
     </footer>
+    <script>
+      (function () {
+        if (typeof window.fetch !== 'function') {
+          return;
+        }
+
+        const trackLists = document.querySelectorAll('[data-spotify-source]');
+        if (!trackLists.length) {
+          return;
+        }
+
+        const createPlayIcon = () => {
+          const svgNS = 'http://www.w3.org/2000/svg';
+          const svg = document.createElementNS(svgNS, 'svg');
+          svg.setAttribute('viewBox', '0 0 14 14');
+          svg.setAttribute('width', '14');
+          svg.setAttribute('height', '14');
+          svg.setAttribute('aria-hidden', 'true');
+          svg.setAttribute('focusable', 'false');
+
+          const path = document.createElementNS(svgNS, 'path');
+          path.setAttribute('fill', 'currentColor');
+          path.setAttribute('d', 'M3 2.5v9l8-4.5-8-4.5z');
+          svg.appendChild(path);
+          return svg;
+        };
+
+        const buildTrackElement = (track, index) => {
+          const title = track.title || track.name || `Track ${index + 1}`;
+          const artist = track.artist || (Array.isArray(track.artists) ? track.artists.join(', ') : '');
+          const url = track.url || (track.id ? `https://open.spotify.com/track/${track.id}` : '#');
+          const cover = track.cover || track.albumCover || track.image || '';
+
+          const trackEl = document.createElement('div');
+          trackEl.className = 'spotify-track';
+
+          const indexEl = document.createElement('span');
+          indexEl.className = 'spotify-track__index';
+          indexEl.textContent = String(index + 1);
+          trackEl.appendChild(indexEl);
+
+          if (cover) {
+            const coverEl = document.createElement('img');
+            coverEl.className = 'spotify-track__cover';
+            coverEl.src = cover;
+            coverEl.alt = `${title} album cover`;
+            coverEl.loading = 'lazy';
+            trackEl.appendChild(coverEl);
+          }
+
+          const infoEl = document.createElement('div');
+          infoEl.className = 'spotify-track__info';
+
+          const titleEl = document.createElement('span');
+          titleEl.className = 'spotify-track__title';
+          titleEl.textContent = title;
+          infoEl.appendChild(titleEl);
+
+          if (artist) {
+            const artistEl = document.createElement('span');
+            artistEl.className = 'spotify-track__artist';
+            artistEl.textContent = artist;
+            infoEl.appendChild(artistEl);
+          }
+
+          trackEl.appendChild(infoEl);
+
+          const ctaEl = document.createElement('a');
+          ctaEl.className = 'spotify-track__cta';
+          ctaEl.href = url;
+          ctaEl.target = '_blank';
+          ctaEl.rel = 'noreferrer noopener';
+          ctaEl.setAttribute('aria-label', `Open ${title} on Spotify`);
+          ctaEl.appendChild(createPlayIcon());
+          ctaEl.append('Listen');
+          trackEl.appendChild(ctaEl);
+
+          return trackEl;
+        };
+
+        trackLists.forEach((listEl) => {
+          const source = listEl.dataset.spotifySource || 'assets/data/spotify-tracks.json';
+          const fallbackNodes = Array.from(listEl.children).map((node) => node.cloneNode(true));
+
+          const showFallback = () => {
+            listEl.innerHTML = '';
+            fallbackNodes.forEach((node) => listEl.appendChild(node));
+          };
+
+          const loading = document.createElement('span');
+          loading.className = 'spotify-loading';
+          loading.textContent = 'Loading tracks...';
+          listEl.innerHTML = '';
+          listEl.appendChild(loading);
+
+          fetch(source)
+            .then((res) => {
+              if (!res.ok) {
+                throw new Error(`Spotify track data responded with ${res.status}`);
+              }
+              return res.json();
+            })
+            .then((payload) => {
+              const tracks = Array.isArray(payload?.tracks) ? payload.tracks : [];
+              if (!tracks.length) {
+                throw new Error('No tracks in spotify-tracks payload');
+              }
+
+              listEl.innerHTML = '';
+              tracks.forEach((track, index) => {
+                listEl.appendChild(buildTrackElement(track, index));
+              });
+
+              listEl.dataset.spotifyLoaded = 'true';
+            })
+            .catch((err) => {
+              console.warn('Unable to load Spotify track metadata', { source, error: err });
+              showFallback();
+            });
+        });
+      })();
+    </script>
+    <script>
+      (function () {
+        const ring = document.querySelector('[data-progress-ring]');
+        const valueEl = ring ? ring.querySelector('[data-progress-value]') : null;
+        const metaEl = document.querySelector('[data-progress-meta]');
+        if (!ring || !valueEl || !metaEl) {
+          return;
+        }
+
+        const DAY_MS = 24 * 60 * 60 * 1000;
+        const startDate = new Date(Date.UTC(2025, 7, 26));
+        const endDate = new Date(Date.UTC(2030, 4, 12, 23, 59, 59));
+        const now = new Date();
+        const totalMs = endDate - startDate;
+        if (totalMs <= 0) {
+          valueEl.textContent = '—';
+          metaEl.textContent = 'Timeline unavailable';
+          return;
+        }
+
+        const totalDays = Math.round(totalMs / DAY_MS);
+        let percent;
+        const dateRangeLabel = 'Aug 26, 2025 → May 12, 2030';
+
+        if (now <= startDate) {
+          percent = 0;
+          const daysToStart = Math.max(0, Math.ceil((startDate - now) / DAY_MS));
+          metaEl.textContent = `Begins in ${daysToStart} day${daysToStart === 1 ? '' : 's'} • ${dateRangeLabel}`;
+        } else if (now >= endDate) {
+          percent = 100;
+          metaEl.textContent = `Completed May 12, 2030 • ${totalDays} total day${totalDays === 1 ? '' : 's'}`;
+        } else {
+          const elapsedMs = now - startDate;
+          percent = (elapsedMs / totalMs) * 100;
+          const elapsedDays = Math.round(elapsedMs / DAY_MS);
+          const remainingDays = Math.max(totalDays - elapsedDays, 0);
+          metaEl.textContent = `Elapsed ${elapsedDays} of ${totalDays} days • ${remainingDays} day${remainingDays === 1 ? '' : 's'} to go`;
+        }
+
+        const clampedPercent = Math.min(Math.max(percent, 0), 100);
+        const displayPercent = clampedPercent === 100 ? '100%' : `${clampedPercent.toFixed(1)}%`;
+
+        valueEl.textContent = displayPercent;
+        ring.style.setProperty('--progress', `${clampedPercent}%`);
+      })();
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <script src="./assets/data/skill-map.js"></script>
     <script>
