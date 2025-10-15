@@ -1,2 +1,4 @@
 .env
-assets/data/spotify*.json
+# Keep generated Spotify exports ignored except the one served on the site
+assets/data/spotify-*.json
+!assets/data/spotify-tracks.json
