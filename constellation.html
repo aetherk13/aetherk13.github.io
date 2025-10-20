@@ -28,7 +28,15 @@
     .navbar.navbar-transparent .navbar-nav > li > a,
     .navbar.navbar-transparent .btn { color: #101418 !important; }
     .navbar.navbar-transparent .btn.btn-danger {
-      background-color: #e74c3c; border-color: #e74c3c; color: #ffffff !important;
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #ffffff !important;
+    }
+    .navbar.navbar-transparent .btn.btn-danger:hover,
+    .navbar.navbar-transparent .btn.btn-danger:focus {
+      background-color: var(--color-primary-dark);
+      border-color: var(--color-primary-dark);
+      color: #ffffff !important;
     }
     .navbar.navbar-transparent .navbar-toggler-bar { background: #101418; }
 
@@ -39,8 +47,8 @@
     }
     .footer-social { display: flex; gap: 28px; flex-wrap: wrap; }
     .footer-social a { display: flex; align-items: center; }
-    .footer.footer-white .footer-social a { color: #f96332; }
-    .footer.footer-white .footer-social a:hover { color: #c44218; }
+    .footer.footer-white .footer-social a { color: var(--color-primary); }
+    .footer.footer-white .footer-social a:hover { color: var(--color-primary-dark); }
     .footer-social svg { width: 28px; height: 28px; }
 
     .constellation-wrapper {

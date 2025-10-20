@@ -44,8 +44,15 @@ body {
     }
 
     .navbar.navbar-transparent .btn.btn-danger {
-      background-color: #e74c3c;
-      border-color: #e74c3c;
+      background-color: var(--color-primary);
+      border-color: var(--color-primary);
+      color: #ffffff !important;
+    }
+
+    .navbar.navbar-transparent .btn.btn-danger:hover,
+    .navbar.navbar-transparent .btn.btn-danger:focus {
+      background-color: var(--color-primary-dark);
+      border-color: var(--color-primary-dark);
       color: #ffffff !important;
     }
 
@@ -258,11 +265,11 @@ body {
     }
 
     .footer.footer-white .footer-social a {
-      color: #f96332;
+      color: var(--color-primary);
     }
 
     .footer.footer-white .footer-social a:hover {
-      color: #c44218;
+      color: var(--color-primary-dark);
     }
 
     .footer-social svg {

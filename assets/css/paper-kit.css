@@ -15,6 +15,13 @@
 
  */
 
+:root {
+  --color-primary: #0A7968;
+  --color-primary-dark: #00352F;
+  --color-primary-rgb: 10, 121, 104;
+  --color-primary-dark-rgb: 0, 53, 47;
+}
+
 /*      light colors - used for select dropdown         */
 
 /* ========================================================================
@@ -1433,8 +1440,8 @@ fieldset[disabled] .btn-warning.active {
 }
 
 .btn-danger {
-  background-color: #f5593d;
-  border-color: #f5593d;
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
   color: #FFFFFF;
   opacity: 1;
   filter: alpha(opacity=100);
@@ -1452,9 +1459,9 @@ fieldset[disabled] .btn-warning.active {
 .btn-danger:not(:disabled):not(.disabled).active,
 .btn-danger:not(:disabled):not(.disabled).active:focus,
 .show>.btn-danger.dropdown-toggle {
-  background-color: #f33816;
+  background-color: var(--color-primary-dark);
   color: #FFFFFF;
-  border-color: #f33816;
+  border-color: var(--color-primary-dark);
   box-shadow: none;
 }
 
@@ -1486,12 +1493,12 @@ fieldset[disabled] .btn-danger:focus,
 fieldset[disabled] .btn-danger.focus,
 fieldset[disabled] .btn-danger:active,
 fieldset[disabled] .btn-danger.active {
-  background-color: #f33816;
-  border-color: #f33816;
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
 }
 
 .btn-danger.btn-link {
-  color: #f5593d;
+  color: var(--color-primary);
 }
 
 .btn-danger.btn-link:hover,
@@ -1501,7 +1508,7 @@ fieldset[disabled] .btn-danger.active {
 .btn-danger.btn-link:focus:active,
 .open>.btn-danger.btn-link.dropdown-toggle {
   background-color: transparent !important;
-  color: #f33816 !important;
+  color: var(--color-primary-dark) !important;
 }
 
 .btn-danger.btn-link .caret {
@@ -5699,7 +5706,7 @@ License - nucleoapp.com/license/
 }
 
 .icon-danger {
-  color: #f5593d;
+  color: var(--color-primary);
 }
 
 .icon-neutral {
@@ -5707,7 +5714,7 @@ License - nucleoapp.com/license/
 }
 
 .carousel-control {
-  background-color: #f5593d;
+  background-color: var(--color-primary);
   border-radius: 50%;
   opacity: 1;
   text-shadow: none;
@@ -5716,7 +5723,7 @@ License - nucleoapp.com/license/
 .carousel-control:hover,
 .carousel-control:focus {
   opacity: 1;
-  background-color: #f33816;
+  background-color: var(--color-primary-dark);
 }
 
 .carousel-control.left {
@@ -5775,7 +5782,7 @@ License - nucleoapp.com/license/
 }
 
 .carousel-indicators .active {
-  background-color: #f5593d;
+  background-color: var(--color-primary);
 }
 
 .page-carousel:hover .carousel-control.right,
